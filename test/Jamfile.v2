@@ -1,30 +1,34 @@
-# (C) Copyright 2008-2011: Joachim Faulhaber
-# Distributed under the Boost Software License, Version 1.0.
-# (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+#  Boost belief library test suite Jamfile  ----------------------------
+#
+#  Copyright Marek Kurdej 2014. Use, modification and
+#  distribution is subject to the Boost Software License, Version
+#  1.0. (See accompanying file LICENSE_1_0.txt or copy at
+#  http://www.boost.org/LICENSE_1_0.txt)
+#
+#  See http://www.boost.org for updates, documentation, and revision history.
 
-# bring in rules for testing
 import testing ;
-import feature ;
 
-lib boost_unit_test_framework ;
+alias unit_test_framework
+    : # sources
+        /boost//unit_test_framework
+    ;
 
-alias dst
-    : # no sources
-    : # no build requirements
-    : # no default build
-    : <include>../../../src
-;
 
-test-suite "dst-test"
-    :
-        # Main
-        [ run test_discounting.cpp ]
-        #[ run test_dst_function.cpp ]
-        #[ run test_mass.cpp ]
-        #[ run test_rule_jeffrey_dempster.cpp ]
-        #[ run test_rules.cpp ]
-        #[ run TestDst.cpp ]
+{
+  test-suite belief:
+# Search tests
+   : [ run empty_search_test.cpp unit_test_framework      : : : : empty_search_test ]
+     [ run search_test_ac1.cpp unit_test_framework        : : : : search_test_ac1 ]
+     [ run test_discounting.cpp                           : : : : discounting_test1 ]
+     [ run test_dst_function.cpp                          : : : : dst_function_test1 ]
+     [ run test_mass.cpp                                  : : : : mass_test1 ]
+     [ run test_rule_jeffrey_dempster.cpp                 : : : : rule_jeffrey_dempster_test1 ]
+     [ run test_rules.cpp                                 : : : : rules_test1 ]
+     [ run TestDst.cpp                                    : : : : dst_test1 ]
 
-        # Check for compiler bugs
-        [ compile-fail fuse-fod-incompatible-fail.cpp ]
-;
+# Compilation errors
+    [ compile-fail fuse-fod-incompatible-fail.cpp ]
+
+    ;
+}
