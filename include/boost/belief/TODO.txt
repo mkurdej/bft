@@ -1,0 +1,21 @@
+dst_function<fod> f(Container<T> values);
+dst_function<fod> f(std::vector<T> values);
+dst_function<fod> f(std::initializer_list<T> values); // C++11
+
+#ifdef BOOST_DST_CHECK
+#	ifndef BOOST_DST_CHECK_PRECISION
+#		define BOOST_DST_CHECK_PRECISION 1e-8
+#	endif // BOOST_DST_CHECK_PRECISION
+// TODO: check that sum(:) ~ 1.0 +- BOOST_DST_CHECK_PRECISION
+#endif // BOOST_DST_CHECK
+
+mass_array<fod> m1a(50, 50);
+mass_array<fod> m2a(50, 50);
+
+#if 0
+
+namespace dst = namespace boost::dst;
+
+typedef dst::mass_model< /*set_size = */5, /*value_type = */double > mass_type;
+
+#endif
