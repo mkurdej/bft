@@ -1,0 +1,30 @@
+# (C) Copyright 2008-2011: Joachim Faulhaber
+# Distributed under the Boost Software License, Version 1.0.
+# (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+
+# bring in rules for testing
+import testing ;
+import feature ;
+
+lib boost_unit_test_framework ;
+
+alias dst
+    : # no sources
+    : # no build requirements
+    : # no default build
+    : <include>../../../src
+;
+
+test-suite "dst-test"
+    :
+        # Main
+        [ run test_discounting.cpp ]
+        #[ run test_dst_function.cpp ]
+        #[ run test_mass.cpp ]
+        #[ run test_rule_jeffrey_dempster.cpp ]
+        #[ run test_rules.cpp ]
+        #[ run TestDst.cpp ]
+
+        # Check for compiler bugs
+        [ compile-fail fuse-fod-incompatible-fail.cpp ]
+;
