@@ -3,17 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_RULE_DISJUNCTIVE_BOLD_HPP
-#define BOOST_DST_RULE_DISJUNCTIVE_BOLD_HPP
+#ifndef BOOST_BELIEF_RULE_DISJUNCTIVE_BOLD_HPP
+#define BOOST_BELIEF_RULE_DISJUNCTIVE_BOLD_HPP
 
-#include <boost/dst/disjunctive_decomposition.hpp>
-#include <boost/dst/mass.hpp>
-#include <boost/dst/max.hpp>
-#include <boost/dst/rule_base.hpp>
-#include <boost/dst/rule_disjunctive.hpp>
+#include <boost/belief/disjunctive_decomposition.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/max.hpp>
+#include <boost/belief/rule_base.hpp>
+#include <boost/belief/rule_disjunctive.hpp>
 #include <boost/test/floating_point_comparison.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 struct rule_disjunctive_bold
         : public rule_base
@@ -47,8 +47,8 @@ struct rule_disjunctive_bold
     }
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_RULE_DISJUNCTIVE_BOLD_HPP
+#endif // BOOST_BELIEF_RULE_DISJUNCTIVE_BOLD_HPP

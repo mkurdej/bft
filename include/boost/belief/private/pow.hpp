@@ -3,15 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_PRIVATE_POW_HPP
-#define BOOST_DST_PRIVATE_POW_HPP
+#ifndef BOOST_BELIEF_PRIVATE_POW_HPP
+#define BOOST_BELIEF_PRIVATE_POW_HPP
 
 #pragma warning(push)	// disable for this header only
 #pragma warning(disable:4668)
 #include <boost/static_assert.hpp>
 #pragma warning(pop)
 
-namespace boost { namespace dst { namespace aux {
+namespace boost { namespace belief { namespace aux {
 
 	/**
 	Power of 2 class template
@@ -36,8 +36,8 @@ namespace boost { namespace dst { namespace aux {
 
 } // namespace aux
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_PRIVATE_POW2_HPP
+#endif // BOOST_BELIEF_PRIVATE_POW2_HPP

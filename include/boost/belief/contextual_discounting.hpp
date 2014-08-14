@@ -3,14 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_CONTEXTUAL_DISCOUNTING_HPP
-#define BOOST_DST_CONTEXTUAL_DISCOUNTING_HPP
+#ifndef BOOST_BELIEF_CONTEXTUAL_DISCOUNTING_HPP
+#define BOOST_BELIEF_CONTEXTUAL_DISCOUNTING_HPP
 
 #include <boost/foreach.hpp>
-#include <boost/dst/mass.hpp>
-#include <boost/dst/rule_disjunctive.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/rule_disjunctive.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 /// Performs \alpha-discounting, i.e. non-Omega masses are discounted by the factor 1-\alpha.
 ///
@@ -62,8 +62,8 @@ private:
     mass<FOD, T> m_discount;
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_CONTEXTUAL_DISCOUNTING_HPP
+#endif // BOOST_BELIEF_CONTEXTUAL_DISCOUNTING_HPP

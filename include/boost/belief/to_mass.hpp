@@ -3,16 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_TO_MASS_HPP
-#define BOOST_DST_TO_MASS_HPP
+#ifndef BOOST_BELIEF_TO_MASS_HPP
+#define BOOST_BELIEF_TO_MASS_HPP
 
-#include <boost/dst/belief.hpp>
-#include <boost/dst/communality.hpp>
-#include <boost/dst/implicability.hpp>
-#include <boost/dst/mass.hpp>
-#include <boost/dst/plausibility.hpp>
+#include <boost/belief/belief.hpp>
+#include <boost/belief/communality.hpp>
+#include <boost/belief/implicability.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/plausibility.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 template <class FOD, typename T>
 mass<FOD, T> to_mass(const belief<FOD, T> & bel)
@@ -76,8 +76,8 @@ mass<FOD, T> to_mass(const plausibility<FOD, T> & pl)
     return m;
 }
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_TO_MASS_HPP
+#endif // BOOST_BELIEF_TO_MASS_HPP

@@ -3,14 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_COMMUNALITY_HPP
-#define BOOST_DST_COMMUNALITY_HPP
+#ifndef BOOST_BELIEF_COMMUNALITY_HPP
+#define BOOST_BELIEF_COMMUNALITY_HPP
 
-#include <boost/dst/dst_function.hpp>
-#include <boost/dst/fod.hpp>
+#include <boost/belief/dst_function.hpp>
+#include <boost/belief/fod.hpp>
 #include <boost/test/floating_point_comparison.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 template <class FOD, typename T = double>
 class communality : public dst_function<FOD, T>
@@ -59,8 +59,8 @@ public:
     }
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_COMMUNALITY_HPP
+#endif // BOOST_BELIEF_COMMUNALITY_HPP

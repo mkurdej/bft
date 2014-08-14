@@ -3,13 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_MARGINALIZATION_HPP
-#define BOOST_DST_MARGINALIZATION_HPP
+#ifndef BOOST_BELIEF_MARGINALIZATION_HPP
+#define BOOST_BELIEF_MARGINALIZATION_HPP
 
-#include <boost/dst/fod_minus.hpp>
-#include <boost/dst/mass.hpp>
+#include <boost/belief/fod_minus.hpp>
+#include <boost/belief/mass.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 /// Vacuous extension of a mass function.
 template <typename FOD2, typename FOD1, typename T>
@@ -28,8 +28,8 @@ mass<typename fod_minus<FOD1, FOD2>::type, T> marginalization(const mass<FOD1, T
     return m_marginalized;
 }
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_MARGINALIZATION_HPP
+#endif // BOOST_BELIEF_MARGINALIZATION_HPP

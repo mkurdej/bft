@@ -3,12 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_TOTAL_CONFLICT_EXCEPTION_HPP
-#define BOOST_DST_TOTAL_CONFLICT_EXCEPTION_HPP
+#ifndef BOOST_BELIEF_TOTAL_CONFLICT_EXCEPTION_HPP
+#define BOOST_BELIEF_TOTAL_CONFLICT_EXCEPTION_HPP
 
 #include <boost/exception/exception.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 struct total_conflict_exception
         : virtual boost::exception
@@ -16,8 +16,8 @@ struct total_conflict_exception
 {
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_TOTAL_CONFLICT_EXCEPTION_HPP
+#endif // BOOST_BELIEF_TOTAL_CONFLICT_EXCEPTION_HPP

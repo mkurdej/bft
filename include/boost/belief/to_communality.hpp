@@ -3,13 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_TO_COMMUNALITY_HPP
-#define BOOST_DST_TO_COMMUNALITY_HPP
+#ifndef BOOST_BELIEF_TO_COMMUNALITY_HPP
+#define BOOST_BELIEF_TO_COMMUNALITY_HPP
 
-#include <boost/dst/communality.hpp>
-#include <boost/dst/mass.hpp>
+#include <boost/belief/communality.hpp>
+#include <boost/belief/mass.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 template <class FOD, typename T>
 communality<FOD, T> to_communality(const mass<FOD, T> & m)
@@ -28,8 +28,8 @@ communality<FOD, T> to_communality(const mass<FOD, T> & m)
     return q;
 }
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_TO_COMMUNALITY_HPP
+#endif // BOOST_BELIEF_TO_COMMUNALITY_HPP

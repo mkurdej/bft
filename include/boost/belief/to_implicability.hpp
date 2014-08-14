@@ -3,13 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_TO_IMPLICABILITY_HPP
-#define BOOST_DST_TO_IMPLICABILITY_HPP
+#ifndef BOOST_BELIEF_TO_IMPLICABILITY_HPP
+#define BOOST_BELIEF_TO_IMPLICABILITY_HPP
 
-#include <boost/dst/implicability.hpp>
-#include <boost/dst/mass.hpp>
+#include <boost/belief/implicability.hpp>
+#include <boost/belief/mass.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 template <class FOD, typename T>
 implicability<FOD, T> to_implicability(const mass<FOD, T> & m)
@@ -28,8 +28,8 @@ implicability<FOD, T> to_implicability(const mass<FOD, T> & m)
     return b;
 }
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_TO_IMPLICABILITY_HPP
+#endif // BOOST_BELIEF_TO_IMPLICABILITY_HPP

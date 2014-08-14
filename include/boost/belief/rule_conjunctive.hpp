@@ -3,16 +3,16 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_RULE_CONJUNCTIVE_HPP
-#define BOOST_DST_RULE_CONJUNCTIVE_HPP
+#ifndef BOOST_BELIEF_RULE_CONJUNCTIVE_HPP
+#define BOOST_BELIEF_RULE_CONJUNCTIVE_HPP
 
-#include <boost/dst/communality.hpp>
-#include <boost/dst/mass.hpp>
-#include <boost/dst/rule_base.hpp>
-#include <boost/dst/to_communality.hpp>
-#include <boost/dst/to_mass.hpp>
+#include <boost/belief/communality.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/rule_base.hpp>
+#include <boost/belief/to_communality.hpp>
+#include <boost/belief/to_mass.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 struct rule_conjunctive
         : public rule_base
@@ -53,8 +53,8 @@ struct rule_conjunctive
     */
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_RULE_CONJUNCTIVE_HPP
+#endif // BOOST_BELIEF_RULE_CONJUNCTIVE_HPP

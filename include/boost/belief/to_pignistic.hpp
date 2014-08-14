@@ -3,14 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_TO_PIGNISTIC_HPP
-#define BOOST_DST_TO_PIGNISTIC_HPP
+#ifndef BOOST_BELIEF_TO_PIGNISTIC_HPP
+#define BOOST_BELIEF_TO_PIGNISTIC_HPP
 
 #include <boost/assert.hpp>
-#include <boost/dst/dst_function.hpp>
-#include <boost/dst/mass.hpp>
+#include <boost/belief/dst_function.hpp>
+#include <boost/belief/mass.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 template <class FOD, typename T>
 dst_function<FOD, T> to_pignistic(const mass<FOD, T> & m)
@@ -30,8 +30,8 @@ dst_function<FOD, T> to_pignistic(const mass<FOD, T> & m)
     return betP;
 }
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_TO_PIGNISTIC_HPP
+#endif // BOOST_BELIEF_TO_PIGNISTIC_HPP

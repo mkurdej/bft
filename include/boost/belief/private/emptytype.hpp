@@ -3,18 +3,18 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_AUX_EMPTYTYPE_HPP
-#define BOOST_DST_AUX_EMPTYTYPE_HPP
+#ifndef BOOST_BELIEF_AUX_EMPTYTYPE_HPP
+#define BOOST_BELIEF_AUX_EMPTYTYPE_HPP
 
-namespace boost { namespace dst { namespace aux {
+namespace boost { namespace belief { namespace aux {
 
 //! Empty type used as a sentinel.
 struct EmptyType {};
 
 } // namespace aux
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_AUX_EMPTYTYPE_HPP
+#endif // BOOST_BELIEF_AUX_EMPTYTYPE_HPP

@@ -3,10 +3,10 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_PRIVATE_TO_VOID_HPP
-#define BOOST_DST_PRIVATE_TO_VOID_HPP
+#ifndef BOOST_BELIEF_PRIVATE_TO_VOID_HPP
+#define BOOST_BELIEF_PRIVATE_TO_VOID_HPP
 
-namespace boost { namespace dst { namespace aux {
+namespace boost { namespace belief { namespace aux {
 
 template<typename T>
 struct to_void
@@ -16,8 +16,8 @@ struct to_void
 
 } // namespace aux
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_PRIVATE_TO_VOID_HPP
+#endif // BOOST_BELIEF_PRIVATE_TO_VOID_HPP

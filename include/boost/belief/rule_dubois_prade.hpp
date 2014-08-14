@@ -3,13 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_RULE_DUBOIS_PRADE_HPP
-#define BOOST_DST_RULE_DUBOIS_PRADE_HPP
+#ifndef BOOST_BELIEF_RULE_DUBOIS_PRADE_HPP
+#define BOOST_BELIEF_RULE_DUBOIS_PRADE_HPP
 
-#include <boost/dst/mass.hpp>
-#include <boost/dst/rule_base.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/rule_base.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 struct rule_dubois_prade
         : public rule_base
@@ -37,8 +37,8 @@ struct rule_dubois_prade
     }
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_RULE_DUBOIS_PRADE_HPP
+#endif // BOOST_BELIEF_RULE_DUBOIS_PRADE_HPP

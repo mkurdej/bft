@@ -3,17 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_FOD_MINUS_HPP
-#define BOOST_DST_FOD_MINUS_HPP
+#ifndef BOOST_BELIEF_FOD_MINUS_HPP
+#define BOOST_BELIEF_FOD_MINUS_HPP
 
-#include <boost/dst/fod.hpp>
-#include <boost/dst/private/deref.hpp>
+#include <boost/belief/fod.hpp>
+#include <boost/belief/private/deref.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/erase_key.hpp>
 #include <boost/mpl/fold.hpp>
 #include <boost/mpl/next.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 template <typename FOD1, typename FOD2>
 class fod_minus
@@ -54,8 +54,8 @@ struct fod_minus<FOD, FOD>
     typedef fod<> type;
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_FOD_MINUS_HPP
+#endif // BOOST_BELIEF_FOD_MINUS_HPP

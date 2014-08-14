@@ -3,13 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_PRIVATE_DEREF_HPP
-#define BOOST_DST_PRIVATE_DEREF_HPP
+#ifndef BOOST_BELIEF_PRIVATE_DEREF_HPP
+#define BOOST_BELIEF_PRIVATE_DEREF_HPP
 
-#include <boost/dst/private/to_void.hpp>
+#include <boost/belief/private/to_void.hpp>
 #include <boost/mpl/deref.hpp>
 
-namespace boost { namespace dst { namespace aux {
+namespace boost { namespace belief { namespace aux {
 
 template <class T, class U = EmptyType, class Enable = void>
 struct deref
@@ -25,8 +25,8 @@ struct deref<T, U, typename to_void<typename T::type>::type>
 
 } // namespace aux
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_PRIVATE_DEREF_HPP
+#endif // BOOST_BELIEF_PRIVATE_DEREF_HPP

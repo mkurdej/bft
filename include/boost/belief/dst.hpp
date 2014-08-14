@@ -3,35 +3,35 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_DST_HPP
-#define BOOST_DST_DST_HPP
+#ifndef BOOST_BELIEF_DST_HPP
+#define BOOST_BELIEF_DST_HPP
 
-#include <boost/dst/fod.hpp>
-#include <boost/dst/fod_minus.hpp>
-#include <boost/dst/fod_union.hpp>
+#include <boost/belief/fod.hpp>
+#include <boost/belief/fod_minus.hpp>
+#include <boost/belief/fod_union.hpp>
 
-#include <boost/dst/belief.hpp>
-#include <boost/dst/communality.hpp>
-#include <boost/dst/conjunctive_decomposition.hpp>
-#include <boost/dst/contextual_discounting.hpp>
-#include <boost/dst/discounting.hpp>
-#include <boost/dst/disjunctive_decomposition.hpp>
-#include <boost/dst/dst_function.hpp>
-#include <boost/dst/extension.hpp>
-#include <boost/dst/implicability.hpp>
-#include <boost/dst/marginalization.hpp>
-#include <boost/dst/mass.hpp>
-#include <boost/dst/max.hpp>
-#include <boost/dst/min.hpp>
-#include <boost/dst/plausibility.hpp>
+#include <boost/belief/belief.hpp>
+#include <boost/belief/communality.hpp>
+#include <boost/belief/conjunctive_decomposition.hpp>
+#include <boost/belief/contextual_discounting.hpp>
+#include <boost/belief/discounting.hpp>
+#include <boost/belief/disjunctive_decomposition.hpp>
+#include <boost/belief/dst_function.hpp>
+#include <boost/belief/extension.hpp>
+#include <boost/belief/implicability.hpp>
+#include <boost/belief/marginalization.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/max.hpp>
+#include <boost/belief/min.hpp>
+#include <boost/belief/plausibility.hpp>
 
-#include <boost/dst/rules.hpp>
+#include <boost/belief/rules.hpp>
 
-#include <boost/dst/to_belief.hpp>
-#include <boost/dst/to_communality.hpp>
-#include <boost/dst/to_implicability.hpp>
-#include <boost/dst/to_mass.hpp>
-#include <boost/dst/to_pignistic.hpp>
-#include <boost/dst/to_plausibility.hpp>
+#include <boost/belief/to_belief.hpp>
+#include <boost/belief/to_communality.hpp>
+#include <boost/belief/to_implicability.hpp>
+#include <boost/belief/to_mass.hpp>
+#include <boost/belief/to_pignistic.hpp>
+#include <boost/belief/to_plausibility.hpp>
 
-#endif // BOOST_DST_DST_HPP
+#endif // BOOST_BELIEF_DST_HPP

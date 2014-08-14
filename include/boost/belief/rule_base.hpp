@@ -3,20 +3,20 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_RULE_BASE_HPP
-#define BOOST_DST_RULE_BASE_HPP
+#ifndef BOOST_BELIEF_RULE_BASE_HPP
+#define BOOST_BELIEF_RULE_BASE_HPP
 
 #include <string>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 struct rule_base
 {
     virtual std::string to_string() const = 0;
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_RULE_BASE_HPP
+#endif // BOOST_BELIEF_RULE_BASE_HPP

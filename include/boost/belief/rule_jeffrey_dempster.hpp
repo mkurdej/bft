@@ -3,15 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_RULE_JEFFREY_DEMPSTER_HPP
-#define BOOST_DST_RULE_JEFFREY_DEMPSTER_HPP
+#ifndef BOOST_BELIEF_RULE_JEFFREY_DEMPSTER_HPP
+#define BOOST_BELIEF_RULE_JEFFREY_DEMPSTER_HPP
 
-#include <boost/dst/mass.hpp>
-#include <boost/dst/plausibility.hpp>
-#include <boost/dst/to_plausibility.hpp>
-#include <boost/dst/rule_base.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/plausibility.hpp>
+#include <boost/belief/to_plausibility.hpp>
+#include <boost/belief/rule_base.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 // @see @article{Ma_Liu_Dubois_Prade_2011, title={Bridging Jeffrey's rule, AGM revision and Dempster conditioning in the theory of evidence}, journal={International Journal of Artificial Intelligence Tools}, author={Ma, Jianbing and Liu, Weiru and Dubois, Didier and Prade, Henri}, year={2011}, pages={1-29}}
 struct rule_jeffrey_dempster
@@ -48,8 +48,8 @@ struct rule_jeffrey_dempster
     }
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_RULE_JEFFREY_DEMPSTER_HPP
+#endif // BOOST_BELIEF_RULE_JEFFREY_DEMPSTER_HPP

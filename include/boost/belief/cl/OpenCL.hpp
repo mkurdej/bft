@@ -2,7 +2,7 @@
 #include "util.hpp"
 #include "GridSize1D.h"
 
-namespace boost { namespace dst { 
+namespace boost { namespace belief { 
 
     class OpenCL
     {
@@ -320,5 +320,5 @@ namespace boost { namespace dst {
         }
     }
 
-} // namespace dst
+} // namespace belief
 } // namespace boost

@@ -3,12 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_MAX_HPP
-#define BOOST_DST_MAX_HPP
+#ifndef BOOST_BELIEF_MAX_HPP
+#define BOOST_BELIEF_MAX_HPP
 
-#include <boost/dst/dst_function.hpp>
+#include <boost/belief/dst_function.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 template <class FOD, typename T>
 dst_function<FOD, T> max(const dst_function<FOD, T> & f1, const dst_function<FOD, T> & f2)
@@ -20,8 +20,8 @@ dst_function<FOD, T> max(const dst_function<FOD, T> & f1, const dst_function<FOD
     return f_result;
 }
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_MAX_HPP
+#endif // BOOST_BELIEF_MAX_HPP

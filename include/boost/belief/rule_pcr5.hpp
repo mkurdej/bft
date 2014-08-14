@@ -3,14 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_RULE_PCR5_HPP
-#define BOOST_DST_RULE_PCR5_HPP
+#ifndef BOOST_BELIEF_RULE_PCR5_HPP
+#define BOOST_BELIEF_RULE_PCR5_HPP
 
 #include <boost/assert.hpp>
-#include <boost/dst/mass.hpp>
-#include <boost/dst/rule_base.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/rule_base.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 /// Proportional Conflict Redistribution Rule no. 5
 struct rule_pcr5
@@ -53,8 +53,8 @@ struct rule_pcr5
     }
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_RULE_PCR5_HPP
+#endif // BOOST_BELIEF_RULE_PCR5_HPP

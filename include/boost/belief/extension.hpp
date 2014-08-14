@@ -3,13 +3,13 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_EXTENSION_HPP
-#define BOOST_DST_EXTENSION_HPP
+#ifndef BOOST_BELIEF_EXTENSION_HPP
+#define BOOST_BELIEF_EXTENSION_HPP
 
-#include <boost/dst/fod_union.hpp>
-#include <boost/dst/mass.hpp>
+#include <boost/belief/fod_union.hpp>
+#include <boost/belief/mass.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 /// Vacuous extension of a mass function.
 template <typename FOD2, typename FOD1, typename T>
@@ -28,8 +28,8 @@ mass<typename fod_union<FOD1, FOD2>::type, T> extension(const mass<FOD1, T> & m)
     return m_extended;
 }
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_EXTENSION_HPP
+#endif // BOOST_BELIEF_EXTENSION_HPP

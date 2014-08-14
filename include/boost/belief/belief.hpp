@@ -3,12 +3,12 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_BELIEF_HPP
-#define BOOST_DST_BELIEF_HPP
+#ifndef BOOST_BELIEF_BELIEF_HPP
+#define BOOST_BELIEF_BELIEF_HPP
 
-#include <boost/dst/dst_function.hpp>
+#include <boost/belief/dst_function.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 template <class FOD, typename T = double>
 class belief
@@ -51,8 +51,8 @@ public:
     }
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_BELIEF_HPP
+#endif // BOOST_BELIEF_BELIEF_HPP

@@ -3,19 +3,19 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_RULES_HPP
-#define BOOST_DST_RULES_HPP
+#ifndef BOOST_BELIEF_RULES_HPP
+#define BOOST_BELIEF_RULES_HPP
 
-#include <boost/dst/rule_conjunctive.hpp>
-#include <boost/dst/rule_conjunctive_cautious.hpp>
-#include <boost/dst/rule_dempster.hpp>
-#include <boost/dst/rule_disjunctive.hpp>
-#include <boost/dst/rule_disjunctive_bold.hpp>
-#include <boost/dst/rule_dubois_prade.hpp>
-#include <boost/dst/rule_jeffrey_dempster.hpp>
-#include <boost/dst/rule_normalization.hpp>
-#include <boost/dst/rule_normalization_inagaki.hpp>
-#include <boost/dst/rule_pcr5.hpp>
-#include <boost/dst/rule_yager.hpp>
+#include <boost/belief/rule_conjunctive.hpp>
+#include <boost/belief/rule_conjunctive_cautious.hpp>
+#include <boost/belief/rule_dempster.hpp>
+#include <boost/belief/rule_disjunctive.hpp>
+#include <boost/belief/rule_disjunctive_bold.hpp>
+#include <boost/belief/rule_dubois_prade.hpp>
+#include <boost/belief/rule_jeffrey_dempster.hpp>
+#include <boost/belief/rule_normalization.hpp>
+#include <boost/belief/rule_normalization_inagaki.hpp>
+#include <boost/belief/rule_pcr5.hpp>
+#include <boost/belief/rule_yager.hpp>
 
-#endif // BOOST_DST_RULES_HPP
+#endif // BOOST_BELIEF_RULES_HPP

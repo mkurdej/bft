@@ -25,8 +25,8 @@
 #endif // _MSC_VER
 
 #include <boost/test/unit_test.hpp>
-#include <boost/dst/rule_conjunctive.hpp>
-#include <boost/dst/rule_jeffrey_dempster.hpp>
+#include <boost/belief/rule_conjunctive.hpp>
+#include <boost/belief/rule_jeffrey_dempster.hpp>
 
 #ifdef _MSC_VER
 #   pragma warning(pop)  	// restore original warning level
@@ -35,16 +35,16 @@
 #endif // _MSC_VER
 
 using namespace boost;
-using namespace boost::dst;
+using namespace boost::belief;
 
-BOOST_DST_DEFINE_CLASS(C1);
-BOOST_DST_DEFINE_CLASS(C2);
-BOOST_DST_DEFINE_CLASS(C3);
-BOOST_DST_DEFINE_CLASS(C4);
-BOOST_DST_DEFINE_CLASS(C5);
-BOOST_DST_DEFINE_CLASS(C6);
-BOOST_DST_DEFINE_CLASS(C7);
-BOOST_DST_DEFINE_CLASS(C8);
+BOOST_BELIEF_DEFINE_CLASS(C1);
+BOOST_BELIEF_DEFINE_CLASS(C2);
+BOOST_BELIEF_DEFINE_CLASS(C3);
+BOOST_BELIEF_DEFINE_CLASS(C4);
+BOOST_BELIEF_DEFINE_CLASS(C5);
+BOOST_BELIEF_DEFINE_CLASS(C6);
+BOOST_BELIEF_DEFINE_CLASS(C7);
+BOOST_BELIEF_DEFINE_CLASS(C8);
 
 typedef fod<C1, C2> fod2;
 typedef fod<C1, C2, C3> fod3;

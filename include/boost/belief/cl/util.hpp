@@ -1,5 +1,5 @@
-#ifndef BOOST_DST_CL_UTIL_HPP
-#define BOOST_DST_CL_UTIL_HPP
+#ifndef BOOST_BELIEF_CL_UTIL_HPP
+#define BOOST_BELIEF_CL_UTIL_HPP
 
 #include "cl.hpp"
 
@@ -262,4 +262,4 @@ bool doesFileExist(const cl::STRING_CLASS & path)
     return fileExists;
 }
 
-#endif // BOOST_DST_CL_UTIL_HPP
+#endif // BOOST_BELIEF_CL_UTIL_HPP

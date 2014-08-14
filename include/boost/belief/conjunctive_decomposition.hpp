@@ -3,17 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_CONJUNCTIVE_DECOMPOSITION_HPP
-#define BOOST_DST_CONJUNCTIVE_DECOMPOSITION_HPP
+#ifndef BOOST_BELIEF_CONJUNCTIVE_DECOMPOSITION_HPP
+#define BOOST_BELIEF_CONJUNCTIVE_DECOMPOSITION_HPP
 
 #include <boost/assert.hpp>
-#include <boost/dst/communality.hpp>
-#include <boost/dst/mass.hpp>
-#include <boost/dst/to_communality.hpp>
+#include <boost/belief/communality.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/to_communality.hpp>
 #include <boost/limits.hpp>
 #include <cmath>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 struct conjunctive_decomposition
 {
@@ -48,8 +48,8 @@ struct conjunctive_decomposition
     }
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_CONJUNCTIVE_DECOMPOSITION_HPP
+#endif // BOOST_BELIEF_CONJUNCTIVE_DECOMPOSITION_HPP

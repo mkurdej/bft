@@ -25,7 +25,7 @@
 #endif // _MSC_VER
 
 #include <boost/test/unit_test.hpp>
-#include <boost/dst/mass.hpp>
+#include <boost/belief/mass.hpp>
 #include <boost/math/special_functions/fpclassify.hpp>
 
 #ifdef _MSC_VER
@@ -35,12 +35,12 @@
 #endif // _MSC_VER
 
 using namespace boost;
-using namespace boost::dst;
+using namespace boost::belief;
 
-BOOST_DST_DEFINE_CLASS(C1);
-BOOST_DST_DEFINE_CLASS(C2);
-BOOST_DST_DEFINE_CLASS(C3);
-BOOST_DST_DEFINE_CLASS(C4);
+BOOST_BELIEF_DEFINE_CLASS(C1);
+BOOST_BELIEF_DEFINE_CLASS(C2);
+BOOST_BELIEF_DEFINE_CLASS(C3);
+BOOST_BELIEF_DEFINE_CLASS(C4);
 
 typedef fod<C1, C2> fod2;
 typedef fod<C1, C2, C3> fod3;
@@ -49,7 +49,7 @@ typedef fod2 fodFO;
 typedef fod3 fodABC;
 
 //==============================================================================
-#include <boost/dst/rule_conjunctive.hpp>
+#include <boost/belief/rule_conjunctive.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_conjunctive)
 
@@ -122,7 +122,7 @@ BOOST_AUTO_TEST_CASE(test_rule_conjunctive_is_associative)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/dst/rule_dempster.hpp>
+#include <boost/belief/rule_dempster.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_dempster)
 
@@ -195,7 +195,7 @@ BOOST_AUTO_TEST_CASE(test_rule_dempster_is_associative)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/dst/rule_disjunctive.hpp>
+#include <boost/belief/rule_disjunctive.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_disjunctive)
 
@@ -268,7 +268,7 @@ BOOST_AUTO_TEST_CASE(test_rule_disjunctive_is_associative)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/dst/rule_dubois_prade.hpp>
+#include <boost/belief/rule_dubois_prade.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_dubois_prade)
 
@@ -346,7 +346,7 @@ BOOST_AUTO_TEST_CASE(test_rule_dubois_prade_is_commutative)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/dst/conjunctive_decomposition.hpp>
+#include <boost/belief/conjunctive_decomposition.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_conjunctive_decomposition)
 
@@ -372,7 +372,7 @@ BOOST_AUTO_TEST_CASE(test_conjunctive_decomposition_gives_correct_result)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/dst/rule_conjunctive_cautious.hpp>
+#include <boost/belief/rule_conjunctive_cautious.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_conjunctive_cautious)
 
@@ -478,7 +478,7 @@ BOOST_AUTO_TEST_CASE(test_rule_conjunctive_is_distributive_wrt_rule_conjunctive_
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/dst/disjunctive_decomposition.hpp>
+#include <boost/belief/disjunctive_decomposition.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_disjunctive_decomposition)
 
@@ -505,7 +505,7 @@ BOOST_AUTO_TEST_CASE(test_disjunctive_decomposition_gives_correct_result)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/dst/rule_disjunctive_bold.hpp>
+#include <boost/belief/rule_disjunctive_bold.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_disjunctive_bold)
 
@@ -611,8 +611,8 @@ BOOST_AUTO_TEST_CASE(test_rule_disjunctive_is_distributive_wrt_rule_disjunctive_
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/dst/rule_normalization_inagaki.hpp>
-#include <boost/dst/rule_yager.hpp>
+#include <boost/belief/rule_normalization_inagaki.hpp>
+#include <boost/belief/rule_yager.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_inagaki)
 
@@ -678,7 +678,7 @@ BOOST_AUTO_TEST_CASE(test_rule_inagaki_extra_rule_gives_correct_result)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/dst/rule_normalization.hpp>
+#include <boost/belief/rule_normalization.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_normalization)
 
@@ -737,7 +737,7 @@ BOOST_AUTO_TEST_CASE(test_rule_normalization_is_correct_with_conflict)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/dst/rule_pcr5.hpp>
+#include <boost/belief/rule_pcr5.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_pcr5)
 
@@ -767,7 +767,7 @@ BOOST_AUTO_TEST_CASE(test_rule_pcr5_is_commutative)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/dst/rule_yager.hpp>
+#include <boost/belief/rule_yager.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_yager)
 

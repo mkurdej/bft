@@ -3,17 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_DST_FUNCTION_HPP
-#define BOOST_DST_DST_FUNCTION_HPP
+#ifndef BOOST_BELIEF_DST_FUNCTION_HPP
+#define BOOST_BELIEF_DST_FUNCTION_HPP
 
 #include <boost/array.hpp>
 #include <boost/assert.hpp>
-#include <boost/dst/private/emptytype.hpp>
+#include <boost/belief/private/emptytype.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <iomanip>
 #include <sstream>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 struct degenerate_t {}; // all mass on Emptyset
 struct vacuous_t {}; // all mass on Unknown
@@ -392,8 +392,8 @@ static std::size_t count_elements(std::size_t set)
     return count_bits(set);
 }
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_DST_FUNCTION_HPP
+#endif // BOOST_BELIEF_DST_FUNCTION_HPP

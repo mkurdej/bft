@@ -3,14 +3,14 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_MASS_HPP
-#define BOOST_DST_MASS_HPP
+#ifndef BOOST_BELIEF_MASS_HPP
+#define BOOST_BELIEF_MASS_HPP
 
-#include <boost/dst/dst_function.hpp>
-#include <boost/dst/fod.hpp>
+#include <boost/belief/dst_function.hpp>
+#include <boost/belief/fod.hpp>
 #include <boost/test/floating_point_comparison.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 template <class FOD, typename T = double>
 class mass : public dst_function<FOD, T>
@@ -97,8 +97,8 @@ public:
 
     // TODO: separate "in-place" and "return_" algorithms
     // TODO: remove apply, use free functions for algorithms (fusion rules)
-    // dst::fuse(rule_conjunctive(), mf1, mf2); // mf1 <- mf1 \opconj mf2
-    // mf12 = dst::return_fuse(rule_conjunctive(), mf1, mf2); // const // mf12 <- mf1 \opconj mf2
+    // belief::fuse(rule_conjunctive(), mf1, mf2); // mf1 <- mf1 \opconj mf2
+    // mf12 = belief::return_fuse(rule_conjunctive(), mf1, mf2); // const // mf12 <- mf1 \opconj mf2
 
     template <class RuleFunctor>
     mass<FOD, T> apply(RuleFunctor functor) const
@@ -425,8 +425,8 @@ public:
     }
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_MASS_HPP
+#endif // BOOST_BELIEF_MASS_HPP

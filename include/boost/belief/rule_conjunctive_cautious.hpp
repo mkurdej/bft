@@ -3,17 +3,17 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_RULE_CONJUNCTIVE_CAUTIOUS_HPP
-#define BOOST_DST_RULE_CONJUNCTIVE_CAUTIOUS_HPP
+#ifndef BOOST_BELIEF_RULE_CONJUNCTIVE_CAUTIOUS_HPP
+#define BOOST_BELIEF_RULE_CONJUNCTIVE_CAUTIOUS_HPP
 
-#include <boost/dst/conjunctive_decomposition.hpp>
-#include <boost/dst/mass.hpp>
-#include <boost/dst/min.hpp>
-#include <boost/dst/rule_base.hpp>
-#include <boost/dst/rule_conjunctive.hpp>
+#include <boost/belief/conjunctive_decomposition.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/min.hpp>
+#include <boost/belief/rule_base.hpp>
+#include <boost/belief/rule_conjunctive.hpp>
 #include <boost/test/floating_point_comparison.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 struct rule_conjunctive_cautious
         : public rule_base
@@ -47,8 +47,8 @@ struct rule_conjunctive_cautious
     }
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_RULE_CONJUNCTIVE_CAUTIOUS_HPP
+#endif // BOOST_BELIEF_RULE_CONJUNCTIVE_CAUTIOUS_HPP

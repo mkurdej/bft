@@ -3,19 +3,19 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_RULE_NORMALIZATION_HPP
-#define BOOST_DST_RULE_NORMALIZATION_HPP
+#ifndef BOOST_BELIEF_RULE_NORMALIZATION_HPP
+#define BOOST_BELIEF_RULE_NORMALIZATION_HPP
 
-#include <boost/dst/mass.hpp>
-#include <boost/dst/rule_base.hpp>
-#include <boost/dst/total_conflict_exception.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/rule_base.hpp>
+#include <boost/belief/total_conflict_exception.hpp>
 #include <boost/throw_exception.hpp>
 #include <boost/foreach.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 // what behaviour should have rule_normalization when mass<EmptySet>() == 1.0 (total conflict)?
-// throw an exception boost::dst::total_conflict_exception
+// throw an exception boost::belief::total_conflict_exception
 
 struct rule_normalization
         : public rule_base
@@ -29,7 +29,7 @@ struct rule_normalization
     void operator()(mass<FOD, T> & m) const
     {
         if (m.is_degenerate()) {
-            BOOST_THROW_EXCEPTION(boost::dst::total_conflict_exception());
+            BOOST_THROW_EXCEPTION(boost::belief::total_conflict_exception());
             // TODO: append mass function information to the exception?
         }
 
@@ -49,8 +49,8 @@ struct rule_normalization
     }
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_RULE_NORMALIZATION_HPP
+#endif // BOOST_BELIEF_RULE_NORMALIZATION_HPP

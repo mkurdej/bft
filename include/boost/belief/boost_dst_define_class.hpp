@@ -3,8 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_DEFINE_CLASS_HPP
-#define BOOST_DST_DEFINE_CLASS_HPP
+#ifndef BOOST_BELIEF_DEFINE_CLASS_HPP
+#define BOOST_BELIEF_DEFINE_CLASS_HPP
 
 #ifdef _MSC_VER
 #   pragma warning(push)	// disable for this header only
@@ -19,7 +19,7 @@
 #endif // _MSC_VER
 
 //[ aux_dst_base_class
-namespace boost { namespace dst { namespace aux {
+namespace boost { namespace belief { namespace aux {
 
 struct dst_base_class
 {
@@ -27,15 +27,15 @@ struct dst_base_class
 
 } // namespace aux
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 //]
 
 //[ boost_dst_define_class
-#define BOOST_DST_DEFINE_CLASS(C) \
+#define BOOST_BELIEF_DEFINE_CLASS(C) \
     struct C \
-        : public ::boost::dst::aux::dst_base_class \
+        : public ::boost::belief::aux::dst_base_class \
     { \
         static const std::string name; \
     }; \
@@ -43,4 +43,4 @@ struct dst_base_class
     const std::string C::name = #C // Note: no semicolon at the end, you have to write it after macro invocation
 //]
 
-#endif // BOOST_DST_DEFINE_CLASS_HPP
+#endif // BOOST_BELIEF_DEFINE_CLASS_HPP

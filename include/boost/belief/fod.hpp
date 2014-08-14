@@ -3,11 +3,11 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_FOD_HPP
-#define BOOST_DST_FOD_HPP
+#ifndef BOOST_BELIEF_FOD_HPP
+#define BOOST_BELIEF_FOD_HPP
 
-#include <boost/dst/boost_dst_define_class.hpp>
-#include <boost/dst/private/emptytype.hpp>
+#include <boost/belief/boost_dst_define_class.hpp>
+#include <boost/belief/private/emptytype.hpp>
 #include <boost/mpl/has_key.hpp>
 #include <boost/type_traits/is_same.hpp>
 
@@ -27,7 +27,7 @@
 #   pragma warning(pop)  	// restore original warning level
 #endif // _MSC_VER
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 // definition of fod class
 template <class S0 = aux::EmptyType, class S1 = aux::EmptyType, class S2 = aux::EmptyType, class S3 = aux::EmptyType, class S4 = aux::EmptyType, class S5 = aux::EmptyType, class S6 = aux::EmptyType, class S7 = aux::EmptyType, class S8 = aux::EmptyType, class S9 = aux::EmptyType>
@@ -73,7 +73,7 @@ public:
     };
 
     template <typename Dummy>
-    struct Idx< ::boost::dst::aux::EmptyType, Dummy >
+    struct Idx< ::boost::belief::aux::EmptyType, Dummy >
     {
         BOOST_STATIC_CONSTANT(int, value = 0);
     };
@@ -87,15 +87,15 @@ public:
 };
 
 // allow user to configure the floating-point tolerance
-#ifndef BOOST_DST_FP_TOLERANCE
-# define BOOST_DST_FP_TOLERANCE 1e-10
+#ifndef BOOST_BELIEF_FP_TOLERANCE
+# define BOOST_BELIEF_FP_TOLERANCE 1e-10
 #endif
 namespace aux {
-double tolerance = BOOST_DST_FP_TOLERANCE;
+double tolerance = BOOST_BELIEF_FP_TOLERANCE;
 } // namespace aux
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_FOD_HPP
+#endif // BOOST_BELIEF_FOD_HPP

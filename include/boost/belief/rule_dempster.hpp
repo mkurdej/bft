@@ -3,15 +3,15 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef BOOST_DST_RULE_DEMPSTER_HPP
-#define BOOST_DST_RULE_DEMPSTER_HPP
+#ifndef BOOST_BELIEF_RULE_DEMPSTER_HPP
+#define BOOST_BELIEF_RULE_DEMPSTER_HPP
 
-#include <boost/dst/mass.hpp>
-#include <boost/dst/rule_base.hpp>
-#include <boost/dst/rule_conjunctive.hpp>
-#include <boost/dst/rule_normalization.hpp>
+#include <boost/belief/mass.hpp>
+#include <boost/belief/rule_base.hpp>
+#include <boost/belief/rule_conjunctive.hpp>
+#include <boost/belief/rule_normalization.hpp>
 
-namespace boost { namespace dst {
+namespace boost { namespace belief {
 
 struct rule_dempster
         : public rule_base
@@ -30,8 +30,8 @@ struct rule_dempster
     }
 };
 
-} // namespace dst
+} // namespace belief
 
 } // namespace boost
 
-#endif // BOOST_DST_RULE_DEMPSTER_HPP
+#endif // BOOST_BELIEF_RULE_DEMPSTER_HPP
