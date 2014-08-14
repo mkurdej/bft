@@ -1,0 +1,69 @@
+[/==============================================================================
+    Copyright (C) 2011-2012 Marek Kurdej
+
+    Distributed under the Boost Software License, Version 1.0. (See accompanying
+    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+===============================================================================/]
+
+[section:faq Dst FAQ]
+
+[/
+
+[heading I'm getting multiple symbol definition errors while using Visual C++. Anything I could do about that?]
+
+Do you see strange multiple symbol definition linker errors mentioning 
+`boost::mpl::failed` and `boost::spirit::qi::rule`? Then this FAQ entry might 
+be for you.
+
+__mpl__ implements a macro `BOOST_MPL_ASSERT_MSG()` which essentially is a 
+more powerful version of static_assert. Unfortunately under certain 
+circumstances using this macro may lead to the aforementioned linker errors. 
+
+[heading Why doesn't my symbol table work in a `no_case` directive?]
+
+In order to perform case-insensitive parsing (using __qi_no_case__) with a  
+symbol table (i.e. use a __qi_symbols__
+parser in a `no_case` directive), that symbol table needs to be filled with
+all-lowercase contents. Entries containing one or more uppercase characters
+will not match any input.
+
+
+[heading I'm getting a compilation error mentioning `boost::function` and/or
+         `boost::function4`. What does this mean?]
+
+If you are using Visual C++ and have an error like:
+
+[pre
+error C2664: \'bool boost::function4<R,T0,T1,T2,T3>::operator ()(T0,T1,T2,T3) const\' :
+    cannot convert parameter 4 from '...' to '...'
+]
+
+or you are using GCC and have an error like:
+
+[pre
+error: no match for call to '(const boost::function<bool ()(...)>) (...)'
+note: candidates are: ... boost::function4<R,T1,T2,T3,T4>::operator()(T0,T1,T2,T3) const [with ...\]
+]
+
+then this FAQ entry may help you.
+
+The definition of a __rule__ or __grammar__ may contain a skip parser type. If
+it does, it means that non-terminal can only be used with a skip parser of a
+compatible type. The error above arises when this is not the case, i.e.:
+
+* a non-terminal defined with a skip parser type is used without a skip parser;
+  for example, a rule with a skip parser type is used inside a `lexeme`
+  directive, or a grammar with a skip parser type is used in `parse` instead of
+  `phrase_parse`,
+* or a non-terminal is used with a skip parser of an incompatible type;
+  for example, a rule defined with one skip parser type calls a second rule
+  defined with another, incompatible skip parser type.
+
+[note The same applies to __karma__, replacing 'skip parser' and `lexeme`
+      by 'delimit generator' and `verbatim`. Similarily, corresponding error 
+      messages in __karma__ reference `boost::function3` and the 3rd 
+      parameter (instead of the 4th).]
+
+/]
+
+[endsect]

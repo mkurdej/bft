@@ -1,0 +1,38 @@
+[/==============================================================================
+    Copyright (C) 2011-2012 Marek Kurdej
+
+    Distributed under the Boost Software License, Version 1.0. (See accompanying
+    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+===============================================================================/]
+
+[section:dependencies Dependencies]
+* __stl__
+	* __stl_algorithm__
+    * __stl_string__
+
+* __boost_math__
+* __boost_mpl__
+	* boost/mpl/begin.hpp
+	* boost/mpl/deref.hpp
+	* boost/mpl/fold.hpp
+	* boost/mpl/erase_key.hpp
+	* boost/mpl/insert.hpp
+	* boost/mpl/next.hpp
+	* boost/mpl/set.hpp
+	* boost/mpl/size.hpp
+	* boost/mpl/vector.hpp
+
+* __boost_test__
+	* boost/test/floating_point_comparison.hpp
+
+* __boost_typetraits__
+	* boost/type_traits/is_same.hpp
+
+* others
+	* boost/__array__.hpp
+	* boost/__assert__.hpp
+	* boost/foreach.hpp
+	* boost/limits.hpp
+	* boost/static_assert.hpp
+
+[endsect] [/ dependencies]

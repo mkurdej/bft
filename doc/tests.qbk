@@ -1,0 +1,17 @@
+[/==============================================================================
+    Copyright (C) 2011-2012 Marek Kurdej
+
+    Distributed under the Boost Software License, Version 1.0. (See accompanying
+    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+===============================================================================/]
+
+[section:tests Tested under]
+
+Used Boost V1.48.0.
+
+	* vc100, Windows 7 (x64) : Microsoft Visual Studio 2010
+	* vc100, Windows 7 (x64) : Microsoft Visual Studio 2010 Express
+    * mgw44, Windows 7 (x64) : CodeBlocks, QtCreator
+    * gcc44, Linux Ubuntu 11.10 (x640 : QtCreator
+
+[endsect] [/ tests]

@@ -1,0 +1,19 @@
+[/==============================================================================
+    Copyright (C) 2011-2012 Marek Kurdej
+
+    Distributed under the Boost Software License, Version 1.0. (See accompanying
+    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+===============================================================================/]
+
+[section:repository Dst Repository]
+
+[/
+
+The __dst__ repository is a community effort collecting different reusable
+components. All components in the repository have been peer reviewed 
+or discussed on the __spirit_list__. For more information about the
+repository see [@../../repository/doc/html/index.html here].
+
+/]
+
+[endsect]

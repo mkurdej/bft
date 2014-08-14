@@ -1,0 +1,46 @@
+[/==============================================================================
+    Copyright (C) 2011-2012 Marek Kurdej
+
+    Distributed under the Boost Software License, Version 1.0. (See accompanying
+    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+===============================================================================/]
+
+[section:fod fod]
+
+``
+    template <class S0 = aux::EmptyType, class S1 = aux::EmptyType, class S2 = aux::EmptyType, class S3 = aux::EmptyType, class S4 = aux::EmptyType, class S5 = aux::EmptyType, class S6 = aux::EmptyType, class S7 = aux::EmptyType, class S8 = aux::EmptyType, class S9 = aux::EmptyType>
+    class fod
+    {
+    public:
+        //! cardinality of the frame of discernment
+        BOOST_STATIC_CONSTANT(int, set_size = mpl::size<type>::value);
+        //! cardinality of the powerset of the frame of discernment
+        BOOST_STATIC_CONSTANT(int, powerset_size = 1 << set_size);
+    };
+``
+
+Frame of discernment representation.
+Each type S0, S1, ..., S9 must be derived from __aux_dst_base_class.
+
+Preferably, use __BOOST_DST_DEFINE_CLASS macrodefinition to define classes used with __fod.
+
+[/
+__std_ref 3.9.3.
+
+__compat If the compiler does not support partial specialization of class-templates
+then this template will compile, but the member `type` will always be the same as 
+type `T` except where __transform_workaround have been applied.
+/]
+
+__header ` #include <boost/dst/fod.hpp>` or ` #include <boost/dst.hpp>`
+
+__examples
+
+``
+    __BOOST_DST_DEFINE_CLASS(Free);
+    __BOOST_DST_DEFINE_CLASS(Occupied);
+
+    typedef fod<Free, Occupied> fodFO;
+``
+
+[endsect]

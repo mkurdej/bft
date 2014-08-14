@@ -1,0 +1,21 @@
+[/==============================================================================
+    Copyright (C) 2011-2012 Marek Kurdej
+
+    Distributed under the Boost Software License, Version 1.0. (See accompanying
+    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+===============================================================================/]
+
+[section Rationale]
+
+[heading Naming]
+
+Why use the name "Dst"? 
+
+[/
+Because xpressive names
+have a better spirit, brings qi to your software and will enhance your
+karma so they can heal your (con)fusion and make you wave like a phoenix
+from the ashes. (Joachim Faulhaber)
+/]
+
+[endsect]

@@ -1,0 +1,36 @@
+[/==============================================================================
+    Copyright (C) 2011-2012 Marek Kurdej
+
+    Distributed under the Boost Software License, Version 1.0. (See accompanying
+    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+===============================================================================/]
+
+[section:acknowledgments Acknowledgments]
+
+[/
+
+There are a couple of people
+who already managed to help significantly during this rewrite. We would like to
+express our special acknowledgement to (in no particular order):
+
+[*Abc Def] for writing Boost.Lib, without which this rewrite wouldn't
+have been possible, and helping with examples, advice, and suggestions on
+how to use Boost.Lib in the best possible way.
+
+My, there's a lot in this list! And it's a continuing list. We add people to
+this list every time. We hope we did not forget anyone. If we missed
+someone you know who has helped in any way, please inform us.
+
+Special thanks also to people who gave feedback and valuable comments,
+particularly members of Boost and Dst mailing lists. This includes all those
+who participated in the review:
+
+[*Abc Def], our review manager, [*Ghi Jkl], [*Mno Pqr]
+
+Finally thanks to SourceForge for hosting the Dst project and Boost: a C++
+community comprised of extremely talented library authors who participate in
+the discussion and peer review of well crafted C++ libraries.
+
+/]
+
+[endsect] [/ acknowledgments]

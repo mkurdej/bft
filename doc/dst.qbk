@@ -1,0 +1,186 @@
+[/==============================================================================
+    Copyright (C) 2011-2012 Marek Kurdej
+
+    Distributed under the Boost Software License, Version 1.0. (See accompanying
+    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+===============================================================================/]
+
+[library Boost.Dst
+    [quickbook 1.5]
+    [version 0.0.1]
+    [authors [Kurdej, Marek]]
+    [copyright 2011 2012 Marek Kurdej]
+    [dirname dst]
+    [purpose Dempster-Shafer theory of evidence]
+    [source-mode c++]
+    [license
+        Distributed under the Boost Software License, Version 1.0.
+        (See accompanying file LICENSE_1_0.txt or copy at
+        [@http://www.boost.org/LICENSE_1_0.txt])
+    ]
+]
+
+[/ January 25, 2012 ]
+
+[/ Some links ]
+
+[def __version__                V0.0.1]
+
+[def __dst__                    [@boost:/libs/dst/doc/html/index.html Dst]]
+[def __boost_dst__              [@boost:/libs/dst/doc/html/index.html Boost.Dst]]
+[def __mpl__                    [@http://www.boost.org/libs/mpl/index.html Boost.Mpl]]
+[def __stl__                    [@http://en.cppreference.com/w/cpp STL]]
+[def __stl_algorithm__          [@http://en.cppreference.com/w/cpp/algorithm <algorithm>]]
+[def __stl_string__             [@http://en.cppreference.com/w/cpp/string <string>]]
+[def __stl_vector__             [@http://en.cppreference.com/w/cpp/vector <vector>]]
+[def __boost__                  [@http://www.boost.org/ Boost]]
+[def __boost_tools__            [@http://www.boost.org/tools/index.html Boost Tools]]
+[def __gmane__                  [@http://www.gmane.org Gmane]]
+[/def __mlist_archive__          [@http://news.gmane.org/gmane.comp.parsers.spirit.general]]
+[def __repo__                   [@../../repository/doc/html/index.html Repository]]
+
+[def __wikidst__                [@http://en.wikipedia.org/wiki/Dempster-Shafer_theory Dempster-Shafer theory]]
+[def __wikitbm__                [@http://en.wikipedia.org/wiki/Transferable_belief_model Transferable Belief Model]]
+
+[def __boost_any__              [@boost:/libs/any/index.html Boost.Any]]
+[def __boost_bind__             [@boost:/libs/bind/index.html Boost.Bind]]
+[def __boost_format__           [@boost:/libs/format/index.html Boost.Format]]
+[def __boost_iterator_range__   [@boost:/libs/range/doc/html/range/reference/utilities/iterator_range.html `boost::iterator_range`]]
+[def __boost_lambda__           [@boost:/libs/lambda/index.html Boost.Lambda]]
+[def __boost_math__             [@boost:/libs/math/index.html Boost.Math]]
+[def __boost_mpl__              [@boost:/libs/mpl/index.html Boost.Mpl]]
+[def __boost_proto__            [@boost:/doc/html/proto.html Boost.Proto]]
+[def __boost_test__             [@boost:/libs/test/index.html Boost.Test]]
+[def __boost_tuples__           [@boost:/libs/tuple/index.html Boost.Tuples]]
+[def __boost_typetraits__       [@boost:/libs/typetraits/index.html Boost.TypeTrais]]
+[def __boost_variant__          [@http://www.boost.org/doc/html/variant.html Boost.Variant]]
+
+[/ def __qi__                     /Spirit.Qi/]
+
+[def __mpl_boolean_constant__   [@boost:/libs/mpl/doc/refmanual/integral-constant.html MPL Boolean Constant]]
+[def __mpl_int_constant__       [@boost:/libs/mpl/doc/refmanual/integral-constant.html MPL Integral Constant]]
+[def __mpl_fwd_sequence__       [@boost:/libs/mpl/doc/refmanual/forward-sequence.html MPL Forward Sequence]]
+
+[def __fixme__                  *FIXME*]
+
+[/ Sections ]
+
+[/ def __sec_qi__                 [link boost_dst.qi Qi]]
+[/ def __sec_attributes__         [link spirit.abstracts.attributes Attributes]]
+
+[/ References to API descriptions ]
+
+[def __BOOST_DST_DEFINE_CLASS [link boost_dst.reference.boost_dst_define_class BOOST_DST_DEFINE_CLASS]]
+[def __aux_dst_base_class [link boost_dst.reference.boost_dst_define_class aux::dst_base_class]]
+[def __fod [link boost_dst.reference.fod fod]]
+
+[def __array__                  [@http://www.boost.org/doc/html/array.html array]]
+[def __assert__                 [@http://www.boost.org/libs/utility/assert.html assert]]
+[def __boost__                  [@http://www.boost.org/libs/libraries.htm boost]]
+
+[/ References to classes ]
+
+[/ References to support ]
+
+[/ References to abstracts ]
+
+[/ References to reference ]
+
+[/ Other ]
+[def __TODO__ [*TODO]]
+[def __boost_root ../../../../]
+[def __boost_dst_src__ ../../../src/boost/dst]
+
+[def __below '''<replaceable>see-below</replaceable>''']
+
+[def __true_type [link boost_typetraits.reference.integral_constant true_type]]
+[def __false_type [link boost_typetraits.reference.integral_constant false_type]]
+[def __integral_constant [link boost_typetraits.reference.integral_constant integral_constant]]
+
+[def __compat [*Compiler Compatibility:]]
+[def __examples [*Examples:]]
+[def __header [*Header:]]
+[def __inherit [*Inherits:]]
+[def __std_ref [*C++ Standard Reference:]]
+[def __type [*type:]]
+
+[/////////////////////////////////////////////////////////////////////////////]
+
+[/ Some images ]
+
+[def __note__                   [$./images/note.png]]
+[def __tip__                    [$./images/tip.png]]
+[def __important__              [$./images/important.png]]
+[def __caution__                [$./images/caution.png]]
+[def __danger__                 [$./images/alert.png]]
+
+[/////////////////////////////////////////////////////////////////////////////]
+[/ some templates]
+
+[/  fig[ref title label]
+    Image element with a title.
+
+    ref   := Reference to the image file.
+    title := The title to associate with this figure.
+    label := the id to use to be able to reference this picture
+]
+[template fig[ref title label]'''
+    <figure id="'''[label]'''">
+        <title>'''[title]'''</title>
+        <inlinemediaobject>
+            <imageobject>
+                <imagedata fileref="./images/'''[ref]'''"></imagedata>
+            </imageobject>
+            <textobject>
+                <phrase role="alt">'''[title]'''</phrase>
+            </textobject>
+        </inlinemediaobject>
+    </figure>
+''']
+
+[/   index[title type]
+     insert index
+
+     title:  section title for the index
+     type:   type of the index
+]
+[template index[title type]'''
+    <index type="'''[type]'''">
+       <title>'''[title]'''</title>
+    </index>
+''']
+
+[/////////////////////////////////////////////////////////////////////////////]
+
+[/ Here we go ]
+
+This is the documentation of the __boost__ __dst__ library (currently, __version__).
+
+__boost_dst__ is a __boost__-like library implementing ['a mathematical theory of evidence], 
+known as ['[*the Dempster-Shafer theory] of evidence] or ['theory of belief functions].
+
+[include preface.qbk]
+[include what_s_new.qbk]
+[include introduction.qbk]
+[/
+	[include structure.qbk]
+	[include abstracts.qbk]
+	[include advanced.qbk]
+	[include support.qbk]
+]
+[include faq.qbk]
+[include notes.qbk]
+[include rationale.qbk]
+[include repository.qbk]
+
+[section:reference Alphabetical Reference]
+
+[include boost_dst_define_class.qbk]
+[include fod.qbk]
+
+[endsect] [/ reference]
+
+[include tests.qbk]
+[include dependencies.qbk]
+[include acknowledgments.qbk]
+[include references.qbk]

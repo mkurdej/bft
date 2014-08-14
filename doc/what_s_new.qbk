@@ -1,0 +1,38 @@
+[/==============================================================================
+    Copyright (C) 2011-2012 Marek Kurdej
+
+    Distributed under the Boost Software License, Version 1.0. (See accompanying
+    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+===============================================================================/]
+
+[section:whats_new What's New]
+
+[/
+
+[/////////////////////////////////////////////////////////////////////////////]
+[section:dst_0_0_2 Dst V0.0.2]
+
+[heading What's changed from V0.0.1 (Boost V1.48.0) to V0.0.2 (Boost V1.49.0)]
+
+* The `spirit::istream_iterator` (see __multi_pass__) now checks at 
+  construction time whether the underlying stream has reached eof (end of file).
+
+[heading Bug Fixes]
+
+* Fixed Boost ticket #5701: lexertl token_value_type returns const unused for 
+  nonconst ref.
+
+[endsect] [/ dst_0_0_2]
+
+/]
+
+[/////////////////////////////////////////////////////////////////////////////]
+[section:dst_0_0_1 Dst V0.0.1]
+
+[heading What's new in V0.0.1 (Boost V1.48.0)]
+
+* Everything.
+
+[endsect] [/ dst_0_0_1]
+
+[endsect] [/ whats_new]

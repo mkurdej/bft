@@ -1,0 +1,19 @@
+[/==============================================================================
+    Copyright (C) 2011-2012 Marek Kurdej
+
+    Distributed under the Boost Software License, Version 1.0. (See accompanying
+    file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+===============================================================================/]
+
+[section Notes]
+
+[/section Portability]
+[/endsect]
+
+[/include notes/porting_from_0_1.qbk]
+[/include notes/style_guide.qbk]
+
+[/section Techniques]
+[/endsect]
+
+[endsect]
