@@ -7,9 +7,9 @@
 #define BOOST_BELIEFS_CONJUNCTIVE_DECOMPOSITION_HPP
 
 #include <boost/assert.hpp>
-#include <boost/beliefs/communality.hpp>
+#include <boost/beliefs/commonality.hpp>
 #include <boost/beliefs/mass.hpp>
-#include <boost/beliefs/to_communality.hpp>
+#include <boost/beliefs/to_commonality.hpp>
 #include <boost/limits.hpp>
 #include <cmath>
 
@@ -22,15 +22,15 @@ struct conjunctive_decomposition
     template <class FOD, typename T>
     /*dst_function*/mass<FOD, T> operator()(const mass<FOD, T> & m) const
     {
-        communality<FOD, T> q = to_communality(m);
+        commonality<FOD, T> q = to_commonality(m);
         return mass<FOD, T>(operator()(q));
     }
 
     template <class FOD, typename T>
-    /*dst_function*/communality<FOD, T> operator()(const communality<FOD, T> & q) const
+    /*dst_function*/commonality<FOD, T> operator()(const commonality<FOD, T> & q) const
     {
         BOOST_ASSERT_MSG(q.is_nondogmatic(), "mass function should be non-dogmatic to be decomposed!");
-        communality<FOD, T> w;
+        commonality<FOD, T> w;
         w.values().assign(1);
         w.values().back() = std::numeric_limits<T>::quiet_NaN();
 

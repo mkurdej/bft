@@ -11,7 +11,7 @@
 #include <boost/beliefs/fod_union.hpp>
 
 #include <boost/beliefs/belief.hpp>
-#include <boost/beliefs/communality.hpp>
+#include <boost/beliefs/commonality.hpp>
 #include <boost/beliefs/conjunctive_decomposition.hpp>
 #include <boost/beliefs/contextual_discounting.hpp>
 #include <boost/beliefs/discounting.hpp>
@@ -28,7 +28,7 @@
 #include <boost/beliefs/rules.hpp>
 
 #include <boost/beliefs/to_belief.hpp>
-#include <boost/beliefs/to_communality.hpp>
+#include <boost/beliefs/to_commonality.hpp>
 #include <boost/beliefs/to_implicability.hpp>
 #include <boost/beliefs/to_mass.hpp>
 #include <boost/beliefs/to_pignistic.hpp>

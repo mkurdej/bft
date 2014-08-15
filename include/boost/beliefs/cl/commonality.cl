@@ -1,13 +1,13 @@
 #include "cl/set.h"
 
 //==============================================================================
-/// Mass function to communality using Möbius transform 
+/// Mass function to commonality using Möbius transform 
 /// 1D SoA (Structure-of-Arrays)
 ///
 /// Data structure:
 ///     0000|AAAA|BBBB|OOOO    <- get_global_size(0) elements of each type in a row
 __kernel
-void mass_to_communality_1d_soa
+void mass_to_commonality_1d_soa
     (
         __global __write_only float * dQ,
         __global __read_only const float * dM,
@@ -20,7 +20,7 @@ void mass_to_communality_1d_soa
     
     if (gid < count) {
         const uint powersetSize = (1 << setSize);
-        // Initialize communality with mass
+        // Initialize commonality with mass
         for (uint A = 0; A < powersetSize; ++A) {       // for all subsets in powerset 2^FOD
             uint Aidx = A*count + gid;
             dQ[Aidx] = dM[Aidx];
@@ -39,13 +39,13 @@ void mass_to_communality_1d_soa
 }
 
 //==============================================================================
-/// Mass function to communality using Möbius transform 
+/// Mass function to commonality using Möbius transform 
 /// 1D AoS (Array-of-Structures)
 ///
 /// Data structure:
 ///     0ABO|0ABO|0ABO|0ABO    <- get_global_size(0) elements of each type in a row
 __kernel
-void mass_to_communality_1d_aos
+void mass_to_commonality_1d_aos
     (
         __global __write_only float * dQ,
         __global __read_only const float * dM,
@@ -60,7 +60,7 @@ void mass_to_communality_1d_aos
         const uint powersetSize = (1 << setSize);
         uint base = gid*powersetSize;
     
-        // Initialize communality with mass
+        // Initialize commonality with mass
         for (uint A = 0; A < powersetSize; ++A) {       // for all subsets in powerset 2^FOD
             dQ[base + A] = dM[base + A];
         }
@@ -78,13 +78,13 @@ void mass_to_communality_1d_aos
 }
 
 //==============================================================================
-/// Communality function to mass using Möbius transform 
+/// Commonality function to mass using Möbius transform 
 /// 1D SoA (Structure-of-Arrays)
 ///
 /// Data structure:
 ///     0000|AAAA|BBBB|OOOO    <- get_global_size(0) elements of each type in a row
 __kernel
-void communality_to_mass_1d_soa
+void commonality_to_mass_1d_soa
     (
         __global __write_only float * dM,
         __global __read_only const float * dQ,
@@ -98,7 +98,7 @@ void communality_to_mass_1d_soa
     if (gid < count) {
         const uint powersetSize = (1 << setSize);
 
-        // Initialize communality with mass
+        // Initialize commonality with mass
         for (uint A = 0; A < powersetSize; ++A) {       // for all subsets in powerset 2^FOD
             uint Aidx = A*count + gid;
             dM[Aidx] = dQ[Aidx];
@@ -117,13 +117,13 @@ void communality_to_mass_1d_soa
 }
 
 //==============================================================================
-/// Communality function to mass using Möbius transform 
+/// Commonality function to mass using Möbius transform 
 /// 1D AoS (Array-of-Structures)
 ///
 /// Data structure:
 ///     0ABO|0ABO|0ABO|0ABO    <- get_global_size(0) elements of each type in a row
 __kernel
-void communality_to_mass_1d_aos
+void commonality_to_mass_1d_aos
     (
         __global __write_only float * dM,
         __global __read_only const float * dQ,
@@ -138,7 +138,7 @@ void communality_to_mass_1d_aos
         const uint powersetSize = (1 << setSize);
         uint base = gid*powersetSize;
     
-        // Initialize communality with mass
+        // Initialize commonality with mass
         for (uint A = 0; A < powersetSize; ++A) {       // for all subsets in powerset 2^FOD
             dM[base + A] = dQ[base + A];
         }

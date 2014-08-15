@@ -116,18 +116,18 @@ STRING_CLASS sourceDirectory = "cl/";
 //
 ////==============================================================================
 //
-//struct mass_to_communality_1d_soa
+//struct mass_to_commonality_1d_soa
 //    : kernel_fixture
 //{
-//    mass_to_communality_1d_soa()
-//        : kernel_fixture(sourceDirectory + "communality.cl", "mass_to_communality_1d_soa")
+//    mass_to_commonality_1d_soa()
+//        : kernel_fixture(sourceDirectory + "commonality.cl", "mass_to_commonality_1d_soa")
 //    {}
 //};
 //
 ////==============================================================================
-//BOOST_FIXTURE_TEST_SUITE( s_mass_to_communality_1d_soa, mass_to_communality_1d_soa )
+//BOOST_FIXTURE_TEST_SUITE( s_mass_to_commonality_1d_soa, mass_to_commonality_1d_soa )
 //
-//BOOST_AUTO_TEST_CASE(test_cl_mass_to_communality_1d_soa_Mx1)
+//BOOST_AUTO_TEST_CASE(test_cl_mass_to_commonality_1d_soa_Mx1)
 //{
 //#ifdef OPENCL_PROFILING
 //    Event startTime, endTime;
@@ -192,7 +192,7 @@ STRING_CLASS sourceDirectory = "cl/";
 //                for (int i = 0; i < kRepetitions; ++i) {
 //#endif
 //                    ocl.setWorkgroupSize(wgSize);
-//                    ocl.mass_to_communality_soa(dQ, dM, setSize, N);
+//                    ocl.mass_to_commonality_soa(dQ, dM, setSize, N);
 //#ifdef OPENCL_PROFILING
 //                }
 //                mQueue.enqueueMarker(&endTime);
@@ -236,18 +236,18 @@ STRING_CLASS sourceDirectory = "cl/";
 //
 ////==============================================================================
 //
-//struct mass_to_communality_1d_aos
+//struct mass_to_commonality_1d_aos
 //    : kernel_fixture
 //{
-//    mass_to_communality_1d_aos()
-//        : kernel_fixture(sourceDirectory + "communality.cl", "mass_to_communality_1d_aos")
+//    mass_to_commonality_1d_aos()
+//        : kernel_fixture(sourceDirectory + "commonality.cl", "mass_to_commonality_1d_aos")
 //    {
 //    }
 //};
 //
-//BOOST_FIXTURE_TEST_SUITE( s_mass_to_communality_1d_aos, mass_to_communality_1d_aos )
+//BOOST_FIXTURE_TEST_SUITE( s_mass_to_commonality_1d_aos, mass_to_commonality_1d_aos )
 //
-//BOOST_AUTO_TEST_CASE(test_cl_mass_to_communality_1d_aos_Mx1)
+//BOOST_AUTO_TEST_CASE(test_cl_mass_to_commonality_1d_aos_Mx1)
 //{
 //#ifdef OPENCL_PROFILING
 //    Event startTime, endTime;
@@ -313,7 +313,7 @@ STRING_CLASS sourceDirectory = "cl/";
 //                for (int i = 0; i < kRepetitions; ++i) {
 //#endif
 //                    ocl.setWorkgroupSize(wgSize);
-//                    ocl.mass_to_communality_aos(dQ, dM, setSize, N);
+//                    ocl.mass_to_commonality_aos(dQ, dM, setSize, N);
 //#ifdef OPENCL_PROFILING
 //                }
 //                mQueue.enqueueMarker(&endTime);
@@ -410,7 +410,7 @@ STRING_CLASS sourceDirectory = "cl/";
 //    }
 //}
 //
-//BOOST_AUTO_TEST_CASE(test_cl_communality_to_mass_soa_Mx1)
+//BOOST_AUTO_TEST_CASE(test_cl_commonality_to_mass_soa_Mx1)
 //{
 //    Context context = getContextByDeviceType(kDeviceType);
 //    CommandQueue queue = CommandQueue(context, context.getInfo<CL_CONTEXT_DEVICES>()[0]/*, queueProperties*/);
@@ -452,7 +452,7 @@ STRING_CLASS sourceDirectory = "cl/";
 //    }
 //    
 //    //==============================================================================
-//    ocl.communality_to_mass_soa(dM, dQ, setSize, N);
+//    ocl.commonality_to_mass_soa(dM, dQ, setSize, N);
 //    queue.enqueueReadBuffer(dM, /* blocking = */ CL_TRUE, /* offset = */ 0, mSize, hM);
 //
 //    //==============================================================================

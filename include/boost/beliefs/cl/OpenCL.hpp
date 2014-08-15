@@ -16,11 +16,11 @@ namespace boost { namespace beliefs {
 
         void rule_conjunctive_q(cl::Buffer & dQconj12, const cl::Buffer & dQ1, const cl::Buffer & dQ2, cl_uint setSize, cl_ulong count);
         
-        void communality_to_mass_aos(cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count);
-        void communality_to_mass_soa(cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count);
+        void commonality_to_mass_aos(cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count);
+        void commonality_to_mass_soa(cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count);
 
-        void mass_to_communality_aos(cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count);
-        void mass_to_communality_soa(cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count);
+        void mass_to_commonality_aos(cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count);
+        void mass_to_commonality_soa(cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count);
 
         void rule_conjunctive_m_aos(cl::Buffer & dMconj12, const cl::Buffer & dM1, const cl::Buffer & dM2, cl_uint setSize, cl_ulong count);
         void rule_conjunctive_m_soa(cl::Buffer & dMconj12, const cl::Buffer & dM1, const cl::Buffer & dM2, cl_uint setSize, cl_ulong count);
@@ -32,8 +32,8 @@ namespace boost { namespace beliefs {
         void loadKernels();
         cl::Kernel loadKernel(cl::STRING_CLASS const & sourceDirectory, cl::STRING_CLASS const & filePath, cl::STRING_CLASS const & kernelName, cl::STRING_CLASS const & flags = "");
         
-        void communality_to_mass(cl::Kernel & kernel, cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count);
-        void mass_to_communality(cl::Kernel & kernel, cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count);
+        void commonality_to_mass(cl::Kernel & kernel, cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count);
+        void mass_to_commonality(cl::Kernel & kernel, cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count);
         //void rule_conjunctive_m(cl::Kernel & kernel, cl::Buffer & dMconj12, const cl::Buffer & dM1, const cl::Buffer & dM2, cl_uint setSize, cl_ulong count);
         
     private:
@@ -44,10 +44,10 @@ namespace boost { namespace beliefs {
 
         cl_uint mWorkgroupSize;
         
-        cl::Kernel communality_to_mass_1d_aos;
-        cl::Kernel communality_to_mass_1d_soa;
-        cl::Kernel mass_to_communality_1d_aos;
-        cl::Kernel mass_to_communality_1d_soa;
+        cl::Kernel commonality_to_mass_1d_aos;
+        cl::Kernel commonality_to_mass_1d_soa;
+        cl::Kernel mass_to_commonality_1d_aos;
+        cl::Kernel mass_to_commonality_1d_soa;
         cl::Kernel multiply_1d;
         
         cl::Kernel create_lidar_grid_2d;
@@ -99,10 +99,10 @@ namespace boost { namespace beliefs {
 
     void OpenCL::loadKernels()
     {
-        communality_to_mass_1d_aos = loadKernel("cl/", "cl/communality.cl", "communality_to_mass_1d_aos");
-        communality_to_mass_1d_soa = loadKernel("cl/", "cl/communality.cl", "communality_to_mass_1d_soa");
-        mass_to_communality_1d_aos = loadKernel("cl/", "cl/communality.cl", "mass_to_communality_1d_aos");
-        mass_to_communality_1d_soa = loadKernel("cl/", "cl/communality.cl", "mass_to_communality_1d_soa");
+        commonality_to_mass_1d_aos = loadKernel("cl/", "cl/commonality.cl", "commonality_to_mass_1d_aos");
+        commonality_to_mass_1d_soa = loadKernel("cl/", "cl/commonality.cl", "commonality_to_mass_1d_soa");
+        mass_to_commonality_1d_aos = loadKernel("cl/", "cl/commonality.cl", "mass_to_commonality_1d_aos");
+        mass_to_commonality_1d_soa = loadKernel("cl/", "cl/commonality.cl", "mass_to_commonality_1d_soa");
         multiply_1d = loadKernel("cl/", "cl/multiply.cl", "multiply_1d");
         create_lidar_grid_2d = loadKernel("cl/", "cl/lidar.cl", "create_lidar_grid_2d");
     }
@@ -144,7 +144,7 @@ namespace boost { namespace beliefs {
 
     //==============================================================================
 
-    void OpenCL::communality_to_mass(cl::Kernel & kernel, cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count)
+    void OpenCL::commonality_to_mass(cl::Kernel & kernel, cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count)
     {
         using namespace cl;
         
@@ -162,19 +162,19 @@ namespace boost { namespace beliefs {
         }
     }
 
-    void OpenCL::communality_to_mass_aos(cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count)
+    void OpenCL::commonality_to_mass_aos(cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count)
     {
-        communality_to_mass(communality_to_mass_1d_aos, dM, dQ, setSize, count);
+        commonality_to_mass(commonality_to_mass_1d_aos, dM, dQ, setSize, count);
     }
     
-    void OpenCL::communality_to_mass_soa(cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count)
+    void OpenCL::commonality_to_mass_soa(cl::Buffer & dM, const cl::Buffer & dQ, cl_uint setSize, cl_ulong count)
     {
-        communality_to_mass(communality_to_mass_1d_soa, dM, dQ, setSize, count);
+        commonality_to_mass(commonality_to_mass_1d_soa, dM, dQ, setSize, count);
     }
     
     //==============================================================================
 
-    void OpenCL::mass_to_communality(cl::Kernel & kernel, cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count)
+    void OpenCL::mass_to_commonality(cl::Kernel & kernel, cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count)
     {
         using namespace cl;
         
@@ -182,7 +182,7 @@ namespace boost { namespace beliefs {
         NDRange local(mWorkgroupSize);
 
         //==============================================================================
-        // Calculate communality Q
+        // Calculate commonality Q
         {
             kernel.setArg(0, dQ);
             kernel.setArg(1, dM);
@@ -192,14 +192,14 @@ namespace boost { namespace beliefs {
         }
     }
     
-    void OpenCL::mass_to_communality_aos(cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count)
+    void OpenCL::mass_to_commonality_aos(cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count)
     {
-        mass_to_communality(mass_to_communality_1d_aos, dQ, dM, setSize, count);
+        mass_to_commonality(mass_to_commonality_1d_aos, dQ, dM, setSize, count);
     }
 
-    void OpenCL::mass_to_communality_soa(cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count)
+    void OpenCL::mass_to_commonality_soa(cl::Buffer & dQ, const cl::Buffer & dM, cl_uint setSize, cl_ulong count)
     {
-        mass_to_communality(mass_to_communality_1d_soa, dQ, dM, setSize, count);
+        mass_to_commonality(mass_to_commonality_1d_soa, dQ, dM, setSize, count);
     }
     
     //==============================================================================
@@ -212,29 +212,29 @@ namespace boost { namespace beliefs {
         ::size_t memSize = (::size_t) (count * powersetSize * sizeof(float));
         
         //==============================================================================
-        // Calculate communality Q1
+        // Calculate commonality Q1
         Buffer dQ1 = Buffer(mContext, CL_MEM_WRITE_ONLY, memSize);
-        mass_to_communality_aos(dQ1, dM1, setSize, count);
+        mass_to_commonality_aos(dQ1, dM1, setSize, count);
         
         //==============================================================================
-        // Calculate communality Q2
+        // Calculate commonality Q2
         Buffer dQ2 = Buffer(mContext, CL_MEM_WRITE_ONLY, memSize);
-        mass_to_communality_aos(dQ2, dM2, setSize, count);
+        mass_to_commonality_aos(dQ2, dM2, setSize, count);
         
-        // Wait to have communality Q1 and Q2
+        // Wait to have commonality Q1 and Q2
         mQueue.finish();
 
         //==============================================================================
-        // Calculate communality Qconj12
+        // Calculate commonality Qconj12
         Buffer dQconj12 = Buffer(mContext, CL_MEM_READ_WRITE, memSize);
         rule_conjunctive_q(dQconj12, dQ1, dQ2, setSize, count);
         
-        // Wait to have communality Qconj12
+        // Wait to have commonality Qconj12
         mQueue.finish();
 
         //==============================================================================
         // Calculate mass Mconj12
-        communality_to_mass_aos(dMconj12, dQconj12, setSize, count);
+        commonality_to_mass_aos(dMconj12, dQconj12, setSize, count);
     }
 
     void OpenCL::rule_conjunctive_m_soa(cl::Buffer & dMconj12, const cl::Buffer & dM1, const cl::Buffer & dM2, cl_uint setSize, cl_ulong count)
@@ -245,29 +245,29 @@ namespace boost { namespace beliefs {
         ::size_t memSize = (::size_t) (count * powersetSize * sizeof(float));
         
         //==============================================================================
-        // Calculate communality Q1
+        // Calculate commonality Q1
         Buffer dQ1 = Buffer(mContext, CL_MEM_READ_WRITE, memSize);
-        mass_to_communality_soa(dQ1, dM1, setSize, count);
+        mass_to_commonality_soa(dQ1, dM1, setSize, count);
         
         //==============================================================================
-        // Calculate communality Q2
+        // Calculate commonality Q2
         Buffer dQ2 = Buffer(mContext, CL_MEM_READ_WRITE, memSize);
-        mass_to_communality_soa(dQ2, dM2, setSize, count);
+        mass_to_commonality_soa(dQ2, dM2, setSize, count);
         
-        // Wait to have communality Q1 and Q2
+        // Wait to have commonality Q1 and Q2
         mQueue.finish();
 
         //==============================================================================
-        // Calculate communality Qconj12
+        // Calculate commonality Qconj12
         Buffer dQconj12 = Buffer(mContext, CL_MEM_READ_WRITE, memSize);
         rule_conjunctive_q(dQconj12, dQ1, dQ2, setSize, count);
         
-        // Wait to have communality Qconj12
+        // Wait to have commonality Qconj12
         mQueue.finish();
 
         //==============================================================================
         // Calculate mass Mconj12
-        communality_to_mass_soa(dMconj12, dQconj12, setSize, count);
+        commonality_to_mass_soa(dMconj12, dQconj12, setSize, count);
     }
     
     //==============================================================================
@@ -282,7 +282,7 @@ namespace boost { namespace beliefs {
         NDRange local(mWorkgroupSize);
 
         //==============================================================================
-        // Calculate communality Qconj12
+        // Calculate commonality Qconj12
         {
             multiply_1d.setArg(0, dQconj12);
             multiply_1d.setArg(1, dQ1);

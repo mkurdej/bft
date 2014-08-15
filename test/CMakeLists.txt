@@ -24,7 +24,7 @@ set(CL_DST_PATH "${SRC_PATH}/boost/dst/cl")
 add_test_executable(TestDst
     ${DST_PATH}/belief.hpp
     ${DST_PATH}/boost_dst_define_class.hpp
-    ${DST_PATH}/communality.hpp
+    ${DST_PATH}/commonality.hpp
     ${DST_PATH}/conjunctive_decomposition.hpp
     ${DST_PATH}/contextual_discounting.hpp
     ${DST_PATH}/discounting.hpp
@@ -54,7 +54,7 @@ add_test_executable(TestDst
     ${DST_PATH}/rule_yager.hpp
     ${DST_PATH}/rules.hpp
     ${DST_PATH}/to_belief.hpp
-    ${DST_PATH}/to_communality.hpp
+    ${DST_PATH}/to_commonality.hpp
     ${DST_PATH}/to_implicability.hpp
     ${DST_PATH}/to_mass.hpp
     ${DST_PATH}/to_pignistic.hpp

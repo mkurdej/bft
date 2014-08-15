@@ -9,12 +9,12 @@ Features:
 * FRAME OF DISCERNMENT
     * cartesian product of frames (TODO)
 * MASS function
-    * communality function
+    * commonality function
     * belief function
     * plausibility function
 * NORMALIZATION
 * OPERATOR/RULE
-    * conjunctive rule (normal | by communality) (precise | random)
+    * conjunctive rule (normal | by commonality) (precise | random)
     * disjunctive
     * Dempster
     * adaptive (Dubois-Prade)

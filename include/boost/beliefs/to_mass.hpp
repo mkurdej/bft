@@ -7,7 +7,7 @@
 #define BOOST_BELIEFS_TO_MASS_HPP
 
 #include <boost/beliefs/belief.hpp>
-#include <boost/beliefs/communality.hpp>
+#include <boost/beliefs/commonality.hpp>
 #include <boost/beliefs/implicability.hpp>
 #include <boost/beliefs/mass.hpp>
 #include <boost/beliefs/plausibility.hpp>
@@ -30,7 +30,7 @@ mass<FOD, T> to_mass(const belief<FOD, T> & bel)
 }
 
 template <class FOD, typename T>
-mass<FOD, T> to_mass(const communality<FOD, T> & q)
+mass<FOD, T> to_mass(const commonality<FOD, T> & q)
 {
     mass<FOD, T> m(q);
 

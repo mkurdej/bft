@@ -153,16 +153,16 @@ BOOST_AUTO_TEST_CASE(test_to_belief_with_conflict_mass)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/communality.hpp>
-#include <boost/beliefs/to_communality.hpp>
+#include <boost/beliefs/commonality.hpp>
+#include <boost/beliefs/to_commonality.hpp>
 
-BOOST_AUTO_TEST_SUITE(suite_communality)
+BOOST_AUTO_TEST_SUITE(suite_commonality)
 
-BOOST_AUTO_TEST_CASE(test_to_communality_compiles)
+BOOST_AUTO_TEST_CASE(test_to_commonality_compiles)
 {
     mass<fodFO> m1;
 
-    communality<fodFO> q1 = to_communality(m1);
+    commonality<fodFO> q1 = to_commonality(m1);
     mass<fodFO> m2 = to_mass(q1);
 
     for(std::size_t i = 0; i < fodFO::powerset_size; ++i) {
@@ -170,14 +170,14 @@ BOOST_AUTO_TEST_CASE(test_to_communality_compiles)
     }
 }
 
-BOOST_AUTO_TEST_CASE(test_to_communality_wo_conflict_mass)
+BOOST_AUTO_TEST_CASE(test_to_commonality_wo_conflict_mass)
 {
     mass<fodFO>::container_type ma = {0.0, 0.3, 0.6, 0.1};
     mass<fodFO> m_expected(ma);
-    communality<fodFO>::container_type qa = {1.0, 0.4, 0.7, 0.1};
-    communality<fodFO> q_expected(qa);
+    commonality<fodFO>::container_type qa = {1.0, 0.4, 0.7, 0.1};
+    commonality<fodFO> q_expected(qa);
 
-    communality<fodFO> q_actual = to_communality(m_expected);
+    commonality<fodFO> q_actual = to_commonality(m_expected);
     mass<fodFO> m_actual = to_mass(q_actual);
 
     for(std::size_t i = 0; i < fodFO::powerset_size; ++i) {
@@ -188,14 +188,14 @@ BOOST_AUTO_TEST_CASE(test_to_communality_wo_conflict_mass)
     }
 }
 
-BOOST_AUTO_TEST_CASE(test_to_communality_with_conflict_mass)
+BOOST_AUTO_TEST_CASE(test_to_commonality_with_conflict_mass)
 {
     mass<fodFO>::container_type ma = {0.2, 0.3, 0.4, 0.1};
     mass<fodFO> m_expected(ma);
-    communality<fodFO>::container_type qa = {1.0, 0.4, 0.5, 0.1};
-    communality<fodFO> q_expected(qa);
+    commonality<fodFO>::container_type qa = {1.0, 0.4, 0.5, 0.1};
+    commonality<fodFO> q_expected(qa);
 
-    communality<fodFO> q_actual = to_communality(m_expected);
+    commonality<fodFO> q_actual = to_commonality(m_expected);
     mass<fodFO> m_actual = to_mass(q_actual);
 
     for(std::size_t i = 0; i < fodFO::powerset_size; ++i) {

@@ -6,10 +6,10 @@
 #ifndef BOOST_BELIEFS_RULE_CONJUNCTIVE_HPP
 #define BOOST_BELIEFS_RULE_CONJUNCTIVE_HPP
 
-#include <boost/beliefs/communality.hpp>
+#include <boost/beliefs/commonality.hpp>
 #include <boost/beliefs/mass.hpp>
 #include <boost/beliefs/rule_base.hpp>
-#include <boost/beliefs/to_communality.hpp>
+#include <boost/beliefs/to_commonality.hpp>
 #include <boost/beliefs/to_mass.hpp>
 
 namespace boost { namespace beliefs {
@@ -23,9 +23,9 @@ struct rule_conjunctive
     }
 
     template <class FOD, typename T>
-    communality<FOD, T> operator()(communality<FOD, T> const& q1, communality<FOD, T> const& q2) const
+    commonality<FOD, T> operator()(commonality<FOD, T> const& q1, commonality<FOD, T> const& q2) const
     {
-        communality<FOD, T> q12;
+        commonality<FOD, T> q12;
         for (std::size_t i = 0; i < FOD::powerset_size; ++i) {
             q12[i] = q1[i] * q2[i];
         }
@@ -35,9 +35,9 @@ struct rule_conjunctive
     template <class FOD, typename T>
     mass<FOD, T> operator()(mass<FOD, T> const& m1, mass<FOD, T> const& m2) const
     {
-        communality<FOD, T> q1 = to_communality(m1);
-        communality<FOD, T> q2 = to_communality(m2);
-        communality<FOD, T> q12 = operator()(q1, q2);
+        commonality<FOD, T> q1 = to_commonality(m1);
+        commonality<FOD, T> q2 = to_commonality(m2);
+        commonality<FOD, T> q12 = operator()(q1, q2);
         return to_mass(q12);
     }
 
