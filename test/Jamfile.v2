@@ -18,12 +18,12 @@ alias unit_test_framework
 {
   test-suite belief:
 # Search tests
-   : [ run test_discounting.cpp                           : : : : discounting_test1 ]
-     [ run test_dst_function.cpp                          : : : : dst_function_test1 ]
-     [ run test_mass.cpp                                  : : : : mass_test1 ]
-     [ run test_rule_jeffrey_dempster.cpp                 : : : : rule_jeffrey_dempster_test1 ]
-     [ run test_rules.cpp                                 : : : : rules_test1 ]
-     [ run TestDst.cpp                                    : : : : dst_test1 ]
+   : [ run test_discounting.cpp unit_test_framework             : : : : discounting_test1 ]
+     [ run test_dst_function.cpp unit_test_framework            : : : : dst_function_test1 ]
+     [ run test_mass.cpp unit_test_framework                    : : : : mass_test1 ]
+     [ run test_rule_jeffrey_dempster.cpp unit_test_framework   : : : : rule_jeffrey_dempster_test1 ]
+     [ run test_rules.cpp unit_test_framework                   : : : : rules_test1 ]
+     [ run TestDst.cpp unit_test_framework                      : : : : dst_test1 ]
 
 # Compilation errors
     [ compile-fail fuse-fod-incompatible-fail.cpp ]
