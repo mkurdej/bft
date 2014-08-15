@@ -7,20 +7,20 @@ BOOST_BELIEFS_DEFINE_CLASS(C2);
 BOOST_BELIEFS_DEFINE_CLASS(C3);
 BOOST_BELIEFS_DEFINE_CLASS(C4);
 
-namespace beliefs = boost::beliefs;
+namespace bb = boost::beliefs;
 
-typedef beliefs::fod<C1, C2> fodAB;
-typedef beliefs::fod<C1, C2, C3, C4> fodABCD;
+typedef bb::fod<C1, C2> fodAB;
+typedef bb::fod<C1, C2, C3, C4> fodABCD;
 
 int main( int , char* [] )
 {
-    beliefs::rule_conjunctive rule;
+    bb::rule_conjunctive rule;
 
-    const mass<fodAB> m1;
-    const mass<fodABCD> m2;
+    const bb::mass<fodAB> m1;
+    const bb::mass<fodABCD> m2;
 
     //  Should fail to compile because the underlying FODs are different.
-    //  They are the different size.
+    //  They are of different size.
     m1.apply(rule, m2);
     return 0;
 }
