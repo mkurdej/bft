@@ -23,8 +23,8 @@
 #   pragma GCC diagnostic push
 #endif // _MSC_VER
 
-#include <boost/belief/cl/OpenCL.hpp>
-#include <boost/belief/cl/util.hpp>
+#include <boost/beliefs/cl/OpenCL.hpp>
+#include <boost/beliefs/cl/util.hpp>
 
 #include <boost/scoped_array.hpp>
 #include <boost/test/unit_test.hpp>
@@ -36,7 +36,7 @@
 #endif // _MSC_VER
 
 using namespace boost;
-using namespace boost::belief;
+using namespace boost::beliefs;
 using boost::timer::cpu_timer;
 using boost::timer::cpu_times;
 using boost::timer::nanosecond_type;

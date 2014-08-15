@@ -20,9 +20,10 @@
 #   pragma GCC diagnostic push
 #endif // _MSC_VER
 
+#define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
-#include <boost/belief/dst_function.hpp>
-#include <boost/belief/fod.hpp>
+#include <boost/beliefs/dst_function.hpp>
+#include <boost/beliefs/fod.hpp>
 #include <boost/utility/binary.hpp>
 
 #ifdef _MSC_VER
@@ -32,7 +33,7 @@
 #endif // _MSC_VER
 
 using namespace boost;
-using namespace boost::belief;
+using namespace boost::beliefs;
 
 typedef fod<int> fod_t;
 

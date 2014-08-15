@@ -5,8 +5,6 @@
 
 #define BOOST_TEST_MODULE TestBoostDst
 
-#include "mkconfig.h"
-
 #ifdef _MSC_VER
 #   pragma warning(disable:4505) // unused function
 #   pragma warning(disable:4514) // automatically linked headers
@@ -31,6 +29,7 @@
 
 #include <boost/mpl/equal.hpp>
 #include <boost/limits.hpp>
+#define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
 
 #ifdef _MSC_VER
@@ -39,17 +38,17 @@
 #   pragma GCC diagnostic pop
 #endif // _MSC_VER
 
-#include <boost/belief/dst_function.hpp>
-#include <boost/belief/fod.hpp>
+#include <boost/beliefs/dst_function.hpp>
+#include <boost/beliefs/fod.hpp>
 
 using namespace boost;
-using namespace boost::belief;
+using namespace boost::beliefs;
 namespace bm = boost::mpl;
 
-BOOST_BELIEF_DEFINE_CLASS(Free);
-BOOST_BELIEF_DEFINE_CLASS(Occupied);
-BOOST_BELIEF_DEFINE_CLASS(Infrastructure);
-BOOST_BELIEF_DEFINE_CLASS(Movable);
+BOOST_BELIEFS_DEFINE_CLASS(Free);
+BOOST_BELIEFS_DEFINE_CLASS(Occupied);
+BOOST_BELIEFS_DEFINE_CLASS(Infrastructure);
+BOOST_BELIEFS_DEFINE_CLASS(Movable);
 
 typedef fod<Free, Occupied> fodFO;
 typedef fod<Free, Occupied, Infrastructure, Movable> fodFOIM;
@@ -93,9 +92,9 @@ BOOST_AUTO_TEST_CASE(test_fod_static_sizes)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/belief/belief.hpp>
-#include <boost/belief/to_belief.hpp>
-#include <boost/belief/to_mass.hpp>
+#include <boost/beliefs/belief.hpp>
+#include <boost/beliefs/to_belief.hpp>
+#include <boost/beliefs/to_mass.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_belief)
 
@@ -154,8 +153,8 @@ BOOST_AUTO_TEST_CASE(test_to_belief_with_conflict_mass)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/belief/communality.hpp>
-#include <boost/belief/to_communality.hpp>
+#include <boost/beliefs/communality.hpp>
+#include <boost/beliefs/to_communality.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_communality)
 
@@ -210,8 +209,8 @@ BOOST_AUTO_TEST_CASE(test_to_communality_with_conflict_mass)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/belief/implicability.hpp>
-#include <boost/belief/to_implicability.hpp>
+#include <boost/beliefs/implicability.hpp>
+#include <boost/beliefs/to_implicability.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_implicability)
 
@@ -269,7 +268,7 @@ BOOST_AUTO_TEST_CASE(test_to_implicability_with_conflict_mass)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/belief/to_pignistic.hpp>
+#include <boost/beliefs/to_pignistic.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_pignistic)
 
@@ -330,8 +329,8 @@ BOOST_CHECK_CLOSE(m_expected[i], m_actual[i], 1e-10);
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/belief/plausibility.hpp>
-#include <boost/belief/to_plausibility.hpp>
+#include <boost/beliefs/plausibility.hpp>
+#include <boost/beliefs/to_plausibility.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_plausibility)
 
@@ -436,7 +435,7 @@ BOOST_AUTO_TEST_CASE(test_dst_function_idx)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/belief/fod_union.hpp>
+#include <boost/beliefs/fod_union.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_fod_union)
 
@@ -471,7 +470,7 @@ BOOST_AUTO_TEST_CASE(test_fod_union)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/belief/discounting.hpp>
+#include <boost/beliefs/discounting.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_discounting)
 
@@ -495,7 +494,7 @@ BOOST_AUTO_TEST_CASE(test_discounting_gives_correct_result)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/belief/contextual_discounting.hpp>
+#include <boost/beliefs/contextual_discounting.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_contextual_discounting)
 
@@ -538,8 +537,8 @@ BOOST_AUTO_TEST_CASE(test_contextual_discounting_gives_correct_result)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/belief/fod_union.hpp>
-#include <boost/belief/extension.hpp>
+#include <boost/beliefs/fod_union.hpp>
+#include <boost/beliefs/extension.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_extension)
 
@@ -566,8 +565,8 @@ BOOST_AUTO_TEST_CASE(test_extension)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/belief/fod_minus.hpp>
-#include <boost/belief/marginalization.hpp>
+#include <boost/beliefs/fod_minus.hpp>
+#include <boost/beliefs/marginalization.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_marginalization)
 

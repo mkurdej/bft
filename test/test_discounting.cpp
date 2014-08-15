@@ -1,7 +1,11 @@
-//          Copyright Marek Kurdej 2011 - 2012.
-// Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
+/*
+   Copyright (c) Marek Kurdej 2014.
+
+   Distributed under the Boost Software License, Version 1.0. (See accompanying
+   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+
+    For more information, see http://www.boost.org
+*/
 
 #define BOOST_TEST_MODULE test_discounting
 
@@ -24,9 +28,10 @@
 #   pragma GCC diagnostic push
 #endif // _MSC_VER
 
+#define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
-#include <boost/belief/contextual_discounting.hpp>
-#include <boost/belief/discounting.hpp>
+#include <boost/beliefs/contextual_discounting.hpp>
+#include <boost/beliefs/discounting.hpp>
 #include <boost/math/special_functions/fpclassify.hpp>
 
 #ifdef _MSC_VER
@@ -36,12 +41,12 @@
 #endif // _MSC_VER
 
 using namespace boost;
-using namespace boost::belief;
+using namespace boost::beliefs;
 
-BOOST_BELIEF_DEFINE_CLASS(C1);
-BOOST_BELIEF_DEFINE_CLASS(C2);
-BOOST_BELIEF_DEFINE_CLASS(C3);
-BOOST_BELIEF_DEFINE_CLASS(C4);
+BOOST_BELIEFS_DEFINE_CLASS(C1);
+BOOST_BELIEFS_DEFINE_CLASS(C2);
+BOOST_BELIEFS_DEFINE_CLASS(C3);
+BOOST_BELIEFS_DEFINE_CLASS(C4);
 
 typedef fod<C1, C2> fod2;
 typedef fod<C1, C2, C3> fod3;
@@ -50,7 +55,7 @@ typedef fod2 fodFO;
 typedef fod3 fodABC;
 
 //==============================================================================
-#include <boost/belief/rule_conjunctive.hpp>
+#include <boost/beliefs/rule_conjunctive.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_discounting)
 

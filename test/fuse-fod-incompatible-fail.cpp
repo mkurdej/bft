@@ -1,20 +1,20 @@
-#include <boost/belief/fod.hpp>
-#include <boost/belief/rule_conjunctive.hpp>
+#include <boost/beliefs/fod.hpp>
+#include <boost/beliefs/rule_conjunctive.hpp>
 #include <vector>
 
-BOOST_BELIEF_DEFINE_CLASS(C1);
-BOOST_BELIEF_DEFINE_CLASS(C2);
-BOOST_BELIEF_DEFINE_CLASS(C3);
-BOOST_BELIEF_DEFINE_CLASS(C4);
+BOOST_BELIEFS_DEFINE_CLASS(C1);
+BOOST_BELIEFS_DEFINE_CLASS(C2);
+BOOST_BELIEFS_DEFINE_CLASS(C3);
+BOOST_BELIEFS_DEFINE_CLASS(C4);
 
-namespace belief = boost::belief;
+namespace beliefs = boost::beliefs;
 
-typedef belief::fod<C1, C2> fodAB;
-typedef belief::fod<C1, C2, C3, C4> fodABCD;
+typedef beliefs::fod<C1, C2> fodAB;
+typedef beliefs::fod<C1, C2, C3, C4> fodABCD;
 
 int main( int , char* [] )
 {
-    belief::rule_conjunctive rule;
+    beliefs::rule_conjunctive rule;
 
     const mass<fodAB> m1;
     const mass<fodABCD> m2;
