@@ -25,7 +25,12 @@ alias unit_test_framework
      [ run rules_test1.cpp unit_test_framework                  : : : : rules_test1 ]
      [ run dst_test1.cpp unit_test_framework                    : : : : dst_test1 ]
 # OpenCL tests
-#     [ run opencl_dst_test1.cpp unit_test_framework             : : : : opencl_dst_test1 ]
+     [ run opencl_dst_test1.cpp unit_test_framework             : : :
+        <include>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/include"
+        <library>/boost//system
+#        <address-model>32:<library>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x86/OpenCL.lib"
+#        <address-model>64:<library>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x64/OpenCL.lib"
+        : opencl_dst_test1 ]
 
 # Compilation errors
     [ compile-fail incompatible_fod_fail1.cpp ]

@@ -1,4 +1,4 @@
-#include "cl/GridSize1D.h"
+#include "GridSize1D.h"
 
 /// Run with at least ```pointCount, gridSizeRadius.size``` threads.
 __kernel

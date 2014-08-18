@@ -1,4 +1,4 @@
-#include "cl/set.h"
+#include "set.h"
 
 //==============================================================================
 /// Mass function to commonality using Möbius transform 
