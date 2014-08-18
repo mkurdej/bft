@@ -6,6 +6,7 @@
 #ifndef BOOST_BELIEFS_PRIVATE_DEREF_HPP
 #define BOOST_BELIEFS_PRIVATE_DEREF_HPP
 
+#include <boost/beliefs/private/emptytype.hpp>
 #include <boost/beliefs/private/to_void.hpp>
 #include <boost/mpl/deref.hpp>
 

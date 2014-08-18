@@ -11,6 +11,7 @@
 #include <boost/beliefs/mass.hpp>
 #include <boost/beliefs/to_implicability.hpp>
 #include <boost/limits.hpp>
+#include <cmath>
 
 namespace boost { namespace beliefs {
 

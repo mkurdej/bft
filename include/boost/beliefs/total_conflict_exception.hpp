@@ -7,6 +7,7 @@
 #define BOOST_BELIEFS_TOTAL_CONFLICT_EXCEPTION_HPP
 
 #include <boost/exception/exception.hpp>
+#include <stdexcept>
 
 namespace boost { namespace beliefs {
 

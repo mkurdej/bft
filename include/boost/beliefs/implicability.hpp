@@ -7,6 +7,8 @@
 #define BOOST_BELIEFS_IMPLICABILITY_HPP
 
 #include <boost/beliefs/dst_function.hpp>
+#include <boost/beliefs/fod.hpp>
+#include <boost/test/floating_point_comparison.hpp>
 
 namespace boost { namespace beliefs {
 

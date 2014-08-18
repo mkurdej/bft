@@ -23,7 +23,7 @@ struct rule_yager
     template <class FOD, typename T>
     mass<FOD, T> operator()(const mass<FOD, T> & m1, const mass<FOD, T> & m2) const
     {
-        mass<fodFO> m_result = m1.apply(rule_conjunctive(), m2);
+        mass<FOD> m_result = m1.apply(rule_conjunctive(), m2);
         m_result.values().back() = m_result.values().back() + m_result.values().front(); // Unknown
         m_result.values().front() = 0; // Emptyset
         return m_result;
