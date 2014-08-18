@@ -146,7 +146,7 @@ public:
     bool is_focal(std::size_t i) const
     {
         BOOST_ASSERT(i < FOD::powerset_size);
-        return ! boost::math::fpc::is_small(this->values()[i], aux::tolerance);
+        return ! boost::math::fpc::is_small(this->values()[i], detail::tolerance);
     }
 
     // emptyset
@@ -237,25 +237,25 @@ public:
     /// Dogmatic mass function has no mass at Unknown.
     bool is_dogmatic() const
     {
-        return boost::math::fpc::is_small(at_omega(), aux::tolerance);
+        return boost::math::fpc::is_small(at_omega(), detail::tolerance);
     }
 
     /// Non-dogmatic mass function has some mass at Unknown.
     bool is_nondogmatic() const
     {
-        return ! boost::math::fpc::is_small(at_omega(), aux::tolerance);
+        return ! boost::math::fpc::is_small(at_omega(), detail::tolerance);
     }
 
     /// Vacuous mass function has all mass at Unknown.
     bool is_vacuous() const
     {
-        return boost::math::fpc::is_small(1 - at_omega(), aux::tolerance);
+        return boost::math::fpc::is_small(1 - at_omega(), detail::tolerance);
     }
 
     /// Degenerate mass function has all mass at Emptyset (Conflict).
     bool is_degenerate() const
     {
-        return boost::math::fpc::is_small(1 - at_emptyset(), aux::tolerance);
+        return boost::math::fpc::is_small(1 - at_emptyset(), detail::tolerance);
     }
 
     /// Categorical mass function has only one focal set.

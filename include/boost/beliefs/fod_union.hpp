@@ -33,16 +33,16 @@ class fod_union
     typedef typename mpl::next<it7>::type     it8;
     typedef typename mpl::next<it8>::type     it9;
 
-    typedef typename aux::deref<it0>::type t0;
-    typedef typename aux::deref<it1>::type t1;
-    typedef typename aux::deref<it2>::type t2;
-    typedef typename aux::deref<it3>::type t3;
-    typedef typename aux::deref<it4>::type t4;
-    typedef typename aux::deref<it5>::type t5;
-    typedef typename aux::deref<it6>::type t6;
-    typedef typename aux::deref<it7>::type t7;
-    typedef typename aux::deref<it8>::type t8;
-    typedef typename aux::deref<it9>::type t9;
+    typedef typename detail::deref<it0>::type t0;
+    typedef typename detail::deref<it1>::type t1;
+    typedef typename detail::deref<it2>::type t2;
+    typedef typename detail::deref<it3>::type t3;
+    typedef typename detail::deref<it4>::type t4;
+    typedef typename detail::deref<it5>::type t5;
+    typedef typename detail::deref<it6>::type t6;
+    typedef typename detail::deref<it7>::type t7;
+    typedef typename detail::deref<it8>::type t8;
+    typedef typename detail::deref<it9>::type t9;
 
 public:
     typedef fod<t0, t1, t2, t3, t4, t5, t6, t7, t8, t9> type;

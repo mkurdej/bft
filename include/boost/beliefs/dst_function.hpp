@@ -15,8 +15,10 @@
 
 namespace boost { namespace beliefs {
 
+namespace /* anonymous */ {
 struct degenerate_t {}; // all mass on Emptyset
 struct vacuous_t {}; // all mass on Unknown
+} // namespace
 
 degenerate_t degenerate;
 vacuous_t vacuous;
@@ -108,22 +110,22 @@ public:
 
     // =============================================================================
     // =============================================================================
-    template <typename S0 = aux::EmptyType, typename S1 = aux::EmptyType, typename S2 = aux::EmptyType, typename S3 = aux::EmptyType, typename S4 = aux::EmptyType, typename S5 = aux::EmptyType, typename S6 = aux::EmptyType, typename S7 = aux::EmptyType, typename S8 = aux::EmptyType, typename S9 = aux::EmptyType>
+    template <typename S0 = detail::EmptyType, typename S1 = detail::EmptyType, typename S2 = detail::EmptyType, typename S3 = detail::EmptyType, typename S4 = detail::EmptyType, typename S5 = detail::EmptyType, typename S6 = detail::EmptyType, typename S7 = detail::EmptyType, typename S8 = detail::EmptyType, typename S9 = detail::EmptyType>
     struct Idx
     {
         enum
         {
             value
-            = ((is_same<aux::EmptyType, S0>::value) ? 0 : (1 << FOD::template Idx<S0>::value))
-            + ((is_same<aux::EmptyType, S1>::value) ? 0 : (1 << FOD::template Idx<S1>::value))
-            + ((is_same<aux::EmptyType, S2>::value) ? 0 : (1 << FOD::template Idx<S2>::value))
-            + ((is_same<aux::EmptyType, S3>::value) ? 0 : (1 << FOD::template Idx<S3>::value))
-            + ((is_same<aux::EmptyType, S4>::value) ? 0 : (1 << FOD::template Idx<S4>::value))
-            + ((is_same<aux::EmptyType, S5>::value) ? 0 : (1 << FOD::template Idx<S5>::value))
-            + ((is_same<aux::EmptyType, S6>::value) ? 0 : (1 << FOD::template Idx<S6>::value))
-            + ((is_same<aux::EmptyType, S7>::value) ? 0 : (1 << FOD::template Idx<S7>::value))
-            + ((is_same<aux::EmptyType, S8>::value) ? 0 : (1 << FOD::template Idx<S8>::value))
-            + ((is_same<aux::EmptyType, S9>::value) ? 0 : (1 << FOD::template Idx<S9>::value))
+            = ((is_same<detail::EmptyType, S0>::value) ? 0 : (1 << FOD::template Idx<S0>::value))
+            + ((is_same<detail::EmptyType, S1>::value) ? 0 : (1 << FOD::template Idx<S1>::value))
+            + ((is_same<detail::EmptyType, S2>::value) ? 0 : (1 << FOD::template Idx<S2>::value))
+            + ((is_same<detail::EmptyType, S3>::value) ? 0 : (1 << FOD::template Idx<S3>::value))
+            + ((is_same<detail::EmptyType, S4>::value) ? 0 : (1 << FOD::template Idx<S4>::value))
+            + ((is_same<detail::EmptyType, S5>::value) ? 0 : (1 << FOD::template Idx<S5>::value))
+            + ((is_same<detail::EmptyType, S6>::value) ? 0 : (1 << FOD::template Idx<S6>::value))
+            + ((is_same<detail::EmptyType, S7>::value) ? 0 : (1 << FOD::template Idx<S7>::value))
+            + ((is_same<detail::EmptyType, S8>::value) ? 0 : (1 << FOD::template Idx<S8>::value))
+            + ((is_same<detail::EmptyType, S9>::value) ? 0 : (1 << FOD::template Idx<S9>::value))
         };
     };
 

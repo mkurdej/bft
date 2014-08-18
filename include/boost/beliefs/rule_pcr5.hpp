@@ -28,18 +28,18 @@ struct rule_pcr5
         mass<FOD, T> m_result;
 
         for(std::size_t B = 0; B < FOD::powerset_size; ++B) {
-            if(m1[B] < aux::tolerance) {
+            if(m1[B] < detail::tolerance) {
                 continue;
             }
             for(std::size_t C = 0; C < FOD::powerset_size; ++C) {
-                if(m2[C] < aux::tolerance) {
+                if(m2[C] < detail::tolerance) {
                     continue;
                 }
                 std::size_t A = set_intersection(B, C);
                 if(is_emptyset(A)) {
                     // redistribute conflicting mass to m[B] and m[C] proportionally to m1[B], m2[C]
                     T proportion_denominator = m1[B] + m2[C];
-                    BOOST_ASSERT_MSG( (proportion_denominator > aux::tolerance), "denominator is close to zero!");
+                    BOOST_ASSERT_MSG( (proportion_denominator > detail::tolerance), "denominator is close to zero!");
                     T conflict_mass = m1[B] * m2[C];
                     m_result[B] += conflict_mass * (m1[B] / proportion_denominator);
                     m_result[C] += conflict_mass * (m2[C] / proportion_denominator);

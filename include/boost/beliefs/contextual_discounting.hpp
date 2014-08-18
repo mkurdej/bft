@@ -29,7 +29,7 @@ struct contextual_discounting
     {
         for(std::size_t A = 0; A < FOD::powerset_size; ++A) {
             T alpha = alphas[A];
-            if(boost::math::fpc::is_small(alpha, aux::tolerance)) {
+            if(boost::math::fpc::is_small(alpha, detail::tolerance)) {
                 continue;
             }
 

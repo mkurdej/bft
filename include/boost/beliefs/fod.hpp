@@ -30,7 +30,7 @@
 namespace boost { namespace beliefs {
 
 // definition of fod class
-template <class S0 = aux::EmptyType, class S1 = aux::EmptyType, class S2 = aux::EmptyType, class S3 = aux::EmptyType, class S4 = aux::EmptyType, class S5 = aux::EmptyType, class S6 = aux::EmptyType, class S7 = aux::EmptyType, class S8 = aux::EmptyType, class S9 = aux::EmptyType>
+template <class S0 = detail::EmptyType, class S1 = detail::EmptyType, class S2 = detail::EmptyType, class S3 = detail::EmptyType, class S4 = detail::EmptyType, class S5 = detail::EmptyType, class S6 = detail::EmptyType, class S7 = detail::EmptyType, class S8 = detail::EmptyType, class S9 = detail::EmptyType>
 class fod
 {
     typedef mpl::vector<S0, S1, S2, S3, S4, S5, S6, S7, S8, S9> template_types;
@@ -41,7 +41,7 @@ public:
     typedef fod<S0, S1, S2, S3, S4, S5, S6, S7, S8, S9> this_type;
 
     /// set of classes, constructed from a list of potentially non-unique types
-    typedef typename mpl::erase_key<types_with_empty_type, aux::EmptyType>::type type;
+    typedef typename mpl::erase_key<types_with_empty_type, detail::EmptyType>::type type;
 
     /// cardinality of the frame of discernment
     BOOST_STATIC_CONSTANT(std::size_t, set_size = mpl::size<type>::value);
@@ -73,7 +73,7 @@ public:
     };
 
     template <typename Dummy>
-    struct Idx< ::boost::beliefs::aux::EmptyType, Dummy >
+    struct Idx< ::boost::beliefs::detail::EmptyType, Dummy >
     {
         BOOST_STATIC_CONSTANT(int, value = 0);
     };
@@ -90,9 +90,11 @@ public:
 #ifndef BOOST_BELIEFS_FP_TOLERANCE
 # define BOOST_BELIEFS_FP_TOLERANCE 1e-10
 #endif
-namespace aux {
+namespace detail {
+namespace /* anonymous */ {
 double tolerance = BOOST_BELIEFS_FP_TOLERANCE;
-} // namespace aux
+} // namespace
+} // namespace detail
 
 } // namespace beliefs
 

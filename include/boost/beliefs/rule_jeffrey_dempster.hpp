@@ -35,7 +35,7 @@ struct rule_jeffrey_dempster
                 std::size_t A = set_intersection(B, C);
 
                 T sigma_prior;
-                if (boost::math::fpc::is_small(pl_prior[C], aux::tolerance)) {
+                if (boost::math::fpc::is_small(pl_prior[C], detail::tolerance)) {
                     sigma_prior = (B == C);
                 } else {
                     sigma_prior = m_prior[B] / pl_prior[C];

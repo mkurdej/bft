@@ -55,7 +55,7 @@ public:
     /// Subnormal mass function has some mass at Emptyset.
     bool is_subnormal() const
     {
-        return ! boost::math::fpc::is_small(this->m_values.front(), aux::tolerance);
+        return ! boost::math::fpc::is_small(this->m_values.front(), detail::tolerance);
     }
 };
 

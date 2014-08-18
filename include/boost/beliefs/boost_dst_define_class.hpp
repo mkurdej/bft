@@ -19,13 +19,13 @@
 #endif // _MSC_VER
 
 //[ aux_dst_base_class
-namespace boost { namespace beliefs { namespace aux {
+namespace boost { namespace beliefs { namespace detail {
 
 struct dst_base_class
 {
 };
 
-} // namespace aux
+} // namespace detail
 
 } // namespace beliefs
 
@@ -35,7 +35,7 @@ struct dst_base_class
 //[ boost_dst_define_class
 #define BOOST_BELIEFS_DEFINE_CLASS(C) \
     struct C \
-        : public ::boost::beliefs::aux::dst_base_class \
+        : public ::boost::beliefs::detail::dst_base_class \
     { \
         static const std::string name; \
     }; \

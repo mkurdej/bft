@@ -55,7 +55,7 @@ public:
     /// Non-dogmatic mass function has some mass at Unknown.
     bool is_nondogmatic() const
     {
-        return ! boost::math::fpc::is_small(this->m_values.back(), aux::tolerance);
+        return ! boost::math::fpc::is_small(this->m_values.back(), detail::tolerance);
     }
 };
 

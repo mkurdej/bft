@@ -38,7 +38,7 @@ struct rule_conjunctive_cautious
         mass<FOD, T> m_result(vacuous);
         rule_conjunctive rule;
         for(std::size_t A = 0; A < FOD::powerset_size - 1; ++A) {
-            if(boost::math::fpc::is_small(1 - w_min12[A], aux::tolerance)) {
+            if(boost::math::fpc::is_small(1 - w_min12[A], detail::tolerance)) {
                 continue;
             }
             m_result = m_result.apply(rule, mass<FOD, T>::create_mass_from_conjunctive_weight(A, w_min12[A]));

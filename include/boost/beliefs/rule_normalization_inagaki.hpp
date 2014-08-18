@@ -33,7 +33,7 @@ struct rule_normalization_inagaki
     {
         T conflict_mass = m.values().front();
         T unknown_mass = m.values().back();
-        BOOST_VERIFY(this->m_k <= 1 / (1 - conflict_mass - unknown_mass - aux::tolerance));
+        BOOST_VERIFY(this->m_k <= 1 / (1 - conflict_mass - unknown_mass - detail::tolerance));
         BOOST_FOREACH(T & v, m.values()) {
             v *= 1 + this->m_k * conflict_mass;
         }
