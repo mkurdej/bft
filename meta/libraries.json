@@ -1,0 +1,14 @@
+{
+    "key": "beliefs",
+    "name": "Beliefs",
+    "authors": [
+        "Marek Kurdej"
+    ],
+    "description": "Uncertain information fusion library based on the theory of belief functions (Dempster-Shafer theory)",
+    "category": [
+        "Math"
+    ],
+    "maintainers": [
+        "Marek Kurdej <curdeius -at- gmail.com>"
+    ]
+}
