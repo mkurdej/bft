@@ -1,0 +1,13 @@
+project site-config ;
+lib opencl
+    : # sources
+    : # requirements 
+        <name>OpenCL
+        <address-model>32:<search>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x86"
+        <address-model>64:<search>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x64"
+        #<address-model>32:<file>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x86/OpenCL.lib"
+        #<address-model>64:<file>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x64/OpenCL.lib"
+    : # default-build
+    : # usage-requirements
+        <include>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/include/"
+    ;

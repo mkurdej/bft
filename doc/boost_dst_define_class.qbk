@@ -1,17 +1,17 @@
 [/==============================================================================
-    Copyright (C) 2011-2012 Marek Kurdej
+    Copyright (C) 2011-2014 Marek Kurdej
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ===============================================================================/]
 
-[section:boost_dst_define_class BOOST_DST_DEFINE_CLASS]
+[section:boost_beliefs_define_class BOOST_BELIEFS_DEFINE_CLASS]
 
-[import ../../../src/boost/dst/boost_dst_define_class.hpp]
+[import ../include/boost/beliefs/boost_dst_define_class.hpp]
 
 [boost_dst_define_class]
 
-Defines a class derived from __aux_dst_base_class that would be used as an element of the frame of discernement.
+Defines a class derived from __detail_beliefs_base_class that would be used as an element of the frame of discernement.
 
 [/
 __type The same type as `T const` for all `T`.  
@@ -23,15 +23,15 @@ then this template will compile, but the member `type` will always be the same a
 type `T` except where __transform_workaround have been applied.
 /]
 
-[aux_dst_base_class]
+[detail_beliefs_base_class]
 
-__header ` #include <boost/dst/boost_dst_define_class.hpp>` or ` #include <boost/dst/fod.hpp>`, or ` #include <boost/dst.hpp>`
+__header ` #include <boost/beliefs/boost_dst_define_class.hpp>` or ` #include <boost/beliefs/fod.hpp>`, or ` #include <boost/beliefs.hpp>`
 
 __examples
 
 ``
-    __BOOST_DST_DEFINE_CLASS(Free);
-    __BOOST_DST_DEFINE_CLASS(Occupied);
+    __BOOST_BELIEFS_DEFINE_CLASS(Free);
+    __BOOST_BELIEFS_DEFINE_CLASS(Occupied);
 
     typedef __fod<Free, Occupied> fodFO;
 ``

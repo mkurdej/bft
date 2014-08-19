@@ -9,11 +9,9 @@
 
 import testing ;
 
-alias unit_test_framework
-    : # sources
-        /boost//unit_test_framework
-    ;
-
+alias system : /boost//system ;
+alias unit_test_framework : /boost//unit_test_framework ;
+alias opencl : /site-config//opencl ;
 
 {
   test-suite belief:
@@ -25,11 +23,9 @@ alias unit_test_framework
      [ run rules_test1.cpp unit_test_framework                  : : : : rules_test1 ]
      [ run dst_test1.cpp unit_test_framework                    : : : : dst_test1 ]
 # OpenCL tests
-     [ run opencl_dst_test1.cpp unit_test_framework             : : :
-        <include>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/include"
-        <library>/boost//system
-        <address-model>32:<library>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x86/OpenCL.lib"
-        <address-model>64:<library>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x64/OpenCL.lib"
+     [ run opencl_dst_test1.cpp system unit_test_framework      : : :
+
+        <library>opencl
         : opencl_dst_test1 ]
 
 # Compilation errors
