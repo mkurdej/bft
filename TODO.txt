@@ -1,3 +1,11 @@
+* Docs.
+* Examples.
+* Tutorials.
+* Change interface (can be based on Boost.Geometry)
+    * `fuse` and `return_fuse`
+    * allow using any container/range/iterator pair of size 2^N
+    * use tags (mass_tag, belief_tag, etc.)?
+
 dst_function<fod> f(Container<T> values);
 dst_function<fod> f(std::vector<T> values);
 dst_function<fod> f(std::initializer_list<T> values); // C++11
