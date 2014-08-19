@@ -1,8 +1,13 @@
+#ifndef BOOST_BELIEFS_CL_OPENCL_HPP
+#define BOOST_BELIEFS_CL_OPENCL_HPP
+
 #include "cl.hpp"
 #include "util.hpp"
 #include "GridSize1D.h"
 
 namespace boost { namespace beliefs { 
+
+namespace /* anonymous */ {
 
     class OpenCL
     {
@@ -59,13 +64,19 @@ namespace boost { namespace beliefs {
         : mContext(context)
         , mQueue(queue)
     {
+        LOG_INFO("OpenCL() ctor");
         // Get a list of devices for this context
         mDevices = mContext.getInfo<CL_CONTEXT_DEVICES>();
+        LOG_INFO("mDevices: size = " << mDevices.size());
 
         loadKernels();
+        LOG_INFO("loadKernels()");
         
-        cl_uint maxWorkgroupSize = 1;
-        mDevices[0].getInfo<cl_uint>(CL_DEVICE_MAX_WORK_GROUP_SIZE, &maxWorkgroupSize);
+        cl_int errorCode;
+        cl_uint maxWorkgroupSize = static_cast<cl_uint>( mDevices[0].getInfo<CL_DEVICE_MAX_WORK_GROUP_SIZE>(&errorCode) );
+        // FIXME: C4267 cl_uint is defined as 32-bit, return value is 64-bit (::size_t) on 64-bit platforms
+        LOG_INFO("errorCode = " << errorCode);
+        LOG_INFO("mDevices[0]: maxWorkgroupSize = " << maxWorkgroupSize);
         setWorkgroupSize(maxWorkgroupSize);
     }
 
@@ -320,5 +331,8 @@ namespace boost { namespace beliefs {
         }
     }
 
+} // namespace
 } // namespace beliefs
 } // namespace boost
+
+#endif // BOOST_BELIEFS_CL_OPENCL_HPP

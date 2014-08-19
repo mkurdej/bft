@@ -25,6 +25,8 @@
 
 #include "log.hpp"
 
+namespace /* anonymous */ {
+
 bool doesFileExist(const cl::STRING_CLASS & path);
 cl::STRING_CLASS getOpenCLErrorMessage(cl_int errorCode);
 cl::Program getProgramFromFile(cl::Context context, cl::STRING_CLASS filename);
@@ -144,22 +146,19 @@ cl::STRING_CLASS getOpenCLErrorMessage(cl_int errorCode)
 
 cl::Program getProgramFromFile(cl::Context context, cl::STRING_CLASS filename)
 {
-    using namespace cl;
-    using std::ifstream;
-    using std::make_pair;
     typedef std::istreambuf_iterator<char> is_iter_char;
 
     if (!doesFileExist(filename)) {
-        throw Error(CL_INVALID_PROGRAM, "kernel file does not exist");
+        throw cl::Error(CL_INVALID_PROGRAM, "kernel file does not exist");
     }
 
     // Read source file
-    ifstream sourceFile(filename);
+    std::ifstream sourceFile(filename);
     cl::STRING_CLASS sourceCode(is_iter_char(sourceFile), (is_iter_char()));
-    Program::Sources source(1, make_pair(sourceCode.c_str(), sourceCode.length()+1));
+    cl::Program::Sources source(1, std::make_pair(sourceCode.c_str(), sourceCode.length()+1));
     
     // Make program of the source code in the context
-    return Program(context, source);
+    return cl::Program(context, source);
 }
 
 /// Finds a platform that contains given name
@@ -202,18 +201,16 @@ cl::Platform getPlatformByName(const char * name)
 /// Finds a context corresponding to a platform which has devices of a given type
 cl::Context getContextByDeviceType(cl_device_type deviceType)
 {
-    using namespace cl;
-
     // Get available platforms
-    VECTOR_CLASS<Platform> platforms;
-    Platform::get(&platforms);
+    VECTOR_CLASS<cl::Platform> platforms;
+    cl::Platform::get(&platforms);
 
     // Select the default platform and create a context using this platform and the GPU
-    Context context;
+    cl::Context context;
 
     LOG_INFO("Found " << platforms.size() << " platforms:");
     for (unsigned int plid = 0; plid < platforms.size(); ++plid) {
-        STRING_CLASS platformName;
+        cl::STRING_CLASS platformName;
         platforms[plid].getInfo(CL_PLATFORM_NAME, &platformName);
         LOG_DEBUG("\t" << platformName);
 
@@ -222,20 +219,20 @@ cl::Context getContextByDeviceType(cl_device_type deviceType)
                 CL_CONTEXT_PLATFORM, (cl_context_properties)(platforms[plid])(),
                 0
             };
-            Context context(deviceType, cps);
+            cl::Context context(deviceType, cps);
+            LOG_DEBUG( "\t" << cl::STRING_CLASS(platformName.size(), '^') );
             switch (deviceType) {
             case CL_DEVICE_TYPE_CPU:
-                LOG_DEBUG("Found platform with a CPU device:");
+                LOG_DEBUG("\t(CPU device)");
                 break;
 
             case CL_DEVICE_TYPE_GPU:
-                LOG_DEBUG("Found platform with a GPU device:");
+                LOG_DEBUG("\t(GPU device)");
                 break;
             }
-            LOG_DEBUG("\t" << platformName);
             return context;
-        } catch(Error & error) {
-            if (plid+1 >= platforms.size()) {
+        } catch(cl::Error & error) {
+            if (plid + 1 >= platforms.size()) {
                 LOG_WARN("No more platforms to check");
                 throw;
             } else if (CL_DEVICE_NOT_FOUND == error.err()) {
@@ -246,7 +243,7 @@ cl::Context getContextByDeviceType(cl_device_type deviceType)
         }
     }
     // no platform found
-    throw Error(CL_DEVICE_NOT_FOUND, "platform not found");
+    throw cl::Error(CL_DEVICE_NOT_FOUND, "platform not found");
 }
 
 bool doesFileExist(const cl::STRING_CLASS & path)
@@ -261,5 +258,7 @@ bool doesFileExist(const cl::STRING_CLASS & path)
     f.close();
     return fileExists;
 }
+
+} // namespace
 
 #endif // BOOST_BELIEFS_CL_UTIL_HPP

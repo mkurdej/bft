@@ -1,6 +1,6 @@
 #  Boost belief library test suite Jamfile  ----------------------------
 #
-#  Copyright Marek Kurdej 2014. Use, modification and
+#  Copyright Marek Kurdej 2011-2014. Use, modification and
 #  distribution is subject to the Boost Software License, Version
 #  1.0. (See accompanying file LICENSE_1_0.txt or copy at
 #  http://www.boost.org/LICENSE_1_0.txt)
@@ -28,8 +28,8 @@ alias unit_test_framework
      [ run opencl_dst_test1.cpp unit_test_framework             : : :
         <include>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/include"
         <library>/boost//system
-#        <address-model>32:<library>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x86/OpenCL.lib"
-#        <address-model>64:<library>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x64/OpenCL.lib"
+        <address-model>32:<library>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x86/OpenCL.lib"
+        <address-model>64:<library>"c:/Program Files (x86)/Intel/OpenCL SDK/4.4/lib/x64/OpenCL.lib"
         : opencl_dst_test1 ]
 
 # Compilation errors

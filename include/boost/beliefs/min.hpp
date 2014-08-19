@@ -7,11 +7,12 @@
 #define BOOST_BELIEFS_MIN_HPP
 
 #include <boost/beliefs/dst_function.hpp>
+#include <boost/math/tr1.hpp> // BOOST_PREVENT_MACRO_SUBSTITUTION
 
 namespace boost { namespace beliefs {
 
 template <class FOD, typename T>
-dst_function<FOD, T> min(const dst_function<FOD, T> & f1, const dst_function<FOD, T> & f2)
+dst_function<FOD, T> (min) BOOST_PREVENT_MACRO_SUBSTITUTION (const dst_function<FOD, T> & f1, const dst_function<FOD, T> & f2)
 {
     dst_function<FOD, T> f_result;
     for(std::size_t A = 0; A < FOD::powerset_size; ++A) {

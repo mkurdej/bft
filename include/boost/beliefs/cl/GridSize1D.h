@@ -15,9 +15,17 @@ struct GridSize1D
     uint size;
 };
 
+#ifndef __OPENCL_VERSION__
+namespace /* anonymous */ {
+#endif
+
 uint getGridIndex(const float measure, const struct GridSize1D gridSize)
 {
     return (uint)((measure - gridSize.minRange) / gridSize.step); // floor
 }
+
+#ifndef __OPENCL_VERSION__
+} // namespace
+#endif
 
 #endif // BOOST_BELIEFS_CL_GRIDSIZE1D

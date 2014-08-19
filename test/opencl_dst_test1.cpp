@@ -40,7 +40,6 @@ using namespace boost::beliefs;
 using boost::timer::cpu_timer;
 using boost::timer::cpu_times;
 using boost::timer::nanosecond_type;
-using namespace cl;
 using std::cout;
 
 const int kRepetitions = 10;
@@ -48,7 +47,7 @@ const cl_ulong N = 1025; //4 * 1 * 1024 - (1 << 10) + 1;
 const cl_device_type kDeviceType = CL_DEVICE_TYPE_GPU;
 
 // Kernel source directory
-STRING_CLASS sourceDirectory = "cl/";
+cl::STRING_CLASS sourceDirectory = "cl/";
 
 //cl_uint preferredWorkgroupSize;
 //mKernel.getWorkGroupInfo<cl_uint>(mDevice, CL_KERNEL_PREFERRED_WORK_GROUP_SIZE_MULTIPLE, &preferredWorkgroupSize);
@@ -522,10 +521,13 @@ STRING_CLASS sourceDirectory = "cl/";
 
 BOOST_AUTO_TEST_CASE(test_cl_create_lidar_grid)
 {
-    Context context = getContextByDeviceType(kDeviceType);
-    CommandQueue queue = CommandQueue(context, context.getInfo<CL_CONTEXT_DEVICES>()[0]/*, queueProperties*/);
+    cl::Context context = getContextByDeviceType(kDeviceType);
+    LOG_INFO("Context found");
+    cl::CommandQueue queue = cl::CommandQueue(context, context.getInfo<CL_CONTEXT_DEVICES>()[0]/*, queueProperties*/);
+    LOG_INFO("CommandQueue created");
 
     OpenCL ocl(context, queue);
+    LOG_INFO("OpenCL object created");
     
     //==============================================================================
     float massFree = 0.7f;
@@ -562,8 +564,8 @@ BOOST_AUTO_TEST_CASE(test_cl_create_lidar_grid)
         ++i;
     }
 
-    Buffer dScanAngle = Buffer(context, CL_MEM_WRITE_ONLY, scanMemSize);
-    Buffer dScanRadius = Buffer(context, CL_MEM_WRITE_ONLY, scanMemSize);
+    cl::Buffer dScanAngle = cl::Buffer(context, CL_MEM_WRITE_ONLY, scanMemSize);
+    cl::Buffer dScanRadius = cl::Buffer(context, CL_MEM_WRITE_ONLY, scanMemSize);
 
     queue.enqueueWriteBuffer(dScanAngle, /* blocking = */ CL_TRUE, /* offset = */ 0, scanMemSize, aScanAngle.get());
     queue.enqueueWriteBuffer(dScanRadius, /* blocking = */ CL_TRUE, /* offset = */ 0, scanMemSize, aScanRadius.get());
@@ -584,9 +586,9 @@ BOOST_AUTO_TEST_CASE(test_cl_create_lidar_grid)
 
     const ::size_t gridMemSize = gridSizeAngle.size * gridSizeRadius.size * sizeof(float);
 
-    Buffer dFree = Buffer(context, CL_MEM_WRITE_ONLY, gridMemSize);
-    Buffer dOccupied = Buffer(context, CL_MEM_WRITE_ONLY, gridMemSize);
-    Buffer dOmega = Buffer(context, CL_MEM_WRITE_ONLY, gridMemSize);
+    cl::Buffer dFree = cl::Buffer(context, CL_MEM_WRITE_ONLY, gridMemSize);
+    cl::Buffer dOccupied = cl::Buffer(context, CL_MEM_WRITE_ONLY, gridMemSize);
+    cl::Buffer dOmega = cl::Buffer(context, CL_MEM_WRITE_ONLY, gridMemSize);
     
     scoped_array<float> aFree(new float[gridSizeAngle.size * gridSizeRadius.size]);
     scoped_array<float> aOccupied(new float[gridSizeAngle.size * gridSizeRadius.size]);
