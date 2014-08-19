@@ -1,16 +1,16 @@
 [/==============================================================================
-    Copyright (C) 2011-2012 Marek Kurdej
+    Copyright (C) 2011-2014 Marek Kurdej
 
     Distributed under the Boost Software License, Version 1.0. (See accompanying
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ===============================================================================/]
 
-[library Boost.Dst
+[library Boost.Beliefs
     [quickbook 1.5]
-    [version 0.0.1]
+    [version 0.1.0]
     [authors [Kurdej, Marek]]
-    [copyright 2011 2012 Marek Kurdej]
-    [dirname dst]
+    [copyright 2011 2014 Marek Kurdej]
+    [dirname beliefs]
     [purpose Dempster-Shafer theory of evidence]
     [source-mode c++]
     [license
@@ -24,10 +24,10 @@
 
 [/ Some links ]
 
-[def __version__                V0.0.1]
+[def __version__                V0.1.0]
 
-[def __dst__                    [@boost:/libs/dst/doc/html/index.html Dst]]
-[def __boost_dst__              [@boost:/libs/dst/doc/html/index.html Boost.Dst]]
+[def __beliefs__                [@boost:/libs/beliefs/doc/html/index.html Beliefs]]
+[def __boost_beliefs__          [@boost:/libs/beliefs/doc/html/index.html Boost.Beliefs]]
 [def __mpl__                    [@http://www.boost.org/libs/mpl/index.html Boost.Mpl]]
 [def __stl__                    [@http://en.cppreference.com/w/cpp STL]]
 [def __stl_algorithm__          [@http://en.cppreference.com/w/cpp/algorithm <algorithm>]]
@@ -39,7 +39,7 @@
 [/def __mlist_archive__          [@http://news.gmane.org/gmane.comp.parsers.spirit.general]]
 [def __repo__                   [@../../repository/doc/html/index.html Repository]]
 
-[def __wikidst__                [@http://en.wikipedia.org/wiki/Dempster-Shafer_theory Dempster-Shafer theory]]
+[def __wikibeliefs__                [@http://en.wikipedia.org/wiki/Dempster-Shafer_theory Dempster-Shafer theory]]
 [def __wikitbm__                [@http://en.wikipedia.org/wiki/Transferable_belief_model Transferable Belief Model]]
 
 [def __boost_any__              [@boost:/libs/any/index.html Boost.Any]]
@@ -65,14 +65,14 @@
 
 [/ Sections ]
 
-[/ def __sec_qi__                 [link boost_dst.qi Qi]]
+[/ def __sec_qi__                 [link boost_beliefs.qi Qi]]
 [/ def __sec_attributes__         [link spirit.abstracts.attributes Attributes]]
 
 [/ References to API descriptions ]
 
-[def __BOOST_DST_DEFINE_CLASS [link boost_dst.reference.boost_dst_define_class BOOST_DST_DEFINE_CLASS]]
-[def __aux_dst_base_class [link boost_dst.reference.boost_dst_define_class aux::dst_base_class]]
-[def __fod [link boost_dst.reference.fod fod]]
+[def __BOOST_BELIEFS_DEFINE_CLASS [link boost_beliefs.reference.boost_beliefs_define_class BOOST_BELIEFS_DEFINE_CLASS]]
+[def __detail_beliefs_base_class  [link boost_beliefs.reference.boost_beliefs_define_class detail::beliefs_base_class]]
+[def __fod [link boost_beliefs.reference.fod fod]]
 
 [def __array__                  [@http://www.boost.org/doc/html/array.html array]]
 [def __assert__                 [@http://www.boost.org/libs/utility/assert.html assert]]
@@ -89,7 +89,7 @@
 [/ Other ]
 [def __TODO__ [*TODO]]
 [def __boost_root ../../../../]
-[def __boost_dst_src__ ../../../src/boost/dst]
+[def __boost_beliefs_src__ ../../../src/boost/beliefs]
 
 [def __below '''<replaceable>see-below</replaceable>''']
 
@@ -154,9 +154,9 @@
 
 [/ Here we go ]
 
-This is the documentation of the __boost__ __dst__ library (currently, __version__).
+This is the documentation of the __boost__ __beliefs__ library (currently, __version__).
 
-__boost_dst__ is a __boost__-like library implementing ['a mathematical theory of evidence], 
+__boost_beliefs__ is a __boost__-like library implementing ['a mathematical theory of evidence], 
 known as ['[*the Dempster-Shafer theory] of evidence] or ['theory of belief functions].
 
 [include preface.qbk]
@@ -175,7 +175,7 @@ known as ['[*the Dempster-Shafer theory] of evidence] or ['theory of belief func
 
 [section:reference Alphabetical Reference]
 
-[include boost_dst_define_class.qbk]
+[include boost_beliefs_define_class.qbk]
 [include fod.qbk]
 
 [endsect] [/ reference]

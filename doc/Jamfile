@@ -6,7 +6,7 @@
 #   http://www.boost.org/LICENSE_1_0.txt)
 #==============================================================================
 
-project dst/doc ;
+project beliefs/doc ;
 
 import boostbook ;
 import quickbook ;
@@ -16,7 +16,7 @@ path-constant here : . ;
 
 if --enable-index in  [ modules.peek : ARGV ]
 {
-   ECHO "Building the Dst docs with automatic index generation enabled." ;
+   ECHO "Building the Beliefs docs with automatic index generation enabled." ;
    using auto-index ;
    project : requirements
         <quickbook-define>__use_auto_index__
@@ -29,14 +29,14 @@ if --enable-index in  [ modules.peek : ARGV ]
 }
 else
 {
-   ECHO "Building the Dst docs with automatic index generation disabled.  Try building with --enable-index." ;
+   ECHO "Building the Beliefs docs with automatic index generation disabled.  Try building with --enable-index." ;
 }
 
 path-constant images_location : html ;
 
-boostbook dst
+boostbook beliefs
     :
-        dst.qbk
+        beliefs.qbk
     :
         <xsl:param>boost.root=../../../..
         <xsl:param>chunk.section.depth=4
@@ -49,7 +49,7 @@ boostbook dst
         <include>.
         <format>pdf:<xsl:param>img.src.path=$(images_location)/
         <format>pdf:<xsl:param>draft.mode="no"
-        <format>pdf:<xsl:param>boost.url.prefix=http://www.boost.org/doc/libs/release/libs/dst/doc/html
+        <format>pdf:<xsl:param>boost.url.prefix=http://www.boost.org/doc/libs/release/libs/beliefs/doc/html
     ;
 
 
