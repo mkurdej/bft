@@ -1,3 +1,4 @@
+* Rename beliefs/dst -> bft (Belief Functions Theory)
 * Docs.
 * Examples.
 * Tutorials.

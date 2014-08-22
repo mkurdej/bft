@@ -20,8 +20,11 @@ struct degenerate_t {}; // all mass on Emptyset
 struct vacuous_t {}; // all mass on Unknown
 } // namespace
 
-degenerate_t degenerate;
-vacuous_t vacuous;
+// TODO: silence warnings about unused variable
+// GCC: [-Wunused-variable]
+// MSVC: /W?
+/*static*/ degenerate_t degenerate;
+/*static*/ vacuous_t vacuous;
 
 template <class FOD, typename T = double>
 class dst_function

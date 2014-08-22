@@ -16,12 +16,31 @@ if(OPENCL_FOUND)
 endif()
 
 ################################################################################
+# add_test_executable(TEST_NAME [ADDITIONAL_SOURCES])
+function(add_test_executable TEST_NAME)
+    set(ADDITIONAL_SOURCES ${ARGN})
+    if(DEBUG)
+        message(STATUS "ADDITIONAL_SOURCES = ${ADDITIONAL_SOURCES}")
+    endif()
+    set(EXE_NAME ${TEST_NAME})
+    add_definitions( -DBOOST_TEST_DYN_LINK )
+    add_executable(${EXE_NAME} ${TEST_NAME}.cpp ${ADDITIONAL_SOURCES})
+    add_test(NAME ${TEST_NAME} COMMAND ${EXE_NAME})
+    set_target_properties(${TEST_NAME} PROPERTIES FOLDER "Tests")
+    
+    target_link_libraries(${TEST_NAME}
+        ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+    )
+endfunction()
 
-set(DST_PATH "${SRC_PATH}/boost/dst")
+################################################################################
+
+# set(DST_PATH "${SRC_PATH}/boost/dst")
+set(DST_PATH "${INCLUDE_PATH}/boost/beliefs")
 set(CL_DST_PATH "${SRC_PATH}/boost/dst/cl")
 
 #******************************************************************************
-add_test_executable(TestDst
+add_test_executable(dst_test1
     ${DST_PATH}/belief.hpp
     ${DST_PATH}/boost_dst_define_class.hpp
     ${DST_PATH}/commonality.hpp
@@ -90,19 +109,19 @@ if(OPENCL_FOUND)
     )
 endif()
 
-add_test_executable(test_discounting
+add_test_executable(discounting_test1
     ${DST_PATH}/contextual_discounting.hpp
     ${DST_PATH}/discounting.hpp
 )
-add_test_executable(test_dst_function
+add_test_executable(dst_function_test1
     ${DST_PATH}/dst_function.hpp
 )
-add_test_executable(test_mass)
-add_test_executable(test_rule_jeffrey_dempster)
-add_test_executable(test_rules)
+add_test_executable(mass_test1)
+add_test_executable(rule_jeffrey_dempster_test1)
+add_test_executable(rules_test1)
 
 ################################################################################
-install(TARGETS TestDst test_discounting test_dst_function test_mass test_rule_jeffrey_dempster test_rules
+install(TARGETS dst_test1 discounting_test1 dst_function_test1 mass_test1 rule_jeffrey_dempster_test1 rules_test1
     RUNTIME DESTINATION ${MKPHD_BIN_DIR}
     LIBRARY DESTINATION ${MKPHD_BIN_DIR}
     ARCHIVE DESTINATION ${MKPHD_LIB_DIR}
