@@ -593,15 +593,3 @@ BOOST_AUTO_TEST_CASE(test_marginalization)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-
-// TODO Boost.BFT wishlist:
-// * conditioning
-// * deconditioning
-// * plausibility::is_condensable <=> Pl(A) = sup{Pl(B) | B \subset A and B is finite}
-
-// * rule_zhang
-
-// * reorganise bft_test1.cpp: split
-
-// * permit the use of boost::numeric::interval and not only classes
-// *

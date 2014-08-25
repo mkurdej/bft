@@ -27,3 +27,11 @@ namespace bft = namespace boost::bft;
 typedef bft::mass_model< /*set_size = */5, /*value_type = */double > mass_type;
 
 #endif
+
+// TODO Boost.BFT wishlist:
+// * conditioning
+// * deconditioning
+// * plausibility::is_condensable <=> Pl(A) = sup{Pl(B) | B \subset A and B is finite}
+// * rule_zhang
+// * reorganise bft_test1.cpp: split
+// * permit the use of boost::numeric::interval and not only classes

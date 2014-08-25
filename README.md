@@ -1,4 +1,4 @@
-belief
+Boost.BFT
 ======
 
 Belief functions theory (Dempster-Shafer theory) implementation in C++
