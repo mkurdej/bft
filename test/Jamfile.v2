@@ -9,28 +9,43 @@
 
 import testing ;
 
-alias system : /boost//system ;
-alias unit_test_framework : /boost//unit_test_framework ;
-alias opencl : /site-config//opencl ;
-
 {
-  test-suite bft:
-# Basic tests
-   : [ run discounting_test1.cpp unit_test_framework            : : : : discounting_test1 ]
-     [ run bft_function_test1.cpp unit_test_framework           : : : : bft_function_test1 ]
-     [ run mass_test1.cpp unit_test_framework                   : : : : mass_test1 ]
-     [ run rule_jeffrey_dempster_test1.cpp unit_test_framework  : : : : rule_jeffrey_dempster_test1 ]
-     [ run rules_test1.cpp unit_test_framework                  : : : : rules_test1 ]
-     [ run bft_test1.cpp unit_test_framework                    : : : : bft_test1 ]
-     [ run output_test1.cpp unit_test_framework                 : : : : output_test1 ]
-# OpenCL tests
-     [ run opencl_bft_test1.cpp system unit_test_framework      : : :
+project
+    : requirements
+    <library>/boost/test//boost_unit_test_framework
+    <include>../../..
+    <toolset>msvc:<define>_SCL_SECURE_NO_WARNINGS
+;
 
-        <library>opencl
-        : opencl_bft_test1 ]
+test-suite "bft":
+    : # sources
+# Basic tests
+    [ run discounting_test1.cpp ]
+    [ run bft_function_test1.cpp ]
+    [ run mass_test1.cpp ]
+    [ run rule_jeffrey_dempster_test1.cpp ]
+    [ run rules_test1.cpp ]
+    [ run bft_test1.cpp ]
+    [ run output_test1.cpp ]
 
 # Compilation errors
     [ compile-fail incompatible_fod_fail1.cpp ]
+;
+}
 
-    ;
+{
+project
+    : requirements
+    <library>/boost//system
+    <library>/boost/test//boost_unit_test_framework
+    <library>/site-config//opencl
+    <include>../../..
+    <toolset>msvc:<define>_SCL_SECURE_NO_WARNINGS
+;
+
+test-suite "bft-opencl"
+    : # sources
+# OpenCL tests
+    [ run opencl_bft_test1.cpp ]
+;
 }
