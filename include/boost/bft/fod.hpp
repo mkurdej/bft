@@ -93,6 +93,12 @@ public:
 namespace detail {
 namespace /* anonymous */ {
 double tolerance = BOOST_BFT_FP_TOLERANCE;
+
+template <typename T> void quiet_warning()
+{
+    (void) tolerance;
+}
+
 } // namespace
 } // namespace detail
 

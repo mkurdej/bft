@@ -22,6 +22,7 @@ alias opencl : /site-config//opencl ;
      [ run rule_jeffrey_dempster_test1.cpp unit_test_framework  : : : : rule_jeffrey_dempster_test1 ]
      [ run rules_test1.cpp unit_test_framework                  : : : : rules_test1 ]
      [ run bft_test1.cpp unit_test_framework                    : : : : bft_test1 ]
+     [ run output_test1.cpp unit_test_framework                 : : : : output_test1 ]
 # OpenCL tests
      [ run opencl_bft_test1.cpp system unit_test_framework      : : :
 

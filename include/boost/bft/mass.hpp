@@ -13,7 +13,8 @@
 namespace boost { namespace bft {
 
 template <class FOD, typename T = double>
-class mass : public bft_function<FOD, T>
+class mass
+    : public bft_function<FOD, T>
 {
 public:
     typedef mass<FOD, T> this_type;
@@ -25,19 +26,25 @@ public:
     }
 
     /// It creates a mass function will all mass attributed to the Conflict set (Emptyset).
-    mass(degenerate_t)
+    explicit mass(degenerate_t)
     {
         at_emptyset() = 1;
     }
 
     /// It creates a mass function will all mass attributed to the Unknown set (Omega).
-    mass(vacuous_t)
+    explicit mass(vacuous_t)
     {
         at_omega() = 1;
     }
 
     explicit mass(const bft_function<FOD, T> & f)
         : bft_function<FOD, T>(f)
+    {
+    }
+
+    template <typename Iterator>
+    mass(Iterator first, Iterator last)
+        : bft_function<FOD, T>(first, last)
     {
     }
 

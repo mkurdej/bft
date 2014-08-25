@@ -8,10 +8,10 @@
 
 #include <boost/array.hpp>
 #include <boost/assert.hpp>
+#include <boost/static_assert.hpp>
 #include <boost/bft/private/emptytype.hpp>
 #include <boost/type_traits/is_same.hpp>
-#include <iomanip>
-#include <sstream>
+#include <iterator>
 
 namespace boost { namespace bft {
 
@@ -48,37 +48,25 @@ public:
     {
     }
 
+    template <typename Iterator>
+    bft_function(Iterator first, Iterator last)
+    {
+        BOOST_STATIC_ASSERT(( is_same<T, typename std::iterator_traits<Iterator>::value_type >::value ));
+        BOOST_ASSERT(( std::distance(first, last) == FOD::powerset_size ));
+        BOOST_ASSERT(( std::distance(first, last) == m_values.size() ));
+        // TODO: throw
+        std::copy(first, last, this->m_values.begin());
+    }
+
     bft_function(const container_type & init_values)
     {
+        BOOST_ASSERT(( FOD::powerset_size == m_values.size() ));
         std::copy(init_values, init_values + FOD::powerset_size, this->m_values.begin());
     }
 
     // =============================================================================
     virtual ~bft_function()
     {
-    }
-
-    // =============================================================================
-    std::string to_string() const
-    {
-        static const std::string kPrefix = "[";
-        static const std::string kInfix = ", ";
-        static const std::string kSuffix = "]";
-
-        std::stringstream ss;
-        ss.precision(2);
-        ss.flags(std::ios_base::fixed);
-
-        ss << kPrefix;
-
-        std::size_t i;
-        for (i = 0; i < FOD::powerset_size - 1; ++i) {
-            ss << this->m_values[i] << kInfix;
-        }
-        ss << this->m_values[i];
-        ss << kSuffix;
-
-        return ss.str();
     }
 
     // =============================================================================
@@ -396,6 +384,16 @@ static std::size_t count_elements(std::size_t set)
 {
     return count_bits(set);
 }
+
+namespace detail {
+
+template <typename T> void quiet_warning()
+{
+    (void) degenerate;
+    (void) vacuous;
+}
+
+} // namespace detail
 
 } // namespace bft
 
