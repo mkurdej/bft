@@ -10,7 +10,7 @@
 [/
 
 [/////////////////////////////////////////////////////////////////////////////]
-[section:dst_0_0_2 Dst V0.0.2]
+[section:bft_0_0_2 BFT V0.0.2]
 
 [heading What's changed from V0.0.1 (Boost V1.48.0) to V0.0.2 (Boost V1.49.0)]
 
@@ -22,17 +22,17 @@
 * Fixed Boost ticket #5701: lexertl token_value_type returns const unused for 
   nonconst ref.
 
-[endsect] [/ dst_0_0_2]
+[endsect] [/ bft_0_0_2]
 
 /]
 
 [/////////////////////////////////////////////////////////////////////////////]
-[section:dst_0_0_1 Dst V0.0.1]
+[section:bft_0_0_1 BFT V0.0.1]
 
 [heading What's new in V0.0.1 (Boost V1.48.0)]
 
 * Everything.
 
-[endsect] [/ dst_0_0_1]
+[endsect] [/ bft_0_0_1]
 
 [endsect] [/ whats_new]

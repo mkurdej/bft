@@ -1,1 +1,1 @@
-add_subdirectory(belief)
+add_subdirectory(bft)

@@ -26,7 +26,7 @@
 
 #define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
-#include <boost/beliefs/mass.hpp>
+#include <boost/bft/mass.hpp>
 #include <boost/math/special_functions/fpclassify.hpp>
 
 #ifdef _MSC_VER
@@ -36,12 +36,12 @@
 #endif // _MSC_VER
 
 using namespace boost;
-using namespace boost::beliefs;
+using namespace boost::bft;
 
-BOOST_BELIEFS_DEFINE_CLASS(C1);
-BOOST_BELIEFS_DEFINE_CLASS(C2);
-BOOST_BELIEFS_DEFINE_CLASS(C3);
-BOOST_BELIEFS_DEFINE_CLASS(C4);
+BOOST_BFT_DEFINE_CLASS(C1);
+BOOST_BFT_DEFINE_CLASS(C2);
+BOOST_BFT_DEFINE_CLASS(C3);
+BOOST_BFT_DEFINE_CLASS(C4);
 
 typedef fod<C1, C2> fod2;
 typedef fod<C1, C2, C3> fod3;
@@ -50,7 +50,7 @@ typedef fod2 fodFO;
 typedef fod3 fodABC;
 
 //==============================================================================
-#include <boost/beliefs/rule_conjunctive.hpp>
+#include <boost/bft/rule_conjunctive.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_conjunctive)
 
@@ -123,7 +123,7 @@ BOOST_AUTO_TEST_CASE(test_rule_conjunctive_is_associative)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/rule_dempster.hpp>
+#include <boost/bft/rule_dempster.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_dempster)
 
@@ -196,7 +196,7 @@ BOOST_AUTO_TEST_CASE(test_rule_dempster_is_associative)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/rule_disjunctive.hpp>
+#include <boost/bft/rule_disjunctive.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_disjunctive)
 
@@ -269,7 +269,7 @@ BOOST_AUTO_TEST_CASE(test_rule_disjunctive_is_associative)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/rule_dubois_prade.hpp>
+#include <boost/bft/rule_dubois_prade.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_dubois_prade)
 
@@ -347,7 +347,7 @@ BOOST_AUTO_TEST_CASE(test_rule_dubois_prade_is_commutative)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/conjunctive_decomposition.hpp>
+#include <boost/bft/conjunctive_decomposition.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_conjunctive_decomposition)
 
@@ -358,9 +358,9 @@ BOOST_AUTO_TEST_CASE(test_conjunctive_decomposition_gives_correct_result)
     const mass<fodFO>::container_type ma = {0, 0.3, 0, 0.7};
     const mass<fodFO> m(ma);
 
-    const dst_function<fodFO>::container_type wae = {1, 0.7, 1, std::numeric_limits<double>::quiet_NaN()};
-    const dst_function<fodFO> w_expected(wae);
-    dst_function<fodFO> w_actual = m.apply(decomposition);
+    const bft_function<fodFO>::container_type wae = {1, 0.7, 1, std::numeric_limits<double>::quiet_NaN()};
+    const bft_function<fodFO> w_expected(wae);
+    bft_function<fodFO> w_actual = m.apply(decomposition);
 
     for(std::size_t i = 0; i < fodFO::powerset_size-1; ++i) {
         //BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
@@ -373,7 +373,7 @@ BOOST_AUTO_TEST_CASE(test_conjunctive_decomposition_gives_correct_result)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/rule_conjunctive_cautious.hpp>
+#include <boost/bft/rule_conjunctive_cautious.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_conjunctive_cautious)
 
@@ -479,7 +479,7 @@ BOOST_AUTO_TEST_CASE(test_rule_conjunctive_is_distributive_wrt_rule_conjunctive_
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/disjunctive_decomposition.hpp>
+#include <boost/bft/disjunctive_decomposition.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_disjunctive_decomposition)
 
@@ -491,9 +491,9 @@ BOOST_AUTO_TEST_CASE(test_disjunctive_decomposition_gives_correct_result)
     const mass<fod>::container_type ma = {0.1, 0, 0, 0.3, 0, 0, 0.6, 0};
     const mass<fod> m(ma);
 
-    const dst_function<fod>::container_type vae = {std::numeric_limits<double>::quiet_NaN(), 1, 1, 0.25, 1, 1, 1./7, 2.8};
-    const dst_function<fod> v_expected(vae);
-    dst_function<fod> v_actual = m.apply(decomposition);
+    const bft_function<fod>::container_type vae = {std::numeric_limits<double>::quiet_NaN(), 1, 1, 0.25, 1, 1, 1./7, 2.8};
+    const bft_function<fod> v_expected(vae);
+    bft_function<fod> v_actual = m.apply(decomposition);
 
     BOOST_CHECK(math::isnan(v_expected.values().front()));
     for(std::size_t i = 1; i < fod::powerset_size; ++i) {
@@ -506,7 +506,7 @@ BOOST_AUTO_TEST_CASE(test_disjunctive_decomposition_gives_correct_result)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/rule_disjunctive_bold.hpp>
+#include <boost/bft/rule_disjunctive_bold.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_disjunctive_bold)
 
@@ -612,8 +612,8 @@ BOOST_AUTO_TEST_CASE(test_rule_disjunctive_is_distributive_wrt_rule_disjunctive_
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/rule_normalization_inagaki.hpp>
-#include <boost/beliefs/rule_yager.hpp>
+#include <boost/bft/rule_normalization_inagaki.hpp>
+#include <boost/bft/rule_yager.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_inagaki)
 
@@ -679,7 +679,7 @@ BOOST_AUTO_TEST_CASE(test_rule_inagaki_extra_rule_gives_correct_result)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/rule_normalization.hpp>
+#include <boost/bft/rule_normalization.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_normalization)
 
@@ -738,7 +738,7 @@ BOOST_AUTO_TEST_CASE(test_rule_normalization_is_correct_with_conflict)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/rule_pcr5.hpp>
+#include <boost/bft/rule_pcr5.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_pcr5)
 
@@ -768,7 +768,7 @@ BOOST_AUTO_TEST_CASE(test_rule_pcr5_is_commutative)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/rule_yager.hpp>
+#include <boost/bft/rule_yager.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_yager)
 

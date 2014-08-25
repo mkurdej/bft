@@ -1,6 +1,6 @@
 {
-    "key": "beliefs",
-    "name": "Beliefs",
+    "key": "bft",
+    "name": "BFT",
     "authors": [
         "Marek Kurdej"
     ],

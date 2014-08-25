@@ -17,16 +17,16 @@ alias opencl : /site-config//opencl ;
   test-suite belief:
 # Basic tests
    : [ run discounting_test1.cpp unit_test_framework            : : : : discounting_test1 ]
-     [ run dst_function_test1.cpp unit_test_framework           : : : : dst_function_test1 ]
+     [ run bft_function_test1.cpp unit_test_framework           : : : : bft_function_test1 ]
      [ run mass_test1.cpp unit_test_framework                   : : : : mass_test1 ]
      [ run rule_jeffrey_dempster_test1.cpp unit_test_framework  : : : : rule_jeffrey_dempster_test1 ]
      [ run rules_test1.cpp unit_test_framework                  : : : : rules_test1 ]
-     [ run dst_test1.cpp unit_test_framework                    : : : : dst_test1 ]
+     [ run bft_test1.cpp unit_test_framework                    : : : : bft_test1 ]
 # OpenCL tests
-     [ run opencl_dst_test1.cpp system unit_test_framework      : : :
+     [ run opencl_bft_test1.cpp system unit_test_framework      : : :
 
         <library>opencl
-        : opencl_dst_test1 ]
+        : opencl_bft_test1 ]
 
 # Compilation errors
     [ compile-fail incompatible_fod_fail1.cpp ]

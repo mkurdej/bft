@@ -1,13 +1,13 @@
-#include <boost/beliefs/fod.hpp>
-#include <boost/beliefs/rule_conjunctive.hpp>
+#include <boost/bft/fod.hpp>
+#include <boost/bft/rule_conjunctive.hpp>
 #include <vector>
 
-BOOST_BELIEFS_DEFINE_CLASS(C1);
-BOOST_BELIEFS_DEFINE_CLASS(C2);
-BOOST_BELIEFS_DEFINE_CLASS(C3);
-BOOST_BELIEFS_DEFINE_CLASS(C4);
+BOOST_BFT_DEFINE_CLASS(C1);
+BOOST_BFT_DEFINE_CLASS(C2);
+BOOST_BFT_DEFINE_CLASS(C3);
+BOOST_BFT_DEFINE_CLASS(C4);
 
-namespace bb = boost::beliefs;
+namespace bb = boost::bft;
 
 typedef bb::fod<C1, C2> fodAB;
 typedef bb::fod<C1, C2, C3, C4> fodABCD;

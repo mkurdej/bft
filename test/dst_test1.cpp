@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#define BOOST_TEST_MODULE TestBoostDst
+#define BOOST_TEST_MODULE TestBoostBFT
 
 #ifdef _MSC_VER
 #   pragma warning(disable:4505) // unused function
@@ -38,22 +38,22 @@
 #   pragma GCC diagnostic pop
 #endif // _MSC_VER
 
-#include <boost/beliefs/dst_function.hpp>
-#include <boost/beliefs/fod.hpp>
+#include <boost/bft/bft_function.hpp>
+#include <boost/bft/fod.hpp>
 
 using namespace boost;
-using namespace boost::beliefs;
+using namespace boost::bft;
 namespace bm = boost::mpl;
 
-BOOST_BELIEFS_DEFINE_CLASS(Free);
-BOOST_BELIEFS_DEFINE_CLASS(Occupied);
-BOOST_BELIEFS_DEFINE_CLASS(Infrastructure);
-BOOST_BELIEFS_DEFINE_CLASS(Movable);
+BOOST_BFT_DEFINE_CLASS(Free);
+BOOST_BFT_DEFINE_CLASS(Occupied);
+BOOST_BFT_DEFINE_CLASS(Infrastructure);
+BOOST_BFT_DEFINE_CLASS(Movable);
 
 typedef fod<Free, Occupied> fodFO;
 typedef fod<Free, Occupied, Infrastructure, Movable> fodFOIM;
-typedef dst_function<fodFO> dfFO;
-typedef dst_function<fodFOIM> dfFOIM;
+typedef bft_function<fodFO> dfFO;
+typedef bft_function<fodFOIM> dfFOIM;
 
 /*
 #include <boost/numeric/interval.hpp>
@@ -92,9 +92,9 @@ BOOST_AUTO_TEST_CASE(test_fod_static_sizes)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/belief.hpp>
-#include <boost/beliefs/to_belief.hpp>
-#include <boost/beliefs/to_mass.hpp>
+#include <boost/bft/belief.hpp>
+#include <boost/bft/to_belief.hpp>
+#include <boost/bft/to_mass.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_belief)
 
@@ -153,8 +153,8 @@ BOOST_AUTO_TEST_CASE(test_to_belief_with_conflict_mass)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/commonality.hpp>
-#include <boost/beliefs/to_commonality.hpp>
+#include <boost/bft/commonality.hpp>
+#include <boost/bft/to_commonality.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_commonality)
 
@@ -209,8 +209,8 @@ BOOST_AUTO_TEST_CASE(test_to_commonality_with_conflict_mass)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/implicability.hpp>
-#include <boost/beliefs/to_implicability.hpp>
+#include <boost/bft/implicability.hpp>
+#include <boost/bft/to_implicability.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_implicability)
 
@@ -268,7 +268,7 @@ BOOST_AUTO_TEST_CASE(test_to_implicability_with_conflict_mass)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/to_pignistic.hpp>
+#include <boost/bft/to_pignistic.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_pignistic)
 
@@ -277,9 +277,9 @@ BOOST_AUTO_TEST_CASE(test_to_pignistic_compiles)
     mass<fodFO>::container_type ma = {0, 0.6, 0, 0.4};
     mass<fodFO> m(ma);
 
-    dst_function<fodFO>::container_type betPae = {0, 0.8, 0.2, 1};
-    dst_function<fodFO> betP_expected(betPae);
-    dst_function<fodFO> betP_actual = to_pignistic(m);
+    bft_function<fodFO>::container_type betPae = {0, 0.8, 0.2, 1};
+    bft_function<fodFO> betP_expected(betPae);
+    bft_function<fodFO> betP_actual = to_pignistic(m);
 
     for(std::size_t i = 0; i < fodFO::powerset_size; ++i) {
         //BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
@@ -329,8 +329,8 @@ BOOST_CHECK_CLOSE(m_expected[i], m_actual[i], 1e-10);
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/plausibility.hpp>
-#include <boost/beliefs/to_plausibility.hpp>
+#include <boost/bft/plausibility.hpp>
+#include <boost/bft/to_plausibility.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_plausibility)
 
@@ -407,7 +407,7 @@ BOOST_AUTO_TEST_CASE(test_fod_idx)
     BOOST_CHECK_EQUAL( (fod<Free, Occupied>::idx<Occupied>()),  1);
 }
 
-BOOST_AUTO_TEST_CASE(test_dst_function_Idx)
+BOOST_AUTO_TEST_CASE(test_bft_function_Idx)
 {
     BOOST_CHECK_EQUAL( static_cast<int>(dfFO::Idx<>::value), 0);
     BOOST_CHECK_EQUAL( static_cast<int>(dfFO::Idx<Free>::value), 1);
@@ -420,7 +420,7 @@ BOOST_AUTO_TEST_CASE(test_dst_function_Idx)
 #   pragma warning(disable:4347)
 #endif // _MSC_VER
 
-BOOST_AUTO_TEST_CASE(test_dst_function_idx)
+BOOST_AUTO_TEST_CASE(test_bft_function_idx)
 {
     BOOST_CHECK_EQUAL( (dfFO::idx()), 0);
     BOOST_CHECK_EQUAL( (dfFO::idx<Free>()), 1);
@@ -435,7 +435,7 @@ BOOST_AUTO_TEST_CASE(test_dst_function_idx)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/fod_union.hpp>
+#include <boost/bft/fod_union.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_fod_union)
 
@@ -470,7 +470,7 @@ BOOST_AUTO_TEST_CASE(test_fod_union)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/discounting.hpp>
+#include <boost/bft/discounting.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_discounting)
 
@@ -494,7 +494,7 @@ BOOST_AUTO_TEST_CASE(test_discounting_gives_correct_result)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/contextual_discounting.hpp>
+#include <boost/bft/contextual_discounting.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_contextual_discounting)
 
@@ -537,8 +537,8 @@ BOOST_AUTO_TEST_CASE(test_contextual_discounting_gives_correct_result)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/fod_union.hpp>
-#include <boost/beliefs/extension.hpp>
+#include <boost/bft/fod_union.hpp>
+#include <boost/bft/extension.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_extension)
 
@@ -565,8 +565,8 @@ BOOST_AUTO_TEST_CASE(test_extension)
 BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
-#include <boost/beliefs/fod_minus.hpp>
-#include <boost/beliefs/marginalization.hpp>
+#include <boost/bft/fod_minus.hpp>
+#include <boost/bft/marginalization.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_marginalization)
 
@@ -594,14 +594,14 @@ BOOST_AUTO_TEST_SUITE_END()
 
 //==============================================================================
 
-// TODO Boost.Dst wishlist:
+// TODO Boost.BFT wishlist:
 // * conditioning
 // * deconditioning
 // * plausibility::is_condensable <=> Pl(A) = sup{Pl(B) | B \subset A and B is finite}
 
 // * rule_zhang
 
-// * reorganise TestDst.cpp: split
+// * reorganise bft_test1.cpp: split
 
 // * permit the use of boost::numeric::interval and not only classes
 // *

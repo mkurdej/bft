@@ -5,12 +5,12 @@
     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 ===============================================================================/]
 
-[library Boost.Beliefs
+[library Boost.BFT
     [quickbook 1.5]
     [version 0.1.0]
     [authors [Kurdej, Marek]]
     [copyright 2011 2014 Marek Kurdej]
-    [dirname beliefs]
+    [dirname bft]
     [purpose Dempster-Shafer theory of evidence]
     [source-mode c++]
     [license
@@ -26,8 +26,8 @@
 
 [def __version__                V0.1.0]
 
-[def __beliefs__                [@boost:/libs/beliefs/doc/html/index.html Beliefs]]
-[def __boost_beliefs__          [@boost:/libs/beliefs/doc/html/index.html Boost.Beliefs]]
+[def __bft__                    [@boost:/libs/bft/doc/html/index.html BFT]]
+[def __boost_bft__              [@boost:/libs/bft/doc/html/index.html Boost.BFT]]
 [def __mpl__                    [@http://www.boost.org/libs/mpl/index.html Boost.Mpl]]
 [def __stl__                    [@http://en.cppreference.com/w/cpp STL]]
 [def __stl_algorithm__          [@http://en.cppreference.com/w/cpp/algorithm <algorithm>]]
@@ -36,10 +36,9 @@
 [def __boost__                  [@http://www.boost.org/ Boost]]
 [def __boost_tools__            [@http://www.boost.org/tools/index.html Boost Tools]]
 [def __gmane__                  [@http://www.gmane.org Gmane]]
-[/def __mlist_archive__          [@http://news.gmane.org/gmane.comp.parsers.spirit.general]]
 [def __repo__                   [@../../repository/doc/html/index.html Repository]]
 
-[def __wikibeliefs__                [@http://en.wikipedia.org/wiki/Dempster-Shafer_theory Dempster-Shafer theory]]
+[def __wikibft__                [@http://en.wikipedia.org/wiki/Dempster-Shafer_theory Dempster-Shafer theory]]
 [def __wikitbm__                [@http://en.wikipedia.org/wiki/Transferable_belief_model Transferable Belief Model]]
 
 [def __boost_any__              [@boost:/libs/any/index.html Boost.Any]]
@@ -55,8 +54,6 @@
 [def __boost_typetraits__       [@boost:/libs/typetraits/index.html Boost.TypeTrais]]
 [def __boost_variant__          [@http://www.boost.org/doc/html/variant.html Boost.Variant]]
 
-[/ def __qi__                     /Spirit.Qi/]
-
 [def __mpl_boolean_constant__   [@boost:/libs/mpl/doc/refmanual/integral-constant.html MPL Boolean Constant]]
 [def __mpl_int_constant__       [@boost:/libs/mpl/doc/refmanual/integral-constant.html MPL Integral Constant]]
 [def __mpl_fwd_sequence__       [@boost:/libs/mpl/doc/refmanual/forward-sequence.html MPL Forward Sequence]]
@@ -65,14 +62,11 @@
 
 [/ Sections ]
 
-[/ def __sec_qi__                 [link boost_beliefs.qi Qi]]
-[/ def __sec_attributes__         [link spirit.abstracts.attributes Attributes]]
-
 [/ References to API descriptions ]
 
-[def __BOOST_BELIEFS_DEFINE_CLASS [link boost_beliefs.reference.boost_beliefs_define_class BOOST_BELIEFS_DEFINE_CLASS]]
-[def __detail_beliefs_base_class  [link boost_beliefs.reference.boost_beliefs_define_class detail::beliefs_base_class]]
-[def __fod [link boost_beliefs.reference.fod fod]]
+[def __BOOST_BFT_DEFINE_CLASS [link boost_bft.reference.boost_bft_define_class BOOST_BFT_DEFINE_CLASS]]
+[def __detail_bft_base_class  [link boost_bft.reference.boost_bft_define_class detail::bft_base_class]]
+[def __fod [link boost_bft.reference.fod fod]]
 
 [def __array__                  [@http://www.boost.org/doc/html/array.html array]]
 [def __assert__                 [@http://www.boost.org/libs/utility/assert.html assert]]
@@ -89,7 +83,7 @@
 [/ Other ]
 [def __TODO__ [*TODO]]
 [def __boost_root ../../../../]
-[def __boost_beliefs_src__ ../../../src/boost/beliefs]
+[def __boost_bft_src__ ../../../src/boost/bft]
 
 [def __below '''<replaceable>see-below</replaceable>''']
 
@@ -154,9 +148,9 @@
 
 [/ Here we go ]
 
-This is the documentation of the __boost__ __beliefs__ library (currently, __version__).
+This is the documentation of the __boost__ __bft__ library (currently, __version__).
 
-__boost_beliefs__ is a __boost__-like library implementing ['a mathematical theory of evidence], 
+__boost_bft__ is a __boost__-like library implementing ['a mathematical theory of evidence], 
 known as ['[*the Dempster-Shafer theory] of evidence] or ['theory of belief functions].
 
 [include preface.qbk]
@@ -175,7 +169,7 @@ known as ['[*the Dempster-Shafer theory] of evidence] or ['theory of belief func
 
 [section:reference Alphabetical Reference]
 
-[include boost_beliefs_define_class.qbk]
+[include boost_bft_define_class.qbk]
 [include fod.qbk]
 
 [endsect] [/ reference]

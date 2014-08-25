@@ -16,20 +16,20 @@ import feature ;
 
 alias opencl : /site-config//opencl ;
 
-project boost/beliefs/test_headers
+project boost/bft/test_headers
     : requirements
         <include>$(BOOST_ROOT)
         <include>../../..
         <library>opencl
 ;
 
-headers = [ path.glob-tree ../../../boost/beliefs : *.hpp : detail ] ;
+headers = [ path.glob-tree ../../../boost/bft : *.hpp : detail ] ;
 
 for local file in $(headers)
 {
     compile test.cpp
       : # requirements
-        <define>BOOST_BELIEFS_HEADER_NAME=$(file)
+        <define>BOOST_BFT_HEADER_NAME=$(file)
         <dependency>$(file)
       : # test name
         [ regex.replace [ path.relative-to ../../.. $(file) ] "/" "_" ] ;

@@ -22,8 +22,8 @@
 
 #define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
-#include <boost/beliefs/dst_function.hpp>
-#include <boost/beliefs/fod.hpp>
+#include <boost/bft/bft_function.hpp>
+#include <boost/bft/fod.hpp>
 #include <boost/utility/binary.hpp>
 
 #ifdef _MSC_VER
@@ -33,7 +33,7 @@
 #endif // _MSC_VER
 
 using namespace boost;
-using namespace boost::beliefs;
+using namespace boost::bft;
 
 typedef fod<int> fod_t;
 

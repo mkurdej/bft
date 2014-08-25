@@ -30,8 +30,8 @@
 
 #define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
-#include <boost/beliefs/contextual_discounting.hpp>
-#include <boost/beliefs/discounting.hpp>
+#include <boost/bft/contextual_discounting.hpp>
+#include <boost/bft/discounting.hpp>
 #include <boost/math/special_functions/fpclassify.hpp>
 
 #ifdef _MSC_VER
@@ -41,12 +41,12 @@
 #endif // _MSC_VER
 
 using namespace boost;
-using namespace boost::beliefs;
+using namespace boost::bft;
 
-BOOST_BELIEFS_DEFINE_CLASS(C1);
-BOOST_BELIEFS_DEFINE_CLASS(C2);
-BOOST_BELIEFS_DEFINE_CLASS(C3);
-BOOST_BELIEFS_DEFINE_CLASS(C4);
+BOOST_BFT_DEFINE_CLASS(C1);
+BOOST_BFT_DEFINE_CLASS(C2);
+BOOST_BFT_DEFINE_CLASS(C3);
+BOOST_BFT_DEFINE_CLASS(C4);
 
 typedef fod<C1, C2> fod2;
 typedef fod<C1, C2, C3> fod3;
@@ -55,7 +55,7 @@ typedef fod2 fodFO;
 typedef fod3 fodABC;
 
 //==============================================================================
-#include <boost/beliefs/rule_conjunctive.hpp>
+#include <boost/bft/rule_conjunctive.hpp>
 
 BOOST_AUTO_TEST_SUITE(suite_rule_discounting)
 

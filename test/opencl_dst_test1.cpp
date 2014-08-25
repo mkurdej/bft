@@ -3,7 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-#define BOOST_TEST_MODULE TestOpenCLDst
+#define BOOST_TEST_MODULE TestOpenCLBFT
 
 #define __CL_ENABLE_EXCEPTIONS
 //#define OPENCL_DEBUGGING 1
@@ -23,8 +23,8 @@
 #   pragma GCC diagnostic push
 #endif // _MSC_VER
 
-#include <boost/beliefs/cl/OpenCL.hpp>
-#include <boost/beliefs/cl/util.hpp>
+#include <boost/bft/cl/OpenCL.hpp>
+#include <boost/bft/cl/util.hpp>
 
 #include <boost/scoped_array.hpp>
 #include <boost/test/unit_test.hpp>
@@ -36,7 +36,7 @@
 #endif // _MSC_VER
 
 using namespace boost;
-using namespace boost::beliefs;
+using namespace boost::bft;
 using boost::timer::cpu_timer;
 using boost::timer::cpu_times;
 using boost::timer::nanosecond_type;

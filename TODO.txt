@@ -1,4 +1,3 @@
-* Rename beliefs/dst -> bft (Belief Functions Theory)
 * Docs.
 * Examples.
 * Tutorials.
@@ -7,24 +6,24 @@
     * allow using any container/range/iterator pair of size 2^N
     * use tags (mass_tag, belief_tag, etc.)?
 
-dst_function<fod> f(Container<T> values);
-dst_function<fod> f(std::vector<T> values);
-dst_function<fod> f(std::initializer_list<T> values); // C++11
+bft_function<fod> f(Container<T> values);
+bft_function<fod> f(std::vector<T> values);
+bft_function<fod> f(std::initializer_list<T> values); // C++11
 
-#ifdef BOOST_DST_CHECK
-#	ifndef BOOST_DST_CHECK_PRECISION
-#		define BOOST_DST_CHECK_PRECISION 1e-8
-#	endif // BOOST_DST_CHECK_PRECISION
-// TODO: check that sum(:) ~ 1.0 +- BOOST_DST_CHECK_PRECISION
-#endif // BOOST_DST_CHECK
+#ifdef BOOST_BFT_CHECK
+#	ifndef BOOST_BFT_CHECK_PRECISION
+#		define BOOST_BFT_CHECK_PRECISION 1e-8
+#	endif // BOOST_BFT_CHECK_PRECISION
+// TODO: check that sum(:) ~ 1.0 +- BOOST_BFT_CHECK_PRECISION
+#endif // BOOST_BFT_CHECK
 
 mass_array<fod> m1a(50, 50);
 mass_array<fod> m2a(50, 50);
 
 #if 0
 
-namespace dst = namespace boost::dst;
+namespace bft = namespace boost::bft;
 
-typedef dst::mass_model< /*set_size = */5, /*value_type = */double > mass_type;
+typedef bft::mass_model< /*set_size = */5, /*value_type = */double > mass_type;
 
 #endif

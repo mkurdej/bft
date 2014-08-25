@@ -35,100 +35,100 @@ endfunction()
 
 ################################################################################
 
-# set(DST_PATH "${SRC_PATH}/boost/dst")
-set(DST_PATH "${INCLUDE_PATH}/boost/beliefs")
-set(CL_DST_PATH "${SRC_PATH}/boost/dst/cl")
+# set(BFT_PATH "${SRC_PATH}/boost/bft")
+set(BFT_PATH "${INCLUDE_PATH}/boost/bft")
+set(CL_BFT_PATH "${SRC_PATH}/boost/bft/cl")
 
 #******************************************************************************
-add_test_executable(dst_test1
-    ${DST_PATH}/belief.hpp
-    ${DST_PATH}/boost_dst_define_class.hpp
-    ${DST_PATH}/commonality.hpp
-    ${DST_PATH}/conjunctive_decomposition.hpp
-    ${DST_PATH}/contextual_discounting.hpp
-    ${DST_PATH}/discounting.hpp
-    ${DST_PATH}/disjunctive_decomposition.hpp
-    ${DST_PATH}/dst.hpp
-    ${DST_PATH}/extension.hpp
-    ${DST_PATH}/fod.hpp
-    ${DST_PATH}/fod_minus.hpp
-    ${DST_PATH}/fod_union.hpp
-    ${DST_PATH}/implicability.hpp
-    ${DST_PATH}/marginalization.hpp
-    ${DST_PATH}/mass.hpp
-    ${DST_PATH}/min.hpp
-    ${DST_PATH}/max.hpp
-    ${DST_PATH}/plausibility.hpp
-    ${DST_PATH}/rule_base.hpp
-    ${DST_PATH}/rule_conjunctive.hpp
-    ${DST_PATH}/rule_conjunctive_cautious.hpp
-    ${DST_PATH}/rule_dempster.hpp
-    ${DST_PATH}/rule_disjunctive.hpp
-    ${DST_PATH}/rule_disjunctive_bold.hpp
-    ${DST_PATH}/rule_dubois_prade.hpp
-    ${DST_PATH}/rule_jeffrey_dempster.hpp
-    ${DST_PATH}/rule_normalization.hpp
-    ${DST_PATH}/rule_normalization_inagaki.hpp
-    ${DST_PATH}/rule_pcr5.hpp
-    ${DST_PATH}/rule_yager.hpp
-    ${DST_PATH}/rules.hpp
-    ${DST_PATH}/to_belief.hpp
-    ${DST_PATH}/to_commonality.hpp
-    ${DST_PATH}/to_implicability.hpp
-    ${DST_PATH}/to_mass.hpp
-    ${DST_PATH}/to_pignistic.hpp
-    ${DST_PATH}/to_plausibility.hpp
-    ${DST_PATH}/total_conflict_exception.hpp
+add_test_executable(bft_test1
+    ${BFT_PATH}/belief.hpp
+    ${BFT_PATH}/boost_bft_define_class.hpp
+    ${BFT_PATH}/bft.hpp
+    ${BFT_PATH}/commonality.hpp
+    ${BFT_PATH}/conjunctive_decomposition.hpp
+    ${BFT_PATH}/contextual_discounting.hpp
+    ${BFT_PATH}/discounting.hpp
+    ${BFT_PATH}/disjunctive_decomposition.hpp
+    ${BFT_PATH}/extension.hpp
+    ${BFT_PATH}/fod.hpp
+    ${BFT_PATH}/fod_minus.hpp
+    ${BFT_PATH}/fod_union.hpp
+    ${BFT_PATH}/implicability.hpp
+    ${BFT_PATH}/marginalization.hpp
+    ${BFT_PATH}/mass.hpp
+    ${BFT_PATH}/min.hpp
+    ${BFT_PATH}/max.hpp
+    ${BFT_PATH}/plausibility.hpp
+    ${BFT_PATH}/rule_base.hpp
+    ${BFT_PATH}/rule_conjunctive.hpp
+    ${BFT_PATH}/rule_conjunctive_cautious.hpp
+    ${BFT_PATH}/rule_dempster.hpp
+    ${BFT_PATH}/rule_disjunctive.hpp
+    ${BFT_PATH}/rule_disjunctive_bold.hpp
+    ${BFT_PATH}/rule_dubois_prade.hpp
+    ${BFT_PATH}/rule_jeffrey_dempster.hpp
+    ${BFT_PATH}/rule_normalization.hpp
+    ${BFT_PATH}/rule_normalization_inagaki.hpp
+    ${BFT_PATH}/rule_pcr5.hpp
+    ${BFT_PATH}/rule_yager.hpp
+    ${BFT_PATH}/rules.hpp
+    ${BFT_PATH}/to_belief.hpp
+    ${BFT_PATH}/to_commonality.hpp
+    ${BFT_PATH}/to_implicability.hpp
+    ${BFT_PATH}/to_mass.hpp
+    ${BFT_PATH}/to_pignistic.hpp
+    ${BFT_PATH}/to_plausibility.hpp
+    ${BFT_PATH}/total_conflict_exception.hpp
 
-    ${DST_PATH}/private/deref.hpp
-        ${DST_PATH}/private/emptytype.hpp
-    ####${DST_PATH}/private/pow.hpp
-    ${DST_PATH}/private/to_void.hpp
+    ${BFT_PATH}/private/deref.hpp
+    ${BFT_PATH}/private/emptytype.hpp
+    #${BFT_PATH}/private/pow.hpp
+    ${BFT_PATH}/private/to_void.hpp
 )
 
 if(OPENCL_FOUND)
-    file(GLOB_RECURSE TestOpenCLDst_KERNELS
-        ${CL_DST_PATH}/*.cl
+    file(GLOB_RECURSE TestOpenCLBFT_KERNELS
+        ${CL_BFT_PATH}/*.cl
     )
-    set_property(SOURCE ${TestOpenCLDst_KERNELS} PROPERTY HEADER_FILE_ONLY)
-    source_group("OpenCL kernels" FILES ${TestOpenCLDst_KERNELS})
+    set_property(SOURCE ${TestOpenCLBFT_KERNELS} PROPERTY HEADER_FILE_ONLY)
+    source_group("OpenCL kernels" FILES ${TestOpenCLBFT_KERNELS})
 
-    add_test_executable(TestOpenCLDst
-        ${TestOpenCLDst_KERNELS}
+    add_test_executable(TestOpenCLBFT
+        ${TestOpenCLBFT_KERNELS}
         
-        ${CL_DST_PATH}/cl.hpp
-        ${CL_DST_PATH}/log.hpp
-        ${CL_DST_PATH}/set.h
-        ${CL_DST_PATH}/util.hpp
+        ${CL_BFT_PATH}/cl.hpp
+        ${CL_BFT_PATH}/log.hpp
+        ${CL_BFT_PATH}/set.h
+        ${CL_BFT_PATH}/util.hpp
         
-        ${CL_DST_PATH}/GridSize1D.h
-        ${CL_DST_PATH}/OpenCL.hpp
+        ${CL_BFT_PATH}/GridSize1D.h
+        ${CL_BFT_PATH}/OpenCL.hpp
     )
-    target_link_libraries(TestOpenCLDst
+    target_link_libraries(TestOpenCLBFT
         ${OPENCL_LIBRARIES}
     )
 endif()
 
 add_test_executable(discounting_test1
-    ${DST_PATH}/contextual_discounting.hpp
-    ${DST_PATH}/discounting.hpp
+    ${BFT_PATH}/contextual_discounting.hpp
+    ${BFT_PATH}/discounting.hpp
 )
-add_test_executable(dst_function_test1
-    ${DST_PATH}/dst_function.hpp
+add_test_executable(bft_function_test1
+    ${BFT_PATH}/bft_function.hpp
 )
 add_test_executable(mass_test1)
 add_test_executable(rule_jeffrey_dempster_test1)
 add_test_executable(rules_test1)
 
 ################################################################################
-install(TARGETS dst_test1 discounting_test1 dst_function_test1 mass_test1 rule_jeffrey_dempster_test1 rules_test1
+install(TARGETS bft_test1 discounting_test1 bft_function_test1 mass_test1 rule_jeffrey_dempster_test1 rules_test1
     RUNTIME DESTINATION ${MKPHD_BIN_DIR}
     LIBRARY DESTINATION ${MKPHD_BIN_DIR}
     ARCHIVE DESTINATION ${MKPHD_LIB_DIR}
 )
 
 if(OPENCL_FOUND)
-    install(TARGETS TestOpenCLDst
+    install(TARGETS TestOpenCLBFT
         RUNTIME DESTINATION ${MKPHD_BIN_DIR}
         LIBRARY DESTINATION ${MKPHD_BIN_DIR}
         ARCHIVE DESTINATION ${MKPHD_LIB_DIR}

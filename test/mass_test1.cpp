@@ -25,8 +25,8 @@
 
 #define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
-#include <boost/beliefs/mass.hpp>
-#include <boost/beliefs/to_mass.hpp>
+#include <boost/bft/mass.hpp>
+#include <boost/bft/to_mass.hpp>
 
 #ifdef _MSC_VER
 #   pragma warning(pop)  	// restore original warning level
@@ -35,12 +35,12 @@
 #endif // _MSC_VER
 
 using namespace boost;
-using namespace boost::beliefs;
+using namespace boost::bft;
 
-BOOST_BELIEFS_DEFINE_CLASS(C1);
-BOOST_BELIEFS_DEFINE_CLASS(C2);
-BOOST_BELIEFS_DEFINE_CLASS(C3);
-BOOST_BELIEFS_DEFINE_CLASS(C4);
+BOOST_BFT_DEFINE_CLASS(C1);
+BOOST_BFT_DEFINE_CLASS(C2);
+BOOST_BFT_DEFINE_CLASS(C3);
+BOOST_BFT_DEFINE_CLASS(C4);
 
 typedef fod<C1, C2> fod2;
 typedef fod<C1, C2, C3, C4> fod4;

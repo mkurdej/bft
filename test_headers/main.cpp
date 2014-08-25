@@ -1,4 +1,4 @@
-// Boost.Beliefs - A C++ library for uncertain information fusion using the
+// Boost.BFT - A C++ library for uncertain information fusion using the
 // theory of belief functions (Dempster-Shafer theory)
 //
 // Copyright (C) 2011-2014 Marek Kurdej

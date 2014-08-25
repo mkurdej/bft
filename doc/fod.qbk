@@ -20,9 +20,9 @@
 ``
 
 Frame of discernment representation.
-Each type S0, S1, ..., S9 must be derived from __aux_dst_base_class.
+Each type S0, S1, ..., S9 must be derived from __aux_bft_base_class.
 
-Preferably, use __BOOST_DST_DEFINE_CLASS macrodefinition to define classes used with __fod.
+Preferably, use __BOOST_BFT_DEFINE_CLASS macrodefinition to define classes used with __fod.
 
 [/
 __std_ref 3.9.3.
@@ -32,13 +32,13 @@ then this template will compile, but the member `type` will always be the same a
 type `T` except where __transform_workaround have been applied.
 /]
 
-__header ` #include <boost/dst/fod.hpp>` or ` #include <boost/dst.hpp>`
+__header ` #include <boost/bft/fod.hpp>` or ` #include <boost/bft.hpp>`
 
 __examples
 
 ``
-    __BOOST_DST_DEFINE_CLASS(Free);
-    __BOOST_DST_DEFINE_CLASS(Occupied);
+    __BOOST_BFT_DEFINE_CLASS(Free);
+    __BOOST_BFT_DEFINE_CLASS(Occupied);
 
     typedef fod<Free, Occupied> fodFO;
 ``
