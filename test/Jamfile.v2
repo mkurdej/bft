@@ -1,4 +1,4 @@
-#  Boost belief library test suite Jamfile  ----------------------------
+#  Boost BFT library test suite Jamfile  ----------------------------
 #
 #  Copyright Marek Kurdej 2011-2014. Use, modification and
 #  distribution is subject to the Boost Software License, Version
@@ -14,7 +14,7 @@ alias unit_test_framework : /boost//unit_test_framework ;
 alias opencl : /site-config//opencl ;
 
 {
-  test-suite belief:
+  test-suite bft:
 # Basic tests
    : [ run discounting_test1.cpp unit_test_framework            : : : : discounting_test1 ]
      [ run bft_function_test1.cpp unit_test_framework           : : : : bft_function_test1 ]
