@@ -8,7 +8,7 @@ set(PROJECT_VERSION ${COMPLETE_VERSION})
 if(POLICY CMP0048)
     cmake_policy(SET CMP0048 NEW) # v3.0
 endif()
-project(mkphd VERSION ${PROJECT_VERSION})
+project(mkphd) # VERSION ${PROJECT_VERSION})
 
 # By default, do not warn when built on machines using only VS Express:
 if(NOT DEFINED CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS_NO_WARNINGS)
