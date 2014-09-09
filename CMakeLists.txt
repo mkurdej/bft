@@ -4,7 +4,10 @@ set(CPACK_PACKAGE_VERSION_PATCH "1")
 set(COMPLETE_VERSION ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH})
 set(RELEASE_NAME "Trunk")
 set(PROJECT_VERSION ${COMPLETE_VERSION})
-cmake_policy(SET CMP0048 NEW)
+
+if(POLICY CMP0048)
+    cmake_policy(SET CMP0048 NEW) # v3.0
+endif()
 project(mkphd VERSION ${PROJECT_VERSION})
 
 # By default, do not warn when built on machines using only VS Express:
@@ -50,12 +53,6 @@ set(USE_FOLDERS ${MK_USE_FOLDERS})
 set(CMAKE_BUILD_TYPE Debug CACHE STRING "What type of build? (None|Debug|Release|RelWithDebInfo|MinSizeRel)")
 
 ########################################
-#find_package(Qwt REQUIRED)
-#if(NOT WITH_INTERNAL_QWTPOLAR)
-#  find_package(QwtPolar REQUIRED)
-#endif(NOT WITH_INTERNAL_QWTPOLAR)
-
-#***********Boost*******************************************************
 #set(Boost_USE_STATIC_LIBS       OFF)
 set(Boost_USE_MULTITHREADED      ON)
 #set(Boost_USE_STATIC_RUNTIME    OFF)
@@ -82,70 +79,8 @@ message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
 message(STATUS "Boost_LIBRARIES = ${Boost_LIBRARIES}")
 
 ################################################################################
-# search for Qt
-if(WIN32)
-    set(WINSDK_LIB "$ENV{WINSDK_LIB}" CACHE PATH "Directory of Windows Development Kit, should contain glu32.lib.")
-    if("${WINSDK_LIB}" STREQUAL "")
-        message(STATUS "Environment variable 'WINSDK_LIB' should be set to something like 'C:/Program Files (x86)/Windows Kits/8.0/Lib/win8/um/x86'")
-    endif()
-    if(DEBUG)
-        message(STATUS "\$ENV{WINSDK_LIB} = '$ENV{WINSDK_LIB}'")
-        message(STATUS "\${WINSDK_LIB} = '${WINSDK_LIB}'")
-    endif()
-    list(APPEND CMAKE_PREFIX_PATH
-        ${WINSDK_LIB}
-    )
-endif()
-
-find_package(Qt5Widgets REQUIRED)
-if(Qt5Widgets_FOUND)
-    find_package(Qt5Core REQUIRED)
-    #find_package(Qt5Gui REQUIRED)
-    #find_package(Qt5Xml REQUIRED)
-    #find_package(Qt5OpenGL REQUIRED)
-    #find_package(Qt5Network REQUIRED)
-    #find_package(Qt5SerialPort REQUIRED)
-
-    set(QT_DEFINITIONS
-        ${Qt5Widgets_DEFINITIONS}
-        ${Qt5Core_DEFINITIONS}
-        ${Qt5Xml_DEFINITIONS}
-        ${Qt5Gui_DEFINITIONS}
-        ${Qt5OpenGL_DEFINITIONS}
-        ${Qt5Network_DEFINITIONS}
-        ${Qt5SerialPort_DEFINITIONS}
-    )
-    set(QT_INCLUDE_DIR
-        ${Qt5Widgets_INCLUDE_DIRS}
-        ${Qt5Core_INCLUDE_DIRS}
-        ${Qt5Xml_INCLUDE_DIRS}
-        ${Qt5Gui_INCLUDE_DIRS}
-        ${Qt5OpenGL_INCLUDE_DIRS}
-        ${Qt5Network_INCLUDE_DIRS}
-        ${Qt5SerialPort_INCLUDE_DIRS}
-    )
-    set(QT_LIBRARIES
-        ${Qt5Widgets_LIBRARIES}
-        ${Qt5Core_LIBRARIES}
-        ${Qt5Xml_LIBRARIES}
-        ${Qt5Gui_LIBRARIES}
-        ${Qt5OpenGL_LIBRARIES}
-        ${Qt5Network_LIBRARIES}
-        ${Qt5SerialPort_LIBRARIES}
-    )
-
-    if(Qt5_POSITION_INDEPENDENT_CODE)
-      set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-    endif()
-endif()
-
-#if(NOT QT_QTXML_FOUND OR NOT QT_QTNETWORK_FOUND OR NOT QT_QTSVG_FOUND OR NOT QT_QTSQL_FOUND OR NOT QT_QTWEBKIT_FOUND)
-#  MESSAGE(SEND_ERROR "Some Qt4 modules haven't been found!")
-#endif()
-
 if(MK_ENABLE_TESTS)
     #include(CTest)
-    #set(QT_USE_QTTEST  TRUE) # TODO: change to BOOST_UNIT_TEST_FRAMEWORK
     enable_testing()
     #set(ENV{CTEST_OUTPUT_ON_FAILURE} true)
     
@@ -154,16 +89,6 @@ if(MK_ENABLE_TESTS)
     )
     set_property(TARGET TEST PROPERTY FOLDER "Tests")
 endif(MK_ENABLE_TESTS)
-
-# Disable automatic conversion from QString to ASCII 8-bit strings (char *)
-# (Keeps code compatible with Qt/Mac/64bit)
-add_definitions(-DQT_NO_CAST_TO_ASCII)
-
-#find_program(QT_LRELEASE_EXECUTABLE
-#    NAMES lrelease
-#    PATHS ${QT_BINARY_DIR}
-#    NO_DEFAULT_PATH
-#)
 
 #############################################################
 # enable warnings
