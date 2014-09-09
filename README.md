@@ -1,6 +1,11 @@
 Boost.BFT
 ======
 
+[![Build Status](https://travis-ci.org/mkurdej/bft.png?branch=master)]
+ (https://travis-ci.org/mkurdej/bft)
+[![Coverage Status](https://coveralls.io/repos/mkurdej/bft/badge.png?branch=master)]
+ (https://coveralls.io/r/mkurdej/bft)
+
 Belief functions theory (Dempster-Shafer theory) implementation in C++
 
 Dempster-Shafer theory implementation in a Boost-like fashion.
