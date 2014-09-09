@@ -4,7 +4,7 @@
 #          http://www.boost.org/LICENSE_1_0.txt)
 
 ################################################################################
-find_package(OpenCL)
+#find_package(OpenCL)
 if(OPENCL_FOUND)
     add_definitions( -DPACPUS_OPENCL )
     
