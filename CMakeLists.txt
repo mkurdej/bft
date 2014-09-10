@@ -35,7 +35,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 # in generated makefiles use relative paths so the project dir is moveable
 # Note commented out since it cause problems but it would be nice to resolve these and enable
 #
-# issue is caused by INCLUDE_DIRECTORIES(${CMAKE_BINARY_DIR}) near the end of this file generating incorrect path
+# issue is caused by include_directories(${CMAKE_BINARY_DIR}) near the end of this file generating incorrect path
 #set(CMAKE_USE_RELATIVE_PATHS ON)
 
 # Compile flag. Turns on all warnings, including pedantic.
@@ -361,6 +361,7 @@ if(MK_ENABLE_TESTS)
     set(TEST_DATA_DIR "${CMAKE_CURRENT_SOURCE_DIR}/test/testdata")
     set(INCLUDE_PATH "${CMAKE_SOURCE_DIR}/include")
     set(SRC_PATH "${CMAKE_SOURCE_DIR}/src")
+    include_directories("${INCLUDE_PATH}")
     add_subdirectory(test)
 endif(MK_ENABLE_TESTS)
 
