@@ -25,7 +25,8 @@ struct bft_io_traits;
     static std::basic_string<CharT> key()                                      \
     {                                                                          \
         return BOOST_PP_CAT(string_prefix, value);                             \
-    } \                                                                       \
+    } \
+                                                                       \
 /**/
 
 #define BOOST_BFT_SPECIALIZE_TRAITS(CharT, string_prefix, prefix_, infix_,     \
@@ -36,10 +37,11 @@ struct bft_io_traits;
         BOOST_BFT_DEFINE_TRAITS_MEMBER(CharT, string_prefix, prefix, prefix_)  \
         BOOST_BFT_DEFINE_TRAITS_MEMBER(CharT, string_prefix, infix, infix_)    \
         BOOST_BFT_DEFINE_TRAITS_MEMBER(CharT, string_prefix, suffix, suffix_)  \
-    }; \                                                                      \
+    }; \
+                                                                      \
 /**/
 
-BOOST_BFT_SPECIALIZE_TRAITS(char, , "[", ", ", "]")
+BOOST_BFT_SPECIALIZE_TRAITS(char, "", "[", ", ", "]")
 #ifndef BOOST_NO_CWCHAR
 BOOST_BFT_SPECIALIZE_TRAITS(wchar_t, L, "[", ", ", "]")
 #endif // BOOST_NO_CWCHAR
