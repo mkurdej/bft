@@ -129,9 +129,10 @@ add_test_executable(bft_function_test1
 add_test_executable(mass_test1)
 add_test_executable(rule_jeffrey_dempster_test1)
 add_test_executable(rules_test1)
+add_test_executable(rules_name_test1)
 
 ################################################################################
-install(TARGETS bft_test1 discounting_test1 bft_function_test1 mass_test1 rule_jeffrey_dempster_test1 rules_test1
+install(TARGETS bft_test1 discounting_test1 bft_function_test1 mass_test1 rule_jeffrey_dempster_test1 rules_test1 rules_name_test1
     RUNTIME DESTINATION ${MKPHD_BIN_DIR}
     LIBRARY DESTINATION ${MKPHD_BIN_DIR}
     ARCHIVE DESTINATION ${MKPHD_LIB_DIR}
