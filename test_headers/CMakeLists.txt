@@ -16,12 +16,11 @@ file(GLOB HDRS
 foreach(HEADER ${HDRS})
     set(TEST_NAME test_${HEADER})
     string(REGEX REPLACE "[.:/\\]" "_" TEST_NAME ${TEST_NAME})
-    add_definitions( -DBOOST_BFT_HEADER_NAME=${HEADER} )
     add_executable(${TEST_NAME}
         test.cpp
         ${HEADER}
     )
-    remove_definitions( BOOST_BFT_HEADER_NAME )
+    set_target_properties(${TEST_NAME} PROPERTIES COMPILE_DEFINITIONS "BOOST_BFT_HEADER_NAME=${HEADER}")
     set_target_properties(${TEST_NAME} PROPERTIES FOLDER "Tests/headers")
 endforeach()
 
