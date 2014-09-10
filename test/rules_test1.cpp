@@ -11,13 +11,15 @@
 #pragma warning(push) // disable for this header only
 #pragma warning(disable : 4265)
 #pragma warning(disable : 4365)
-#pragma warning(disable : 4347)
+//#pragma warning(disable : 4347)
+#pragma warning(disable : 4350)
 #pragma warning(disable : 4548)
 #pragma warning(disable : 4571)
 #pragma warning(disable : 4625)
 #pragma warning(disable : 4626)
 #pragma warning(disable : 4640)
 #pragma warning(disable : 4668)
+#pragma warning(disable : 4996)
 #elif defined(__GNUC__)
 #pragma GCC diagnostic ignored "-Wunused-function"
 
@@ -778,6 +780,15 @@ BOOST_AUTO_TEST_CASE(test_rule_normalization_is_correct_with_conflict)
             "Calling [i] with i=" << i); // FIXME: wanted but doesn't work
         BOOST_CHECK_CLOSE(m_expected[i], m_actual[i], 1e-10);
     }
+}
+
+BOOST_AUTO_TEST_CASE(test_rule_normalization_throws_on_total_conflict)
+{
+    rule_normalization rule;
+
+    const mass<fodFO>::container_type ma1 = {1.0, 0, 0, 0};
+    const mass<fodFO> m1(ma1);
+    BOOST_CHECK_THROW(m1.apply(rule), total_conflict_exception);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
