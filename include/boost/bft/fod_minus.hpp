@@ -7,7 +7,7 @@
 #define BOOST_BFT_FOD_MINUS_HPP
 
 #include <boost/bft/fod.hpp>
-#include <boost/bft/private/deref.hpp>
+#include <boost/bft/detail/deref.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/erase_key.hpp>
 #include <boost/mpl/fold.hpp>

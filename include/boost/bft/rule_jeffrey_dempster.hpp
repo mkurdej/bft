@@ -10,6 +10,7 @@
 #include <boost/bft/plausibility.hpp>
 #include <boost/bft/to_plausibility.hpp>
 #include <boost/bft/rule_base.hpp>
+#include <boost/bft/detail/is_small.hpp>
 
 namespace boost { namespace bft {
 
@@ -35,7 +36,7 @@ struct rule_jeffrey_dempster
                 std::size_t A = set_intersection(B, C);
 
                 T sigma_prior;
-                if (boost::math::fpc::is_small(pl_prior[C], detail::tolerance)) {
+                if (detail::is_small(pl_prior[C], detail::tolerance)) {
                     sigma_prior = (B == C);
                 } else {
                     sigma_prior = m_prior[B] / pl_prior[C];

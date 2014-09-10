@@ -7,7 +7,7 @@
 #define BOOST_BFT_FOD_UNION_HPP
 
 #include <boost/bft/fod.hpp>
-#include <boost/bft/private/deref.hpp>
+#include <boost/bft/detail/deref.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/fold.hpp>
 #include <boost/mpl/insert.hpp>

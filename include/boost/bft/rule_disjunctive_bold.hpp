@@ -11,7 +11,7 @@
 #include <boost/bft/max.hpp>
 #include <boost/bft/rule_base.hpp>
 #include <boost/bft/rule_disjunctive.hpp>
-#include <boost/test/floating_point_comparison.hpp>
+#include <boost/bft/detail/is_small.hpp>
 
 namespace boost { namespace bft {
 
@@ -38,7 +38,7 @@ struct rule_disjunctive_bold
         mass<FOD, T> m_result(degenerate);
         rule_disjunctive rule;
         for(std::size_t A = 1; A < FOD::powerset_size; ++A) {
-            if(boost::math::fpc::is_small(1 - v_min12[A], detail::tolerance)) {
+            if(detail::is_small(1 - v_min12[A], detail::tolerance)) {
                 continue;
             }
             m_result = m_result.apply(rule, mass<FOD, T>::create_mass_from_disjunctive_weight(A, v_min12[A]));

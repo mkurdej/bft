@@ -8,7 +8,7 @@
 
 #include <boost/bft/bft_function.hpp>
 #include <boost/bft/fod.hpp>
-#include <boost/test/floating_point_comparison.hpp>
+#include <boost/bft/detail/is_small.hpp>
 
 namespace boost { namespace bft {
 
@@ -55,7 +55,7 @@ public:
     /// Subnormal mass function has some mass at Emptyset.
     bool is_subnormal() const
     {
-        return ! boost::math::fpc::is_small(this->m_values.front(), detail::tolerance);
+        return ! detail::is_small(this->m_values.front(), detail::tolerance);
     }
 };
 

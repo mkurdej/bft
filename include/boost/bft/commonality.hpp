@@ -8,7 +8,7 @@
 
 #include <boost/bft/bft_function.hpp>
 #include <boost/bft/fod.hpp>
-#include <boost/test/floating_point_comparison.hpp>
+#include <boost/bft/detail/is_small.hpp>
 
 namespace boost { namespace bft {
 
@@ -55,7 +55,7 @@ public:
     /// Non-dogmatic mass function has some mass at Unknown.
     bool is_nondogmatic() const
     {
-        return ! boost::math::fpc::is_small(this->m_values.back(), detail::tolerance);
+        return ! detail::is_small(this->m_values.back(), detail::tolerance);
     }
 };
 

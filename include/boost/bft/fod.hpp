@@ -7,7 +7,7 @@
 #define BOOST_BFT_FOD_HPP
 
 #include <boost/bft/boost_bft_define_class.hpp>
-#include <boost/bft/private/emptytype.hpp>
+#include <boost/bft/detail/emptytype.hpp>
 #include <boost/mpl/has_key.hpp>
 #include <boost/type_traits/is_same.hpp>
 

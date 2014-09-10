@@ -6,8 +6,8 @@
 #ifndef BOOST_BFT_DETAIL_DEREF_HPP
 #define BOOST_BFT_DETAIL_DEREF_HPP
 
-#include <boost/bft/private/emptytype.hpp>
-#include <boost/bft/private/to_void.hpp>
+#include <boost/bft/detail/emptytype.hpp>
+#include <boost/bft/detail/to_void.hpp>
 #include <boost/mpl/deref.hpp>
 
 namespace boost { namespace bft { namespace detail {
