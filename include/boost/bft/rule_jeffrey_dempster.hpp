@@ -12,11 +12,17 @@
 #include <boost/bft/rule_base.hpp>
 #include <boost/bft/detail/is_small.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-// @see @article{Ma_Liu_Dubois_Prade_2011, title={Bridging Jeffrey's rule, AGM revision and Dempster conditioning in the theory of evidence}, journal={International Journal of Artificial Intelligence Tools}, author={Ma, Jianbing and Liu, Weiru and Dubois, Didier and Prade, Henri}, year={2011}, pages={1-29}}
-struct rule_jeffrey_dempster
-        : public rule_base
+// @see @article{Ma_Liu_Dubois_Prade_2011, title={Bridging Jeffrey's rule, AGM
+// revision and Dempster conditioning in the theory of evidence},
+// journal={International Journal of Artificial Intelligence Tools}, author={Ma,
+// Jianbing and Liu, Weiru and Dubois, Didier and Prade, Henri}, year={2011},
+// pages={1-29}}
+struct rule_jeffrey_dempster : public rule_base
 {
     std::string to_string() const
     {
@@ -26,7 +32,8 @@ struct rule_jeffrey_dempster
     /// @param m_prior	Prior mass.
     /// @param m_new	New evidence mass.
     template <class FOD, typename T>
-    mass<FOD, T> operator()(const mass<FOD, T> & m_prior, const mass<FOD, T> & m_new) const
+    mass<FOD, T>
+    operator()(const mass<FOD, T>& m_prior, const mass<FOD, T>& m_new) const
     {
         mass<FOD, T> m_result;
         plausibility<FOD, T> pl_prior = to_plausibility(m_prior);

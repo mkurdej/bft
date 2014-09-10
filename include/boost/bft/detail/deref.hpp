@@ -10,7 +10,12 @@
 #include <boost/bft/detail/to_void.hpp>
 #include <boost/mpl/deref.hpp>
 
-namespace boost { namespace bft { namespace detail {
+namespace boost
+{
+namespace bft
+{
+namespace detail
+{
 
 template <class T, class U = EmptyType, class Enable = void>
 struct deref

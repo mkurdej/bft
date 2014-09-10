@@ -13,7 +13,10 @@
 #include <boost/limits.hpp>
 #include <cmath>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
 struct disjunctive_decomposition
 {
@@ -21,26 +24,31 @@ struct disjunctive_decomposition
 
     // =============================================================================
     template <class FOD, typename T>
-    /*bft_function*/mass<FOD, T> operator()(const mass<FOD, T> & m) const
+    /*bft_function*/ mass<FOD, T> operator()(const mass<FOD, T>& m) const
     {
         implicability<FOD, T> b = to_implicability(m);
         return mass<FOD, T>(operator()(b));
     }
 
     template <class FOD, typename T>
-    /*bft_function*/implicability<FOD, T> operator()(const implicability<FOD, T> & b) const
+    /*bft_function*/ implicability<FOD, T>
+    operator()(const implicability<FOD, T>& b) const
     {
-        BOOST_ASSERT_MSG(b.is_subnormal(), "mass function should be subnormal to be decomposed!");
+        BOOST_ASSERT_MSG(b.is_subnormal(),
+                         "mass function should be subnormal to be decomposed!");
         bft_function<FOD, T> v;
         v.values().assign(1);
         v.values().front() = std::numeric_limits<T>::quiet_NaN();
 
-        for(size_type A = 1; A < FOD::powerset_size; ++A) {
+        for (size_type A = 1; A < FOD::powerset_size; ++A) {
             size_type element_count_A = count_elements(A);
-            for(size_type B = 0; B <= A; ++B) {
-                if(is_subset_of(B, A)) {
+            for (size_type B = 0; B <= A; ++B) {
+                if (is_subset_of(B, A)) {
                     size_type element_count_B = count_elements(B);
-                    long exponent = ((element_count_A - element_count_B + 1) % 2 == 0) ? 1 /*even*/ : -1 /*odd*/;
+                    long exponent =
+                        ((element_count_A - element_count_B + 1) % 2 == 0)
+                            ? 1 /*even*/
+                            : -1 /*odd*/;
                     v[A] *= std::pow(b[B], exponent);
                 }
             }
@@ -54,7 +62,6 @@ struct disjunctive_decomposition
             v = w(end:-1:1);
         end
         */
-
 };
 
 } // namespace bft

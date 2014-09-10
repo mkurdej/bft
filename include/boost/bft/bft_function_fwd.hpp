@@ -15,7 +15,10 @@
 #include <iterator>
 #include <sstream>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
 template <class FOD, typename T>
 class bft_function;

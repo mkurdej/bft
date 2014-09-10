@@ -6,16 +6,16 @@ AccessModifierOffset: -4
 # AlignEscapedNewlinesLeft: false
 # AlignTrailingComments: true
 # AllowAllParametersOfDeclarationOnNextLine: true
-# AllowShortBlocksOnASingleLine: false
-AllowShortIfStatementsOnASingleLine: true
-AllowShortLoopsOnASingleLine: true
-# AllowShortFunctionsOnASingleLine: All
-AlwaysBreakAfterDefinitionReturnType: true  # needs version 3.6.0
+AllowShortBlocksOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false #true
+AllowShortLoopsOnASingleLine: false #true
+AllowShortFunctionsOnASingleLine: false #All
+# AlwaysBreakAfterDefinitionReturnType: true  # needs version 3.6.0
 # AlwaysBreakBeforeMultilineStrings: false
 AlwaysBreakTemplateDeclarations: true
 # BreakBeforeBinaryOperators: false
 # BreakBeforeTernaryOperators: true
-# BreakConstructorInitializersBeforeComma: false
+BreakConstructorInitializersBeforeComma: true
 # BinPackParameters: true
 ColumnLimit:     80
 # ConstructorInitializerAllOnOneLineOrOnePerLine: false
@@ -35,16 +35,16 @@ ColumnLimit:     80
 # PenaltyBreakFirstLessLess: 120
 # PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 0
-PointerAlignment: Right
-SpacesBeforeTrailingComments: 2
+PointerAlignment: Left
+SpacesBeforeTrailingComments: 1
 # Cpp11BracedListStyle: true
 Standard:        Cpp03
 IndentWidth:     4
 # TabWidth:        4
 # UseTab:          Never
-BreakBeforeBraces: Stroustrup #GNU # Linux
-SpacesInParentheses: true
-SpacesInAngles:  true
+BreakBeforeBraces: Linux #Allman|Attach|GNU|Linux|Stroustrup
+SpacesInParentheses: false #true
+SpacesInAngles:  false #true
 # SpaceInEmptyParentheses: false
 # SpacesInCStyleCastParentheses: false
 # SpacesInContainerLiterals: true
@@ -52,5 +52,5 @@ SpacesInAngles:  true
 # ContinuationIndentWidth: 4
 # CommentPragmas:  '^ IWYU pragma:'
 ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ]
-SpaceBeforeParens: Always # ControlStatements
+SpaceBeforeParens: ControlStatements #Always|ControlStatements|Never?
 # DisableFormat:   false

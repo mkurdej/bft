@@ -6,10 +6,17 @@
 #ifndef BOOST_BFT_DETAIL_EMPTYTYPE_HPP
 #define BOOST_BFT_DETAIL_EMPTYTYPE_HPP
 
-namespace boost { namespace bft { namespace detail {
+namespace boost
+{
+namespace bft
+{
+namespace detail
+{
 
 //! Empty type used as a sentinel.
-struct EmptyType {};
+struct EmptyType
+{
+};
 
 } // namespace detail
 

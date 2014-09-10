@@ -8,11 +8,13 @@
 
 #include <boost/bft/bft_function.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
 template <class FOD, typename T = double>
-class belief
-        : public bft_function<FOD, T>
+class belief : public bft_function<FOD, T>
 {
 public:
     typedef belief<FOD, T> this_type;
@@ -23,25 +25,27 @@ public:
     {
     }
 
-    /// It creates a belief function equivalent to a mass function where all mass is attributed to the Conflict set (Emptyset).
+    /// It creates a belief function equivalent to a mass function where all
+    /// mass is attributed to the Conflict set (Emptyset).
     /// I.e. all values equal 0.
     belief(degenerate_t)
     {
     }
 
-    /// It creates a belief function equivalent to a mass function where all mass is attributed to the Unknown set (Omega).
+    /// It creates a belief function equivalent to a mass function where all
+    /// mass is attributed to the Unknown set (Omega).
     /// I.e. value for Unknown equals 1 and for other sets equals 0.
     belief(vacuous_t)
     {
         this->m_values.back() = 1;
     }
 
-    explicit belief(const bft_function<FOD, T> & f)
+    explicit belief(const bft_function<FOD, T>& f)
         : bft_function<FOD, T>(f)
     {
     }
 
-    belief(const container_type & init_values)
+    belief(const container_type& init_values)
         : bft_function<FOD, T>(init_values)
     {
     }

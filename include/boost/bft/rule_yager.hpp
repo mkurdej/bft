@@ -10,10 +10,12 @@
 #include <boost/bft/rule_base.hpp>
 #include <boost/bft/rule_conjunctive.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-struct rule_yager
-        : public rule_base
+struct rule_yager : public rule_base
 {
     std::string to_string() const
     {
@@ -21,11 +23,13 @@ struct rule_yager
     }
 
     template <class FOD, typename T>
-    mass<FOD, T> operator()(const mass<FOD, T> & m1, const mass<FOD, T> & m2) const
+    mass<FOD, T>
+    operator()(const mass<FOD, T>& m1, const mass<FOD, T>& m2) const
     {
         mass<FOD> m_result = m1.apply(rule_conjunctive(), m2);
-        m_result.values().back() = m_result.values().back() + m_result.values().front(); // Unknown
-        m_result.values().front() = 0; // Emptyset
+        m_result.values().back() =
+            m_result.values().back() + m_result.values().front(); // Unknown
+        m_result.values().front() = 0;                            // Emptyset
         return m_result;
     }
 };

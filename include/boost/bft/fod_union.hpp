@@ -13,25 +13,29 @@
 #include <boost/mpl/insert.hpp>
 #include <boost/mpl/next.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
 template <typename FOD1, typename FOD2>
 class fod_union
 {
     typedef typename FOD1::type fod1set;
     typedef typename FOD2::type fod2set;
-    typedef typename mpl::fold<fod1set, fod2set, mpl::insert<mpl::_1, mpl::_2> >::type types;
+    typedef typename mpl::fold<fod1set, fod2set,
+                               mpl::insert<mpl::_1, mpl::_2> >::type types;
 
-    typedef typename mpl::begin<types>::type  it0;
-    typedef typename mpl::next<it0>::type     it1;
-    typedef typename mpl::next<it1>::type     it2;
-    typedef typename mpl::next<it2>::type     it3;
-    typedef typename mpl::next<it3>::type     it4;
-    typedef typename mpl::next<it4>::type     it5;
-    typedef typename mpl::next<it5>::type     it6;
-    typedef typename mpl::next<it6>::type     it7;
-    typedef typename mpl::next<it7>::type     it8;
-    typedef typename mpl::next<it8>::type     it9;
+    typedef typename mpl::begin<types>::type it0;
+    typedef typename mpl::next<it0>::type it1;
+    typedef typename mpl::next<it1>::type it2;
+    typedef typename mpl::next<it2>::type it3;
+    typedef typename mpl::next<it3>::type it4;
+    typedef typename mpl::next<it4>::type it5;
+    typedef typename mpl::next<it5>::type it6;
+    typedef typename mpl::next<it6>::type it7;
+    typedef typename mpl::next<it7>::type it8;
+    typedef typename mpl::next<it8>::type it9;
 
     typedef typename detail::deref<it0>::type t0;
     typedef typename detail::deref<it1>::type t1;

@@ -10,7 +10,10 @@
 #include <boost/bft/fod.hpp>
 #include <boost/bft/detail/is_small.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
 template <class FOD, typename T = double>
 class commonality : public bft_function<FOD, T>
@@ -24,26 +27,28 @@ public:
     {
     }
 
-    /// It creates a commonality function equivalent to a mass function where all mass is attributed to the Conflict set (Emptyset).
+    /// It creates a commonality function equivalent to a mass function where
+    /// all mass is attributed to the Conflict set (Emptyset).
     /// I.e. value for Conflict (Emptyset) equals 1 and for other sets equals 0.
     commonality(degenerate_t)
     {
         this->m_values.front() = 1;
     }
 
-    /// It creates a commonality function equivalent to a mass function where all mass is attributed to the Unknown set (Omega).
+    /// It creates a commonality function equivalent to a mass function where
+    /// all mass is attributed to the Unknown set (Omega).
     /// I.e. all values equal 1.
     commonality(vacuous_t)
     {
         this->m_values.assign(1);
     }
 
-    explicit commonality(const bft_function<FOD, T> & f)
+    explicit commonality(const bft_function<FOD, T>& f)
         : bft_function<FOD, T>(f)
     {
     }
 
-    commonality(const container_type & init_values)
+    commonality(const container_type& init_values)
         : bft_function<FOD, T>(init_values)
     {
     }
@@ -55,7 +60,7 @@ public:
     /// Non-dogmatic mass function has some mass at Unknown.
     bool is_nondogmatic() const
     {
-        return ! detail::is_small(this->m_values.back(), detail::tolerance);
+        return !detail::is_small(this->m_values.back(), detail::tolerance);
     }
 };
 

@@ -11,10 +11,12 @@
 #include <boost/bft/rule_conjunctive.hpp>
 #include <boost/bft/rule_normalization.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-struct rule_dempster
-        : public rule_base
+struct rule_dempster : public rule_base
 {
     std::string to_string() const
     {
@@ -22,7 +24,8 @@ struct rule_dempster
     }
 
     template <class FOD, typename T>
-    mass<FOD, T> operator()(const mass<FOD, T> & m1, const mass<FOD, T> & m2) const
+    mass<FOD, T>
+    operator()(const mass<FOD, T>& m1, const mass<FOD, T>& m2) const
     {
         mass<FOD> m_result = m1.apply(rule_conjunctive(), m2);
         m_result = m_result.apply(rule_normalization());

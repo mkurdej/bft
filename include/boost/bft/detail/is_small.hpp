@@ -9,16 +9,20 @@
 #include <boost/version.hpp>
 #include <boost/test/floating_point_comparison.hpp>
 
-namespace boost { namespace bft { namespace detail {
+namespace boost
+{
+namespace bft
+{
+namespace detail
+{
 
-template<typename FPT>
-inline bool
-is_small( FPT fpv, FPT tolerance )
+template <typename FPT>
+inline bool is_small(FPT fpv, FPT tolerance)
 {
 #if BOOST_VERSION >= 105700
-    return math::fpc::is_small( fpv, tolerance );
+    return math::fpc::is_small(fpv, tolerance);
 #else
-    return test_tools::check_is_small( fpv, tolerance );
+    return test_tools::check_is_small(fpv, tolerance);
 #endif
 }
 

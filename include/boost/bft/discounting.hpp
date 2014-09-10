@@ -9,9 +9,13 @@
 #include <boost/bft/mass.hpp>
 #include <boost/foreach.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-/// Performs \alpha-discounting, i.e. non-Omega masses are discounted by the factor 1-\alpha.
+/// Performs \alpha-discounting, i.e. non-Omega masses are discounted by the
+/// factor 1-\alpha.
 ///
 /// \alpha-discounting gives:
 /// {}^\alpha m(A) = (1-\alpha) m(A)         , \forall A \subset Omega
@@ -28,16 +32,16 @@ struct discounting
     }
 
     template <class FOD, typename T>
-    void operator()(mass<FOD, T> & m) const
+    void operator()(mass<FOD, T>& m) const
     {
-        BOOST_FOREACH(T & v, m.values()) {
+        BOOST_FOREACH (T& v, m.values()) {
             v *= (1 - this->m_alpha);
         }
         m.values().back() += this->m_alpha;
     }
 
     template <class FOD, typename T>
-    mass<FOD, T> operator()(const mass<FOD, T> & m) const
+    mass<FOD, T> operator()(const mass<FOD, T>& m) const
     {
         mass<FOD, T> m_out(m);
         operator()(m_out);

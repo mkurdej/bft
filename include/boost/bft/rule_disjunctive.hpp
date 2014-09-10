@@ -12,10 +12,12 @@
 #include <boost/bft/to_implicability.hpp>
 #include <boost/bft/to_mass.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-struct rule_disjunctive
-        : public rule_base
+struct rule_disjunctive : public rule_base
 {
     std::string to_string() const
     {
@@ -23,17 +25,19 @@ struct rule_disjunctive
     }
 
     template <class FOD, typename T>
-    implicability<FOD, T> operator()(const implicability<FOD, T> & b1, const implicability<FOD, T> & b2) const
+    implicability<FOD, T> operator()(const implicability<FOD, T>& b1,
+                                     const implicability<FOD, T>& b2) const
     {
         implicability<FOD, T> b12;
-        for(std::size_t i = 0; i < FOD::powerset_size; ++i) {
+        for (std::size_t i = 0; i < FOD::powerset_size; ++i) {
             b12[i] = b1[i] * b2[i];
         }
         return b12;
     }
 
     template <class FOD, typename T>
-    mass<FOD, T> operator()(const mass<FOD, T> & m1, const mass<FOD, T> & m2) const
+    mass<FOD, T>
+    operator()(const mass<FOD, T>& m1, const mass<FOD, T>& m2) const
     {
         implicability<FOD, T> b1 = to_implicability(m1);
         implicability<FOD, T> b2 = to_implicability(m2);

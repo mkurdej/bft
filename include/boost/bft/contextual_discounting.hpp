@@ -10,9 +10,13 @@
 #include <boost/bft/mass.hpp>
 #include <boost/bft/rule_disjunctive.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-/// Performs \alpha-discounting, i.e. non-Omega masses are discounted by the factor 1-\alpha.
+/// Performs \alpha-discounting, i.e. non-Omega masses are discounted by the
+/// factor 1-\alpha.
 ///
 /// \alpha-discounting gives: // FIXME
 /// {}^\alpha m(A) = (1-\alpha) m(A)         , \forall A \subset Omega
@@ -24,7 +28,7 @@ struct contextual_discounting
     typedef T container_type[FOD::powerset_size];
 
     // =============================================================================
-    contextual_discounting(const container_type & alphas)
+    contextual_discounting(const container_type& alphas)
         : m_discount(degenerate)
     {
         for (std::size_t A = 0; A < FOD::powerset_size; ++A) {
@@ -45,13 +49,13 @@ struct contextual_discounting
     }
 
     // =============================================================================
-    void operator()(mass<FOD, T> & m) const
+    void operator()(mass<FOD, T>& m) const
     {
         m = m.apply(rule_disjunctive(), this->m_discount);
     }
 
     // =============================================================================
-    mass<FOD, T> operator()(const mass<FOD, T> & m) const
+    mass<FOD, T> operator()(const mass<FOD, T>& m) const
     {
         mass<FOD, T> m_out(m);
         operator()(m_out);

@@ -9,10 +9,12 @@
 #include <boost/bft/mass.hpp>
 #include <boost/bft/rule_base.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-struct rule_dubois_prade
-        : public rule_base
+struct rule_dubois_prade : public rule_base
 {
     std::string to_string() const
     {
@@ -20,14 +22,15 @@ struct rule_dubois_prade
     }
 
     template <class FOD, typename T>
-    mass<FOD, T> operator()(const mass<FOD, T> & m1, const mass<FOD, T> & m2) const
+    mass<FOD, T>
+    operator()(const mass<FOD, T>& m1, const mass<FOD, T>& m2) const
     {
         mass<FOD, T> m_result;
 
-        for(std::size_t B = 0; B < FOD::powerset_size; ++B) {
-            for(std::size_t C = 0; C < FOD::powerset_size; ++C) {
+        for (std::size_t B = 0; B < FOD::powerset_size; ++B) {
+            for (std::size_t C = 0; C < FOD::powerset_size; ++C) {
                 std::size_t A = set_intersection(B, C);
-                if(is_emptyset(A)) {
+                if (is_emptyset(A)) {
                     A = set_union(B, C);
                 }
                 m_result[A] += m1[B] * m2[C];

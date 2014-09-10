@@ -9,11 +9,13 @@
 #include <boost/exception/exception.hpp>
 #include <stdexcept>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-struct total_conflict_exception
-        : virtual boost::exception
-        , virtual std::exception
+struct total_conflict_exception : virtual boost::exception,
+                                  virtual std::exception
 {
 };
 

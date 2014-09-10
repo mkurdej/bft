@@ -12,10 +12,13 @@
 #include <boost/bft/to_implicability.hpp>
 #include <boost/foreach.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
 template <class FOD, typename T>
-belief<FOD, T> to_belief(const mass<FOD, T> & m)
+belief<FOD, T> to_belief(const mass<FOD, T>& m)
 {
     mass<FOD, T> m_without_conflict(m);
     m_without_conflict[0] = 0; // set 0 to conflict mass
@@ -24,11 +27,11 @@ belief<FOD, T> to_belief(const mass<FOD, T> & m)
 }
 
 template <class FOD, typename T>
-belief<FOD, T> to_belief(const plausibility<FOD, T> & pl)
+belief<FOD, T> to_belief(const plausibility<FOD, T>& pl)
 {
     belief<FOD, T> bel(pl);
     std::reverse(bel.values().begin(), bel.values().end());
-    BOOST_FOREACH(T & v, bel.values()) {
+    BOOST_FOREACH (T& v, bel.values()) {
         v = 1 - v;
     }
     return bel;

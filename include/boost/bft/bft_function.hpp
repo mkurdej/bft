@@ -13,11 +13,19 @@
 #include <boost/type_traits/is_same.hpp>
 #include <iterator>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-namespace /* anonymous */ {
-struct degenerate_t {}; // all mass on Emptyset
-struct vacuous_t {}; // all mass on Unknown
+namespace /* anonymous */
+{
+struct degenerate_t
+{
+}; // all mass on Emptyset
+struct vacuous_t
+{
+}; // all mass on Unknown
 } // namespace
 
 // TODO: silence warnings about unused variable
@@ -37,13 +45,14 @@ public:
 
     /// Default constructor.
     ///
-    /// Default constructor creates a zero-initialized (Dempster-Shafer theory) function.
+    /// Default constructor creates a zero-initialized (Dempster-Shafer theory)
+    /// function.
     bft_function()
     {
         this->m_values.assign(0);
     }
 
-    bft_function(const bft_function & f)
+    bft_function(const bft_function& f)
         : m_values(f.m_values)
     {
     }
@@ -51,17 +60,19 @@ public:
     template <typename Iterator>
     bft_function(Iterator first, Iterator last)
     {
-        BOOST_STATIC_ASSERT(( is_same<T, typename std::iterator_traits<Iterator>::value_type >::value ));
-        BOOST_ASSERT(( std::distance(first, last) == FOD::powerset_size ));
-        BOOST_ASSERT(( std::distance(first, last) == m_values.size() ));
+        BOOST_STATIC_ASSERT((is_same<
+            T, typename std::iterator_traits<Iterator>::value_type>::value));
+        BOOST_ASSERT((std::distance(first, last) == FOD::powerset_size));
+        BOOST_ASSERT((std::distance(first, last) == m_values.size()));
         // TODO: throw
         std::copy(first, last, this->m_values.begin());
     }
 
-    bft_function(const container_type & init_values)
+    bft_function(const container_type& init_values)
     {
-        BOOST_ASSERT(( FOD::powerset_size == m_values.size() ));
-        std::copy(init_values, init_values + FOD::powerset_size, this->m_values.begin());
+        BOOST_ASSERT((FOD::powerset_size == m_values.size()));
+        std::copy(init_values, init_values + FOD::powerset_size,
+                  this->m_values.begin());
     }
 
     // =============================================================================
@@ -78,45 +89,69 @@ public:
     // =============================================================================
     T& operator[](std::size_t i)
     {
-        BOOST_ASSERT_MSG(i < FOD::powerset_size, "Index must be an integer in [0; FOD::powerset_size[");
+        BOOST_ASSERT_MSG(i < FOD::powerset_size,
+                         "Index must be an integer in [0; FOD::powerset_size[");
         return this->m_values[i];
     }
 
     const T& operator[](std::size_t i) const
     {
-        BOOST_ASSERT_MSG(i < FOD::powerset_size, "Index must be an integer in [0; FOD::powerset_size[");
+        BOOST_ASSERT_MSG(i < FOD::powerset_size,
+                         "Index must be an integer in [0; FOD::powerset_size[");
         return this->m_values[i];
     }
 
     // =============================================================================
-    array<T, FOD::powerset_size> & values()
+    array<T, FOD::powerset_size>& values()
     {
         return this->m_values;
     }
 
-    const array<T, FOD::powerset_size> & values() const
+    const array<T, FOD::powerset_size>& values() const
     {
         return this->m_values;
     }
 
     // =============================================================================
     // =============================================================================
-    template <typename S0 = detail::EmptyType, typename S1 = detail::EmptyType, typename S2 = detail::EmptyType, typename S3 = detail::EmptyType, typename S4 = detail::EmptyType, typename S5 = detail::EmptyType, typename S6 = detail::EmptyType, typename S7 = detail::EmptyType, typename S8 = detail::EmptyType, typename S9 = detail::EmptyType>
+    template <typename S0 = detail::EmptyType, typename S1 = detail::EmptyType,
+              typename S2 = detail::EmptyType, typename S3 = detail::EmptyType,
+              typename S4 = detail::EmptyType, typename S5 = detail::EmptyType,
+              typename S6 = detail::EmptyType, typename S7 = detail::EmptyType,
+              typename S8 = detail::EmptyType, typename S9 = detail::EmptyType>
     struct Idx
     {
-        enum
-        {
-            value
-            = ((is_same<detail::EmptyType, S0>::value) ? 0 : (1 << FOD::template Idx<S0>::value))
-            + ((is_same<detail::EmptyType, S1>::value) ? 0 : (1 << FOD::template Idx<S1>::value))
-            + ((is_same<detail::EmptyType, S2>::value) ? 0 : (1 << FOD::template Idx<S2>::value))
-            + ((is_same<detail::EmptyType, S3>::value) ? 0 : (1 << FOD::template Idx<S3>::value))
-            + ((is_same<detail::EmptyType, S4>::value) ? 0 : (1 << FOD::template Idx<S4>::value))
-            + ((is_same<detail::EmptyType, S5>::value) ? 0 : (1 << FOD::template Idx<S5>::value))
-            + ((is_same<detail::EmptyType, S6>::value) ? 0 : (1 << FOD::template Idx<S6>::value))
-            + ((is_same<detail::EmptyType, S7>::value) ? 0 : (1 << FOD::template Idx<S7>::value))
-            + ((is_same<detail::EmptyType, S8>::value) ? 0 : (1 << FOD::template Idx<S8>::value))
-            + ((is_same<detail::EmptyType, S9>::value) ? 0 : (1 << FOD::template Idx<S9>::value))
+        enum {
+            value = ((is_same<detail::EmptyType, S0>::value)
+                         ? 0
+                         : (1 << FOD::template Idx<S0>::value)) +
+                    ((is_same<detail::EmptyType, S1>::value)
+                         ? 0
+                         : (1 << FOD::template Idx<S1>::value)) +
+                    ((is_same<detail::EmptyType, S2>::value)
+                         ? 0
+                         : (1 << FOD::template Idx<S2>::value)) +
+                    ((is_same<detail::EmptyType, S3>::value)
+                         ? 0
+                         : (1 << FOD::template Idx<S3>::value)) +
+                    ((is_same<detail::EmptyType, S4>::value)
+                         ? 0
+                         : (1 << FOD::template Idx<S4>::value)) +
+                    ((is_same<detail::EmptyType, S5>::value)
+                         ? 0
+                         : (1 << FOD::template Idx<S5>::value)) +
+                    ((is_same<detail::EmptyType, S6>::value)
+                         ? 0
+                         : (1 << FOD::template Idx<S6>::value)) +
+                    ((is_same<detail::EmptyType, S7>::value)
+                         ? 0
+                         : (1 << FOD::template Idx<S7>::value)) +
+                    ((is_same<detail::EmptyType, S8>::value)
+                         ? 0
+                         : (1 << FOD::template Idx<S8>::value)) +
+                    ((is_same<detail::EmptyType, S9>::value)
+                         ? 0
+                         : (1 << FOD::template Idx<S9>::value))
         };
     };
 
@@ -136,189 +171,206 @@ public:
     template <typename S0, typename S1>
     static int idx()
     {
-        return Idx<S0,S1>::value;
+        return Idx<S0, S1>::value;
     }
 
     template <typename S0, typename S1, typename S2>
     static int idx()
     {
-        return Idx<S0,S1,S2>::value;
+        return Idx<S0, S1, S2>::value;
     }
 
     template <typename S0, typename S1, typename S2, typename S3>
     static int idx()
     {
-        return Idx<S0,S1,S2,S3>::value;
+        return Idx<S0, S1, S2, S3>::value;
     }
 
     template <typename S0, typename S1, typename S2, typename S3, typename S4>
     static int idx()
     {
-        return Idx<S0,S1,S2,S3,S4>::value;
+        return Idx<S0, S1, S2, S3, S4>::value;
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5>
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5>
     static int idx()
     {
-        return Idx<S0,S1,S2,S3,S4,S5>::value;
+        return Idx<S0, S1, S2, S3, S4, S5>::value;
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6>
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6>
     static int idx()
     {
-        return Idx<S0,S1,S2,S3,S4,S5,S6>::value;
+        return Idx<S0, S1, S2, S3, S4, S5, S6>::value;
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6, typename S7>
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6, typename S7>
     static int idx()
     {
-        return Idx<S0,S1,S2,S3,S4,S5,S6,S7>::value;
+        return Idx<S0, S1, S2, S3, S4, S5, S6, S7>::value;
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6, typename S7, typename S8>
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6, typename S7, typename S8>
     static int idx()
     {
-        return Idx<S0,S1,S2,S3,S4,S5,S6,S7,S8>::value;
+        return Idx<S0, S1, S2, S3, S4, S5, S6, S7, S8>::value;
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6, typename S7, typename S8, typename S9>
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6, typename S7, typename S8, typename S9>
     static int idx()
     {
-        return Idx<S0,S1,S2,S3,S4,S5,S6,S7,S8,S9>::value;
+        return Idx<S0, S1, S2, S3, S4, S5, S6, S7, S8, S9>::value;
     }
 
     // =============================================================================
     // =============================================================================
-    T & at()
+    T& at()
     {
         return this->m_values[Idx<>::value];
     }
 
     template <typename S0>
-    T & at()
+    T& at()
     {
         return this->m_values[Idx<S0>::value];
     }
 
     template <typename S0, typename S1>
-    T & at()
+    T& at()
     {
-        return this->m_values[Idx<S0,S1>::value];
+        return this->m_values[Idx<S0, S1>::value];
     }
 
     template <typename S0, typename S1, typename S2>
-    T & at()
+    T& at()
     {
-        return this->m_values[Idx<S0,S1,S2>::value];
+        return this->m_values[Idx<S0, S1, S2>::value];
     }
 
     template <typename S0, typename S1, typename S2, typename S3>
-    T & at()
+    T& at()
     {
-        return this->m_values[Idx<S0,S1,S2,S3>::value];
+        return this->m_values[Idx<S0, S1, S2, S3>::value];
     }
 
     template <typename S0, typename S1, typename S2, typename S3, typename S4>
-    T & at()
+    T& at()
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4>::value];
+        return this->m_values[Idx<S0, S1, S2, S3, S4>::value];
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5>
-    T & at()
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5>
+    T& at()
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4,S5>::value];
+        return this->m_values[Idx<S0, S1, S2, S3, S4, S5>::value];
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6>
-    T & at()
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6>
+    T& at()
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4,S5,S6>::value];
+        return this->m_values[Idx<S0, S1, S2, S3, S4, S5, S6>::value];
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6, typename S7>
-    T & at()
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6, typename S7>
+    T& at()
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4,S5,S6,S7>::value];
+        return this->m_values[Idx<S0, S1, S2, S3, S4, S5, S6, S7>::value];
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6, typename S7, typename S8>
-    T & at()
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6, typename S7, typename S8>
+    T& at()
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4,S5,S6,S7,S8>::value];
+        return this->m_values[Idx<S0, S1, S2, S3, S4, S5, S6, S7, S8>::value];
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6, typename S7, typename S8, typename S9>
-    T & at()
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6, typename S7, typename S8, typename S9>
+    T& at()
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4,S5,S6,S7,S8,S9>::value];
+        return this
+            ->m_values[Idx<S0, S1, S2, S3, S4, S5, S6, S7, S8, S9>::value];
     }
 
     // =============================================================================
     // =============================================================================
-    const T & at() const
+    const T& at() const
     {
         return this->m_values[Idx<>::value];
     }
 
     template <typename S0>
-    const T & at() const
+    const T& at() const
     {
         return this->m_values[Idx<S0>::value];
     }
 
     template <typename S0, typename S1>
-    const T & at() const
+    const T& at() const
     {
-        return this->m_values[Idx<S0,S1>::value];
+        return this->m_values[Idx<S0, S1>::value];
     }
 
     template <typename S0, typename S1, typename S2>
-    const T & at() const
+    const T& at() const
     {
-        return this->m_values[Idx<S0,S1,S2>::value];
+        return this->m_values[Idx<S0, S1, S2>::value];
     }
 
     template <typename S0, typename S1, typename S2, typename S3>
-    const T & at() const
+    const T& at() const
     {
-        return this->m_values[Idx<S0,S1,S2,S3>::value];
+        return this->m_values[Idx<S0, S1, S2, S3>::value];
     }
 
     template <typename S0, typename S1, typename S2, typename S3, typename S4>
-    const T & at() const
+    const T& at() const
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4>::value];
+        return this->m_values[Idx<S0, S1, S2, S3, S4>::value];
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5>
-    const T & at() const
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5>
+    const T& at() const
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4,S5>::value];
+        return this->m_values[Idx<S0, S1, S2, S3, S4, S5>::value];
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6>
-    const T & at() const
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6>
+    const T& at() const
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4,S5,S6>::value];
+        return this->m_values[Idx<S0, S1, S2, S3, S4, S5, S6>::value];
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6, typename S7>
-    const T & at() const
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6, typename S7>
+    const T& at() const
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4,S5,S6,S7>::value];
+        return this->m_values[Idx<S0, S1, S2, S3, S4, S5, S6, S7>::value];
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6, typename S7, typename S8>
-    const T & at() const
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6, typename S7, typename S8>
+    const T& at() const
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4,S5,S6,S7,S8>::value];
+        return this->m_values[Idx<S0, S1, S2, S3, S4, S5, S6, S7, S8>::value];
     }
 
-    template <typename S0, typename S1, typename S2, typename S3, typename S4, typename S5, typename S6, typename S7, typename S8, typename S9>
-    const T & at() const
+    template <typename S0, typename S1, typename S2, typename S3, typename S4,
+              typename S5, typename S6, typename S7, typename S8, typename S9>
+    const T& at() const
     {
-        return this->m_values[Idx<S0,S1,S2,S3,S4,S5,S6,S7,S8,S9>::value];
+        return this
+            ->m_values[Idx<S0, S1, S2, S3, S4, S5, S6, S7, S8, S9>::value];
     }
 
     // =============================================================================
@@ -385,12 +437,14 @@ static std::size_t count_elements(std::size_t set)
     return count_bits(set);
 }
 
-namespace detail {
-
-template <typename T> void quiet_warning()
+namespace detail
 {
-    (void) degenerate;
-    (void) vacuous;
+
+template <typename T>
+void quiet_warning()
+{
+    (void)degenerate;
+    (void)vacuous;
 }
 
 } // namespace detail

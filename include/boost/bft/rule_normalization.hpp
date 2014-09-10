@@ -12,13 +12,16 @@
 #include <boost/throw_exception.hpp>
 #include <boost/foreach.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-// what behaviour should have rule_normalization when mass<EmptySet>() == 1.0 (total conflict)?
+// what behaviour should have rule_normalization when mass<EmptySet>() == 1.0
+// (total conflict)?
 // throw an exception boost::bft::total_conflict_exception
 
-struct rule_normalization
-        : public rule_base
+struct rule_normalization : public rule_base
 {
     std::string to_string() const
     {
@@ -26,7 +29,7 @@ struct rule_normalization
     }
 
     template <class FOD, typename T>
-    void operator()(mass<FOD, T> & m) const
+    void operator()(mass<FOD, T>& m) const
     {
         if (m.is_degenerate()) {
             BOOST_THROW_EXCEPTION(boost::bft::total_conflict_exception());
@@ -34,14 +37,14 @@ struct rule_normalization
         }
 
         T conflict_mass = m[0];
-        BOOST_FOREACH(T & v, m.values()) {
-            v = v / (1-conflict_mass);
+        BOOST_FOREACH (T& v, m.values()) {
+            v = v / (1 - conflict_mass);
         }
         m.values().front() = 0;
     }
 
     template <class FOD, typename T>
-    mass<FOD, T> operator()(const mass<FOD, T> & m) const
+    mass<FOD, T> operator()(const mass<FOD, T>& m) const
     {
         mass<FOD, T> m_out(m);
         operator()(m_out);

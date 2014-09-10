@@ -13,22 +13,25 @@
 #include <boost/bft/to_belief.hpp>
 #include <boost/foreach.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
 template <class FOD, typename T>
-plausibility<FOD, T> to_plausibility(const belief<FOD, T> & bel)
+plausibility<FOD, T> to_plausibility(const belief<FOD, T>& bel)
 {
     plausibility<FOD, T> pl(bel);
     std::reverse(pl.values().begin(), pl.values().end());
     T conflict_mass = 1 - pl[0];
-    BOOST_FOREACH(T & v, pl.values()) {
+    BOOST_FOREACH (T& v, pl.values()) {
         v = 1 - v - conflict_mass;
     }
     return pl;
 }
 
 template <class FOD, typename T>
-plausibility<FOD, T> to_plausibility(const mass<FOD, T> & m)
+plausibility<FOD, T> to_plausibility(const mass<FOD, T>& m)
 {
     belief<FOD, T> bel = to_belief(m);
     plausibility<FOD, T> pl = to_plausibility(bel);

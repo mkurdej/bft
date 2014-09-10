@@ -9,17 +9,23 @@
 #include <boost/bft/implicability.hpp>
 #include <boost/bft/mass.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
 template <class FOD, typename T>
-implicability<FOD, T> to_implicability(const mass<FOD, T> & m)
+implicability<FOD, T> to_implicability(const mass<FOD, T>& m)
 {
     implicability<FOD, T> b(m);
 
-    for(std::size_t set = 0; set < FOD::set_size; ++set) { // for all sets in frame of discernement (FOD)
-        std::size_t powerset = static_cast<std::size_t>(1 << set); // 2^set // set index in powerset 2^FOD
-        for(std::size_t A = 0; A < FOD::powerset_size; ++A) { // for all subsets in powerset 2^FOD
-            if(is_subset_of(powerset, A)) {
+    for (std::size_t set = 0; set < FOD::set_size;
+         ++set) { // for all sets in frame of discernement (FOD)
+        std::size_t powerset = static_cast<std::size_t>(
+            1 << set); // 2^set // set index in powerset 2^FOD
+        for (std::size_t A = 0; A < FOD::powerset_size;
+             ++A) { // for all subsets in powerset 2^FOD
+            if (is_subset_of(powerset, A)) {
                 std::size_t B = set_minus(A, powerset);
                 b[A] += b[B];
             }

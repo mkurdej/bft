@@ -12,7 +12,7 @@ namespace bb = boost::bft;
 typedef bb::fod<C1, C2> fodAB;
 typedef bb::fod<C1, C2, C3, C4> fodABCD;
 
-int main( int , char* [] )
+int main(int, char* [])
 {
     bb::rule_conjunctive rule;
 

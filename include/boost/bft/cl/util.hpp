@@ -4,12 +4,12 @@
 #include "cl.hpp"
 
 #ifdef _MSC_VER
-#   pragma warning(disable:4365)
+#pragma warning(disable : 4365)
 
-#   pragma warning(push)	// disable for this header only
-#   pragma warning(disable:4350)
+#pragma warning(push) // disable for this header only
+#pragma warning(disable : 4350)
 #elif defined(__GNUC__)
-#   pragma GCC diagnostic push
+#pragma GCC diagnostic push
 #endif // _MSC_VER
 
 #include <boost/algorithm/string/case_conv.hpp>
@@ -18,19 +18,20 @@
 #include <utility>
 
 #ifdef _MSC_VER
-#   pragma warning(pop)     // restore original warning level
+#pragma warning(pop) // restore original warning level
 #elif defined(__GNUC__)
-#   pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
 #endif // _MSC_VER
 
 #include "log.hpp"
 
-namespace /* anonymous */ {
+namespace /* anonymous */
+{
 
-bool doesFileExist(const cl::STRING_CLASS & path);
+bool doesFileExist(const cl::STRING_CLASS& path);
 cl::STRING_CLASS getOpenCLErrorMessage(cl_int errorCode);
 cl::Program getProgramFromFile(cl::Context context, cl::STRING_CLASS filename);
-cl::Platform getPlatformByName(const char * name);
+cl::Platform getPlatformByName(const char* name);
 ::size_t getRoundedGlobalRange(::size_t N, ::size_t local);
 cl::Context getContextByDeviceType(cl_device_type deviceType);
 
@@ -155,14 +156,15 @@ cl::Program getProgramFromFile(cl::Context context, cl::STRING_CLASS filename)
     // Read source file
     std::ifstream sourceFile(filename);
     cl::STRING_CLASS sourceCode(is_iter_char(sourceFile), (is_iter_char()));
-    cl::Program::Sources source(1, std::make_pair(sourceCode.c_str(), sourceCode.length()+1));
-    
+    cl::Program::Sources source(
+        1, std::make_pair(sourceCode.c_str(), sourceCode.length() + 1));
+
     // Make program of the source code in the context
     return cl::Program(context, source);
 }
 
 /// Finds a platform that contains given name
-cl::Platform getPlatformByName(const char * name)
+cl::Platform getPlatformByName(const char* name)
 {
     using boost::to_lower;
     using namespace cl;
@@ -180,7 +182,7 @@ cl::Platform getPlatformByName(const char * name)
         cl::STRING_CLASS platformName;
         platforms[plid].getInfo(CL_PLATFORM_NAME, &platformName);
         LOG_DEBUG("Checking platform: " << platformName);
-        
+
         to_lower(platformName);
         std::size_t found = platformName.find(lname);
         if (found != cl::STRING_CLASS::npos) {
@@ -195,17 +197,20 @@ cl::Platform getPlatformByName(const char * name)
 
 ::size_t getRoundedGlobalRange(::size_t N, ::size_t local)
 {
-    return static_cast< ::size_t >(std::ceil(static_cast<float>(N) / local) * local);
+    return static_cast< ::size_t>(std::ceil(static_cast<float>(N) / local) *
+                                  local);
 }
 
-/// Finds a context corresponding to a platform which has devices of a given type
+/// Finds a context corresponding to a platform which has devices of a given
+/// type
 cl::Context getContextByDeviceType(cl_device_type deviceType)
 {
     // Get available platforms
     VECTOR_CLASS<cl::Platform> platforms;
     cl::Platform::get(&platforms);
 
-    // Select the default platform and create a context using this platform and the GPU
+    // Select the default platform and create a context using this platform and
+    // the GPU
     cl::Context context;
 
     LOG_INFO("Found " << platforms.size() << " platforms:");
@@ -215,12 +220,11 @@ cl::Context getContextByDeviceType(cl_device_type deviceType)
         LOG_DEBUG("\t" << platformName);
 
         try {
-            cl_context_properties cps[] = { 
+            cl_context_properties cps[] = {
                 CL_CONTEXT_PLATFORM, (cl_context_properties)(platforms[plid])(),
-                0
-            };
+                0};
             cl::Context context(deviceType, cps);
-            LOG_DEBUG( "\t" << cl::STRING_CLASS(platformName.size(), '^') );
+            LOG_DEBUG("\t" << cl::STRING_CLASS(platformName.size(), '^'));
             switch (deviceType) {
             case CL_DEVICE_TYPE_CPU:
                 LOG_DEBUG("\t(CPU device)");
@@ -231,7 +235,7 @@ cl::Context getContextByDeviceType(cl_device_type deviceType)
                 break;
             }
             return context;
-        } catch(cl::Error & error) {
+        } catch (cl::Error& error) {
             if (plid + 1 >= platforms.size()) {
                 LOG_WARN("No more platforms to check");
                 throw;
@@ -246,7 +250,7 @@ cl::Context getContextByDeviceType(cl_device_type deviceType)
     throw cl::Error(CL_DEVICE_NOT_FOUND, "platform not found");
 }
 
-bool doesFileExist(const cl::STRING_CLASS & path)
+bool doesFileExist(const cl::STRING_CLASS& path)
 {
     using namespace std;
 

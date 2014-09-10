@@ -12,10 +12,12 @@
 #include <boost/bft/to_commonality.hpp>
 #include <boost/bft/to_mass.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-struct rule_conjunctive
-        : public rule_base
+struct rule_conjunctive : public rule_base
 {
     std::string to_string() const
     {
@@ -23,7 +25,8 @@ struct rule_conjunctive
     }
 
     template <class FOD, typename T>
-    commonality<FOD, T> operator()(commonality<FOD, T> const& q1, commonality<FOD, T> const& q2) const
+    commonality<FOD, T> operator()(commonality<FOD, T> const& q1,
+                                   commonality<FOD, T> const& q2) const
     {
         commonality<FOD, T> q12;
         for (std::size_t i = 0; i < FOD::powerset_size; ++i) {
@@ -33,7 +36,8 @@ struct rule_conjunctive
     }
 
     template <class FOD, typename T>
-    mass<FOD, T> operator()(mass<FOD, T> const& m1, mass<FOD, T> const& m2) const
+    mass<FOD, T>
+    operator()(mass<FOD, T> const& m1, mass<FOD, T> const& m2) const
     {
         commonality<FOD, T> q1 = to_commonality(m1);
         commonality<FOD, T> q2 = to_commonality(m2);

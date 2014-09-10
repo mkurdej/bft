@@ -6,9 +6,14 @@
 #ifndef BOOST_BFT_DETAIL_TO_VOID_HPP
 #define BOOST_BFT_DETAIL_TO_VOID_HPP
 
-namespace boost { namespace bft { namespace detail {
+namespace boost
+{
+namespace bft
+{
+namespace detail
+{
 
-template<typename T>
+template <typename T>
 struct to_void
 {
     typedef void type;

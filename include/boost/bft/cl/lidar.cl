@@ -1,24 +1,19 @@
 #include "GridSize1D.h"
 
 /// Run with at least ```pointCount, gridSizeRadius.size``` threads.
-__kernel
-void create_lidar_grid_2d
-    (
-        __global __write_only float * dFree,
-        __global __write_only float * dOccupied,
-        __global __write_only float * dOmega,
-        __global __read_only const float * dScanAngle, // [degrees]
-        __global __read_only const float * dScanRadius, // [metres]
-        const __read_only uint pointCount,
-        const __read_only struct GridSize1D gridSizeAngle, // [degrees]
-        const __read_only struct GridSize1D gridSizeRadius, // [metres]
-        const __read_only float massFree,
-        const __read_only float massOccupied
-    )
+__kernel void create_lidar_grid_2d(
+    __global __write_only float* dFree, __global __write_only float* dOccupied,
+    __global __write_only float* dOmega,
+    __global __read_only const float* dScanAngle,  // [degrees]
+    __global __read_only const float* dScanRadius, // [metres]
+    const __read_only uint pointCount,
+    const __read_only struct GridSize1D gridSizeAngle,  // [degrees]
+    const __read_only struct GridSize1D gridSizeRadius, // [metres]
+    const __read_only float massFree, const __read_only float massOccupied)
 {
     // Get the index of the current element to be processed
     uint gidPoint = get_global_id(0);
-    
+
     if (gidPoint < pointCount) {
         uint gidRadius = get_global_id(1);
         if (gidRadius >= gridSizeRadius.size) {
@@ -38,19 +33,19 @@ void create_lidar_grid_2d
 
         if (gidRadius < radius) {
             // set mass at obstacle to Free
-            dFree[idx]     = massFree;
+            dFree[idx] = massFree;
             dOccupied[idx] = 0;
-            dOmega[idx]    = 1 - massFree;
+            dOmega[idx] = 1 - massFree;
         } else if (gidRadius == radius) {
             // set mass at obstacle to Occupied
-            dFree[idx]     = 0;
+            dFree[idx] = 0;
             dOccupied[idx] = massOccupied;
-            dOmega[idx]    = 1 - massOccupied;
+            dOmega[idx] = 1 - massOccupied;
         } else {
             // set all mass to Omega
-            dFree[idx]     = 0;
+            dFree[idx] = 0;
             dOccupied[idx] = 0;
-            dOmega[idx]    = 1;
+            dOmega[idx] = 1;
         }
     }
 }

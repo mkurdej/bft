@@ -15,4 +15,6 @@
 #include BOOST_BFT_HEADER
 #include BOOST_BFT_HEADER
 
-int main() {}
+int main()
+{
+}

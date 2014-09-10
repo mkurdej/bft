@@ -8,7 +8,10 @@
 
 #include <string>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
 struct rule_base
 {

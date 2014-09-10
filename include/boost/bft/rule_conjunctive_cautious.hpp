@@ -13,18 +13,21 @@
 #include <boost/bft/rule_conjunctive.hpp>
 #include <boost/bft/detail/is_small.hpp>
 
-namespace boost { namespace bft {
+namespace boost
+{
+namespace bft
+{
 
-struct rule_conjunctive_cautious
-        : public rule_base
+struct rule_conjunctive_cautious : public rule_base
 {
     std::string to_string() const
     {
         return "cautious conjunctive rule";
     }
-    
+
     template <class FOD, typename T>
-    mass<FOD, T> operator()(const mass<FOD, T> & m1, const mass<FOD, T> & m2) const
+    mass<FOD, T>
+    operator()(const mass<FOD, T>& m1, const mass<FOD, T>& m2) const
     {
         // compute canonical conjunctive decompositions w_1(A), w_2(A)
         conjunctive_decomposition decomposition;
@@ -37,11 +40,13 @@ struct rule_conjunctive_cautious
         // compute conjunctive combination of GSBBA A^{w_1(A) \wedge w_2(A)}
         mass<FOD, T> m_result(vacuous);
         rule_conjunctive rule;
-        for(std::size_t A = 0; A < FOD::powerset_size - 1; ++A) {
-            if(detail::is_small(1 - w_min12[A], detail::tolerance)) {
+        for (std::size_t A = 0; A < FOD::powerset_size - 1; ++A) {
+            if (detail::is_small(1 - w_min12[A], detail::tolerance)) {
                 continue;
             }
-            m_result = m_result.apply(rule, mass<FOD, T>::create_mass_from_conjunctive_weight(A, w_min12[A]));
+            m_result = m_result.apply(
+                rule, mass<FOD, T>::create_mass_from_conjunctive_weight(
+                          A, w_min12[A]));
         }
         return m_result;
     }

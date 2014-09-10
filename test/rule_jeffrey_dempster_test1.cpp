@@ -6,22 +6,22 @@
 #define BOOST_TEST_MODULE test_rule_jeffrey_dempster
 
 #ifdef _MSC_VER
-#   pragma warning(disable:4505) // unused function
-#   pragma warning(disable:4347)
+#pragma warning(disable : 4505) // unused function
+#pragma warning(disable : 4347)
 
-#   pragma warning(push)	// disable for this header only
-#   pragma warning(disable:4265)
-#   pragma warning(disable:4365)
-#   pragma warning(disable:4548)
-#   pragma warning(disable:4571)
-#   pragma warning(disable:4625)
-#   pragma warning(disable:4626)
-#   pragma warning(disable:4640)
-#   pragma warning(disable:4668)
+#pragma warning(push) // disable for this header only
+#pragma warning(disable : 4265)
+#pragma warning(disable : 4365)
+#pragma warning(disable : 4548)
+#pragma warning(disable : 4571)
+#pragma warning(disable : 4625)
+#pragma warning(disable : 4626)
+#pragma warning(disable : 4640)
+#pragma warning(disable : 4668)
 #elif defined(__GNUC__)
-#   pragma GCC diagnostic ignored "-Wunused-function"
+#pragma GCC diagnostic ignored "-Wunused-function"
 
-#   pragma GCC diagnostic push
+#pragma GCC diagnostic push
 #endif // _MSC_VER
 
 #define BOOST_TEST_MAIN
@@ -30,9 +30,9 @@
 #include <boost/bft/rule_jeffrey_dempster.hpp>
 
 #ifdef _MSC_VER
-#   pragma warning(pop)  	// restore original warning level
+#pragma warning(pop) // restore original warning level
 #elif defined(__GNUC__)
-#   pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
 #endif // _MSC_VER
 
 using namespace boost;
@@ -62,20 +62,22 @@ BOOST_AUTO_TEST_CASE(test_rule_jeffrey_dempster_has_neutral_element)
     const mass<fod_t>::container_type ma1 = {0, 0.3, 0, 0.7};
     const mass<fod_t> m1(ma1);
     const mass<fod_t> m_neutral_element(vacuous);
-    const mass<fod_t> & m_expected = m1;
+    const mass<fod_t>& m_expected = m1;
 
     mass<fod_t> m_actual12 = m1.apply(rule, m_neutral_element);
     mass<fod_t> m_actual21 = m_neutral_element.apply(rule, m1);
 
-    for(std::size_t i = 0; i < fod_t::powerset_size; ++i) {
-        //BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
-        BOOST_TEST_CHECKPOINT("Calling [i] with i=" << i); // FIXME: wanted but doesn't work
+    for (std::size_t i = 0; i < fod_t::powerset_size; ++i) {
+        // BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
+        BOOST_TEST_CHECKPOINT(
+            "Calling [i] with i=" << i); // FIXME: wanted but doesn't work
         BOOST_CHECK_CLOSE(m_expected[i], m_actual12[i], 1e-10);
         BOOST_CHECK_CLOSE(m_expected[i], m_actual21[i], 1e-10);
     }
 }
 
-BOOST_AUTO_TEST_CASE(test_rule_jeffrey_dempster_is_equivalent_to_conjunctive_when_no_conflict)
+BOOST_AUTO_TEST_CASE(
+    test_rule_jeffrey_dempster_is_equivalent_to_conjunctive_when_no_conflict)
 {
     rule_jeffrey_dempster rule;
 
@@ -91,9 +93,10 @@ BOOST_AUTO_TEST_CASE(test_rule_jeffrey_dempster_is_equivalent_to_conjunctive_whe
     mass<fod_t> m_actual_conj = m1.apply(rule_conjunctive(), m2);
     mass<fod_t> m_actual_dp = m1.apply(rule, m2);
 
-    for(std::size_t i = 0; i < fod_t::powerset_size; ++i) {
-        //BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
-        BOOST_TEST_CHECKPOINT("Calling [i] with i=" << i); // FIXME: wanted but doesn't work
+    for (std::size_t i = 0; i < fod_t::powerset_size; ++i) {
+        // BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
+        BOOST_TEST_CHECKPOINT(
+            "Calling [i] with i=" << i); // FIXME: wanted but doesn't work
         BOOST_CHECK_CLOSE(m_actual_conj[i], m_actual_dp[i], 1e-10);
         BOOST_CHECK_CLOSE(m_expected[i], m_actual_conj[i], 1e-10);
         BOOST_CHECK_CLOSE(m_expected[i], m_actual_dp[i], 1e-10);
@@ -115,9 +118,10 @@ BOOST_AUTO_TEST_CASE(test_rule_jeffrey_dempster_Ma2011_example_6)
     const mass<fod_t> m_expected(mae);
     mass<fod_t> m_actual = m1.apply(rule, m2);
 
-    for(std::size_t i = 0; i < fod_t::powerset_size; ++i) {
-        //BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
-        BOOST_TEST_CHECKPOINT("Calling [i] with i=" << i); // FIXME: wanted but doesn't work
+    for (std::size_t i = 0; i < fod_t::powerset_size; ++i) {
+        // BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
+        BOOST_TEST_CHECKPOINT(
+            "Calling [i] with i=" << i); // FIXME: wanted but doesn't work
         BOOST_CHECK_CLOSE(m_expected[i], m_actual[i], 1e-10);
     }
 }
@@ -126,7 +130,7 @@ BOOST_AUTO_TEST_CASE(test_rule_jeffrey_dempster_Ma2011_example_7)
 {
     rule_jeffrey_dempster rule;
 
-    typedef fod<C1,C2,C3,C4,C5,C6,C7,C8> fod_t;
+    typedef fod<C1, C2, C3, C4, C5, C6, C7, C8> fod_t;
 
     mass<fod_t> m1;
     {
@@ -153,9 +157,10 @@ BOOST_AUTO_TEST_CASE(test_rule_jeffrey_dempster_Ma2011_example_7)
 
     mass<fod_t> m_actual = m1.apply(rule, m2);
 
-    for(std::size_t i = 0; i < fod_t::powerset_size; ++i) {
-        //BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
-        BOOST_TEST_CHECKPOINT("Calling [i] with i=" << i); // FIXME: wanted but doesn't work
+    for (std::size_t i = 0; i < fod_t::powerset_size; ++i) {
+        // BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
+        BOOST_TEST_CHECKPOINT(
+            "Calling [i] with i=" << i); // FIXME: wanted but doesn't work
         BOOST_CHECK_CLOSE(m_expected[i], m_actual[i], 1e-10);
     }
 }
@@ -164,7 +169,7 @@ BOOST_AUTO_TEST_CASE(test_rule_jeffrey_dempster_Ma2011_example_10)
 {
     rule_jeffrey_dempster rule;
 
-    typedef fod<C1,C2,C3,C4> fod_t;
+    typedef fod<C1, C2, C3, C4> fod_t;
 
     mass<fod_t> m1;
     {
@@ -198,9 +203,10 @@ BOOST_AUTO_TEST_CASE(test_rule_jeffrey_dempster_Ma2011_example_10)
     mass<fod_t> m_actual_123 = m1.apply(rule, m2).apply(rule, m3);
     mass<fod_t> m_actual_13 = m1.apply(rule, m3);
 
-    for(std::size_t i = 0; i < fod_t::powerset_size; ++i) {
-        //BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
-        BOOST_TEST_CHECKPOINT("Calling [i] with i=" << i); // FIXME: wanted but doesn't work
+    for (std::size_t i = 0; i < fod_t::powerset_size; ++i) {
+        // BOOST_TEST_MESSAGE("Calling [i] with i=" << i); // temporary fix
+        BOOST_TEST_CHECKPOINT(
+            "Calling [i] with i=" << i); // FIXME: wanted but doesn't work
         BOOST_CHECK_CLOSE(m_expected[i], m_actual_123[i], 1e-10);
         BOOST_CHECK_CLOSE(m_expected[i], m_actual_13[i], 1e-10);
         BOOST_CHECK_CLOSE(m_actual_123[i], m_actual_13[i], 1e-10);
