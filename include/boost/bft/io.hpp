@@ -8,6 +8,7 @@
 
 #include <boost/bft/bft_function.hpp>
 #include <boost/bft/mass.hpp>
+#include <boost/preprocessor/cat.hpp>
 #include <ostream>
 
 namespace boost

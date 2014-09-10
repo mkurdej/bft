@@ -6,10 +6,12 @@
 #ifndef BOOST_BFT_DETAIL_POW_HPP
 #define BOOST_BFT_DETAIL_POW_HPP
 
+#ifdef _MSC_VER
 #pragma warning(push) // disable for this header only
 #pragma warning(disable : 4668)
 #include <boost/static_assert.hpp>
 #pragma warning(pop)
+#endif // _MSC_VER
 
 namespace boost
 {
