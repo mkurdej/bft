@@ -295,6 +295,11 @@ BOOST_AUTO_TEST_CASE(test_mass_is_simple)
         const mass<fod2> m(ma);
         BOOST_CHECK((m.is_simple()));
     }
+    {
+        const mass<fod4>::container_type ma = {0, 0.3, 0, 0.6, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,};
+        const mass<fod4> m(ma);
+        BOOST_CHECK((!m.is_simple()));
+    }
 }
 
 BOOST_AUTO_TEST_CASE(test_mass_is_bayesian)
