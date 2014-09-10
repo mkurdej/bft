@@ -21,7 +21,7 @@ foreach(HEADER ${HDRS})
         ${HEADER}
     )
     set_target_properties(${TEST_NAME} PROPERTIES COMPILE_DEFINITIONS "BOOST_BFT_HEADER_NAME=${HEADER}")
-    set_target_properties(${TEST_NAME} PROPERTIES FOLDER "Tests/headers")
+    set_target_properties(${TEST_NAME} PROPERTIES FOLDER "Tests/Headers")
 endforeach()
 
 file(REMOVE "include_all1.cpp")
@@ -40,4 +40,4 @@ add_executable(include_all
     include_all2.cpp
     ${HDRS}
 )
-set_target_properties(include_all PROPERTIES FOLDER "Tests/headers")
+set_target_properties(include_all PROPERTIES FOLDER "Tests/Headers")

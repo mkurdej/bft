@@ -24,14 +24,9 @@ math(EXPR MKPHD_VERSION_INT "${CPACK_PACKAGE_VERSION_MAJOR}*10000+${CPACK_PACKAG
 message(STATUS "Marek Kurdej Ph.D. version: ${COMPLETE_VERSION} ${RELEASE_NAME} (${MKPHD_VERSION_INT})")
 
 #############################################################
-
 set(CMAKE_COLOR_MAKEFILE      ON)
-
-# use project groups
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-
 # set path to additional CMake modules
-set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 # in generated makefiles use relative paths so the project dir is moveable
 # Note commented out since it cause problems but it would be nice to resolve these and enable
@@ -39,19 +34,16 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 # issue is caused by include_directories(${CMAKE_BINARY_DIR}) near the end of this file generating incorrect path
 #set(CMAKE_USE_RELATIVE_PATHS ON)
 
-# Compile flag. Turns on all warnings, including pedantic.
-set(Boost_BFT_PEDANTIC TRUE CACHE BOOL "Determines if we should compile in pedantic mode.")
+option(Boost_BFT_BUILD_TESTS            "Build unit tests" ON)
+option(Boost_BFT_BUILD_TESTS_HEADERS    "Build header tests" OFF)
+option(Boost_BFT_USE_FOLDERS            "Use project folders" ON)
+mark_as_advanced(Boost_BFT_USE_FOLDERS)
+option(Boost_BFT_ENABLE_COVERAGE        "Enable code coverage generation" OFF)
+option(Boost_BFT_PEDANTIC               "Compile in pedantic mode" ON)
 mark_as_advanced(Boost_BFT_PEDANTIC)
-# whether unit tests should be build
-set(Boost_BFT_BUILD_TESTS TRUE CACHE BOOL "Build unit tests?")
-set(Boost_BFT_BUILD_TESTS_HEADERS TRUE CACHE BOOL "Build header tests?")
-# whether to use folders
-set(Boost_BFT_USE_FOLDERS TRUE CACHE BOOL "Use project folders?")
-set(USE_FOLDERS ${Boost_BFT_USE_FOLDERS})
-# what build type?
-set(CMAKE_BUILD_TYPE Debug CACHE STRING "What type of build? (None|Debug|Release|RelWithDebInfo|MinSizeRel)")
-# compiler options
-option(Boost_BFT_ENABLE_COVERAGE "Enable code coverage generation" OFF)
+set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type (None|Debug|Release|RelWithDebInfo|MinSizeRel)")
+
+set_property(GLOBAL PROPERTY USE_FOLDERS ${Boost_BFT_USE_FOLDERS})
 
 ########################################
 #set(Boost_USE_STATIC_LIBS       OFF)
