@@ -21,6 +21,7 @@ foreach(HEADER ${HDRS})
         test.cpp
         ${HEADER}
     )
+    remove_definitions( BOOST_BFT_HEADER_NAME )
     set_target_properties(${TEST_NAME} PROPERTIES FOLDER "Tests/headers")
 endforeach()
 

@@ -15,7 +15,7 @@
 #pragma warning(push) // disable for this header only
 #pragma warning(disable : 4265)
 #pragma warning(disable : 4365)
-#pragma warning(disable : 4347)
+//#pragma warning(disable : 4347)
 #pragma warning(disable : 4548)
 #pragma warning(disable : 4571)
 #pragma warning(disable : 4625)
