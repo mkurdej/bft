@@ -31,7 +31,7 @@ script:
 
 after_success:
     - lcov --directory test --base-directory ../include/boost/bft/ --capture --output-file coverage.info
-    #- lcov --remove coverage.info '/usr*' -o coverage.info
+    - lcov --remove coverage.info '/usr*' -o coverage.info
     - cd .. && coveralls-lcov build/coverage.info
 #    - coveralls --exclude lib --exclude tests --gcov-options '\-lp'
 
