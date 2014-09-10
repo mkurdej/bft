@@ -1,3 +1,8 @@
+# CMake settings
+# 2.6.2 required for VERSION_LESS
+project(bft) # VERSION ${PROJECT_VERSION})
+cmake_minimum_required(VERSION 2.6.2)
+
 set(CPACK_PACKAGE_VERSION_MAJOR "0")
 set(CPACK_PACKAGE_VERSION_MINOR "0")
 set(CPACK_PACKAGE_VERSION_PATCH "1")
@@ -8,7 +13,6 @@ set(PROJECT_VERSION ${COMPLETE_VERSION})
 if(POLICY CMP0048)
     cmake_policy(SET CMP0048 NEW) # v3.0
 endif()
-project(mkphd) # VERSION ${PROJECT_VERSION})
 
 # By default, do not warn when built on machines using only VS Express:
 if(NOT DEFINED CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS_NO_WARNINGS)
@@ -20,9 +24,6 @@ math(EXPR MKPHD_VERSION_INT "${CPACK_PACKAGE_VERSION_MAJOR}*10000+${CPACK_PACKAG
 message(STATUS "Marek Kurdej Ph.D. version: ${COMPLETE_VERSION} ${RELEASE_NAME} (${MKPHD_VERSION_INT})")
 
 #############################################################
-# CMake settings
-# 2.6.2 required for VERSION_LESS
-cmake_minimum_required(VERSION 2.6.2)
 
 set(CMAKE_COLOR_MAKEFILE      ON)
 
@@ -39,18 +40,17 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 #set(CMAKE_USE_RELATIVE_PATHS ON)
 
 # Compile flag. Turns on all warnings, including pedantic.
-set(MK_PEDANTIC TRUE CACHE BOOL "Determines if we should compile in pedantic mode.")
-mark_as_advanced(MK_PEDANTIC)
-
+set(BOOST_BFT_PEDANTIC TRUE CACHE BOOL "Determines if we should compile in pedantic mode.")
+mark_as_advanced(BOOST_BFT_PEDANTIC)
 # whether unit tests should be build
-set(MK_ENABLE_TESTS TRUE CACHE BOOL "Build unit tests?")
-
+set(BOOST_BFT_BUILD_TESTS TRUE CACHE BOOL "Build unit tests?")
 # whether to use folders
-set(MK_USE_FOLDERS TRUE CACHE BOOL "Use project folders?")
-set(USE_FOLDERS ${MK_USE_FOLDERS})
-
+set(BOOST_BFT_USE_FOLDERS TRUE CACHE BOOL "Use project folders?")
+set(USE_FOLDERS ${BOOST_BFT_USE_FOLDERS})
 # what build type?
 set(CMAKE_BUILD_TYPE Debug CACHE STRING "What type of build? (None|Debug|Release|RelWithDebInfo|MinSizeRel)")
+# compiler options
+option(BOOST_BFT_ENABLE_COVERAGE "Enable code coverage generation" OFF)
 
 ########################################
 #set(Boost_USE_STATIC_LIBS       OFF)
@@ -59,7 +59,9 @@ set(Boost_USE_MULTITHREADED      ON)
 find_package(
     Boost
     1.36.0
-    COMPONENTS unit_test_framework serialization
+    COMPONENTS
+        serialization
+        unit_test_framework
     REQUIRED
 )
 if(Boost_FOUND)
@@ -73,13 +75,11 @@ if(Boost_FOUND)
     #target_link_libraries(<target> ${Boost_LIBRARIES})
 endif()
 
-#message(STATUS "Boost_${COMPONENT}_LIBRARY = ${Boost_${COMPONENT}_LIBRARY}")
-message(STATUS "Boost_LIBRARY_DIRS = ${Boost_LIBRARY_DIRS}")
-message(STATUS "Boost_INCLUDE_DIRS = ${Boost_INCLUDE_DIRS}")
-message(STATUS "Boost_LIBRARIES = ${Boost_LIBRARIES}")
+################################################################################
+include_directories(include)
 
 ################################################################################
-if(MK_ENABLE_TESTS)
+if(BOOST_BFT_BUILD_TESTS)
     #include(CTest)
     enable_testing()
     #set(ENV{CTEST_OUTPUT_ON_FAILURE} true)
@@ -88,23 +88,23 @@ if(MK_ENABLE_TESTS)
         COMMAND ${CMAKE_CTEST_COMMAND} --build-config ${CMAKE_BUILD_TYPE}
     )
     set_property(TARGET TEST PROPERTY FOLDER "Tests")
-endif(MK_ENABLE_TESTS)
+endif()
 
 #############################################################
 # enable warnings
-set(MK_WARNING_LEVEL "4" CACHE STRING "Warning level (0-4)")
-mark_as_advanced(MK_WARNING_LEVEL)
+set(BOOST_BFT_WARNING_LEVEL "4" CACHE STRING "Warning level (0-4)")
+mark_as_advanced(BOOST_BFT_WARNING_LEVEL)
 if(MSVC)
     if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
-        string(REGEX REPLACE "/W[0-4]" "/W${MK_WARNING_LEVEL}" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+        string(REGEX REPLACE "/W[0-4]" "/W${BOOST_BFT_WARNING_LEVEL}" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
     else()
-        add_definitions( /W${MK_WARNING_LEVEL} )
+        add_definitions( /W${BOOST_BFT_WARNING_LEVEL} )
     endif()
 else(MSVC)
     add_definitions( )
 endif(MSVC)
 
-if(MK_PEDANTIC)
+if(BOOST_BFT_PEDANTIC)
     message(STATUS "Pedantic compiler settings enabled")
     if(MSVC)
         if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
@@ -175,7 +175,7 @@ if(MK_PEDANTIC)
             -Wvolatile-register-var  -Wwrite-strings
         )
     endif()
-endif(MK_PEDANTIC)
+endif()
 
 if(CMAKE_BUILD_TYPE MATCHES Debug OR CMAKE_BUILD_TYPE MATCHES RelWithDebInfo)
     message(STATUS "Debug output enabled")
@@ -274,77 +274,6 @@ if(UNIX AND NOT APPLE)
 endif(UNIX AND NOT APPLE)
 
 #############################################################
-# create mkversion.h
-
-# find_file(GIT_MARKER index PATHS ${CMAKE_SOURCE_DIR}/.git)
-# if(GIT_MARKER)
-    # find_program(GIT git PATHS $ENV{PATH})
-    # if(GIT)
-        # if(MSVC)
-            # ADD_CUSTOM_COMMAND(
-                # OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/mkversion.h
-                # COMMAND for /f \"usebackq tokens=1\" %%a in "(`\"${GIT}\" log -n1 --oneline`)" do echo \#define MKVERSION \"%%a\" >${CMAKE_CURRENT_BINARY_DIR}/mkversion.h
-                # MAIN_DEPENDENCY ${GIT_MARKER}
-                # WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-            # )
-        # else(MSVC)
-            # execute_process(
-                # WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-                # COMMAND ${GIT} log -n1 --pretty=%h OUTPUT_VARIABLE MK_REVISION
-            # )
-            # string(STRIP "${MK_REVISION}" MK_REVISION)
-            # add_custom_command(
-                # OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/mkversion.h
-                # COMMAND echo \\\#define MKVERSION \\\"${MK_REVISION}\\\" >${CMAKE_CURRENT_BINARY_DIR}/mkversion.h
-                # MAIN_DEPENDENCY ${GIT_MARKER}
-                # WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-            # )
-        # endif(MSVC)
-    # else(GIT)
-        # message(STATUS "git marker, but no git found - version will be unknown")
-        # set(MK_REVISION "unknown")
-    # endif(GIT)
-# else(GIT_MARKER)
-    # set(MK_REVISION "exported")
-# endif(GIT_MARKER)
-
-#############################################################
-# find last author and revision number
-find_file(SVN_MARKER .svn PATHS ${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/.. ${CMAKE_SOURCE_DIR}/../..)
-if(SVN_MARKER)
-    find_program(SVN svn PATHS $ENV{PATH})
-    if(SVN)
-        execute_process(
-            WORKING_DIRECTORY "${SVN_MARKER}/.."
-            COMMAND ${SVN} log -r HEAD --xml OUTPUT_VARIABLE SVN_XML
-        )
-        string(REGEX REPLACE ".*<author>([^<]*)</author>.*" "\\1"
-            MK_LAST_AUTHOR "${SVN_XML}"
-        )
-        string(REGEX REPLACE ".*<logentry[ \t\n\r]+revision=\"([0-9]*)\">.*" "\\1"
-            MK_REVISION "${SVN_XML}"
-        )
-    else(SVN)
-        message(STATUS "svn marker, but no svn found - version will be unknown")
-        set(MK_REVISION "unknown")
-    endif(SVN)
-else(SVN_MARKER)
-    set(MK_REVISION "exported")
-endif(SVN_MARKER)
-
-#create mkversion.h
-#file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/mkversion.h "#define MKVERSION \"exported\"")
-#
-#ADD_CUSTOM_TARGET(version ALL DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/mkversion.h)
-
-#############################################################
-# create mkconfig.h
-# installed with app target
-
-#configure_file(${CMAKE_SOURCE_DIR}/cmake_templates/mkconfig.h.in ${CMAKE_BINARY_DIR}/mkconfig.h)
-#include_directories(${CMAKE_BINARY_DIR})
-
-#############################################################
 # process subdirs
 
 #add_subdirectory(libs)
@@ -354,16 +283,15 @@ endif(SVN_MARKER)
 #add_subdirectory(resources)
 #add_subdirectory(i18n)
 
-if(MK_ENABLE_TESTS)
+if(BOOST_BFT_BUILD_TESTS)
     #create a variable to specify where our test data is
     #so that unit tests can use TEST_DATA_DIR to locate
     #the test data. See CMakeLists in test dirs for more info
     set(TEST_DATA_DIR "${CMAKE_CURRENT_SOURCE_DIR}/test/testdata")
     set(INCLUDE_PATH "${CMAKE_SOURCE_DIR}/include")
     set(SRC_PATH "${CMAKE_SOURCE_DIR}/src")
-    include_directories("${INCLUDE_PATH}")
     add_subdirectory(test)
-endif(MK_ENABLE_TESTS)
+endif()
 
 # manual page - makes sense only on unix systems
 if(UNIX AND NOT APPLE)
@@ -389,11 +317,11 @@ add_custom_target(uninstall
 
 include(InstallRequiredSystemLibraries)
 
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Marek Kurdej Ph.D.")
-set(CPACK_PACKAGE_VENDOR "Marek Kurdej - UTC Heudiasyc DGA")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "BFT - Belief Functions Theory library")
+set(CPACK_PACKAGE_VENDOR "Marek Kurdej")
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
-set(CPACK_PACKAGE_INSTALL_DIRECTORY "Quantum GIS ${COMPLETE_VERSION}")
+set(CPACK_PACKAGE_INSTALL_DIRECTORY "BFT ${COMPLETE_VERSION}")
 if(WIN32 AND NOT UNIX)
     # watch out for \\backslash -- escape character!
     set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/win_build\\\\sidebar.bmp")
@@ -401,7 +329,7 @@ if(WIN32 AND NOT UNIX)
     set(CPACK_MKPHD_DISPLAY_NAME "${CPACK_PACKAGE_INSTALL_DIRECTORY} Marek Kurdej Ph.D.")
     set(CPACK_MKPHD_HELP_LINK "http:\\\\www.hds.utc.fr\\~kurdejma\\phd\\help.html")
     set(CPACK_MKPHD_URL_INFO_ABOUT "http:\\\\www.hds.utc.fr\\~kurdejma\\phd")
-    set(CPACK_MKPHD_CONTACT "marek.kurdej@hds.utc.fr")
+    set(CPACK_MKPHD_CONTACT "marek.kurdej[at]gmail.com")
     #set(CPACK_MKPHD_MODIFY_PATH ON)
 
     #  set(CPACK_NSIS_EXTRA_INSTALL_COMMANDS "  !include \\\"${CMAKE_SOURCE_DIR}\\\\win_build\\\\extra.nsh\\\"")

@@ -3,10 +3,15 @@
 #    (See accompanying file LICENSE_1_0.txt or copy at
 #          http://www.boost.org/LICENSE_1_0.txt)
 
+# enable code coverage generation (only with GCC for now)
+if(${BOOST_BFT_ENABLE_COVERAGE} AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+  add_definitions(-fprofile-arcs -ftest-coverage)
+endif()
+
 ################################################################################
 #find_package(OpenCL)
 if(OPENCL_FOUND)
-    add_definitions( -DPACPUS_OPENCL )
+    add_definitions( -DBOOST_BFT_HAS_OPENCL )
     
     message(STATUS "OPENCL_INCLUDE_DIRS=${OPENCL_INCLUDE_DIRS}")
     message(STATUS "OPENCL_LIBRARIES=${OPENCL_LIBRARIES}")
