@@ -4,7 +4,7 @@
 #          http://www.boost.org/LICENSE_1_0.txt)
 
 # enable code coverage generation (only with GCC for now)
-if(BOOST_BFT_ENABLE_COVERAGE AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+if(Boost_BFT_ENABLE_COVERAGE AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     add_definitions(-fprofile-arcs -ftest-coverage)
 endif()
 
@@ -37,7 +37,7 @@ function(add_test_executable TEST_NAME)
         ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
     )
     # link with coverage libraries
-    if(BOOST_BFT_ENABLE_COVERAGE AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    if(Boost_BFT_ENABLE_COVERAGE AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
         target_link_libraries(${TEST_NAME} -fprofile-arcs -ftest-coverage)
     endif()
 endfunction()

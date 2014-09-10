@@ -19,3 +19,5 @@
 *.exe
 *.out
 *.app
+/test_headers/include_all1.cpp
+/test_headers/include_all2.cpp

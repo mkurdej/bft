@@ -40,17 +40,18 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 #set(CMAKE_USE_RELATIVE_PATHS ON)
 
 # Compile flag. Turns on all warnings, including pedantic.
-set(BOOST_BFT_PEDANTIC TRUE CACHE BOOL "Determines if we should compile in pedantic mode.")
-mark_as_advanced(BOOST_BFT_PEDANTIC)
+set(Boost_BFT_PEDANTIC TRUE CACHE BOOL "Determines if we should compile in pedantic mode.")
+mark_as_advanced(Boost_BFT_PEDANTIC)
 # whether unit tests should be build
-set(BOOST_BFT_BUILD_TESTS TRUE CACHE BOOL "Build unit tests?")
+set(Boost_BFT_BUILD_TESTS TRUE CACHE BOOL "Build unit tests?")
+set(Boost_BFT_BUILD_TESTS_HEADERS TRUE CACHE BOOL "Build header tests?")
 # whether to use folders
-set(BOOST_BFT_USE_FOLDERS TRUE CACHE BOOL "Use project folders?")
-set(USE_FOLDERS ${BOOST_BFT_USE_FOLDERS})
+set(Boost_BFT_USE_FOLDERS TRUE CACHE BOOL "Use project folders?")
+set(USE_FOLDERS ${Boost_BFT_USE_FOLDERS})
 # what build type?
 set(CMAKE_BUILD_TYPE Debug CACHE STRING "What type of build? (None|Debug|Release|RelWithDebInfo|MinSizeRel)")
 # compiler options
-option(BOOST_BFT_ENABLE_COVERAGE "Enable code coverage generation" OFF)
+option(Boost_BFT_ENABLE_COVERAGE "Enable code coverage generation" OFF)
 
 ########################################
 #set(Boost_USE_STATIC_LIBS       OFF)
@@ -79,7 +80,7 @@ endif()
 include_directories(include)
 
 ################################################################################
-if(BOOST_BFT_BUILD_TESTS)
+if(Boost_BFT_BUILD_TESTS)
     #include(CTest)
     enable_testing()
     #set(ENV{CTEST_OUTPUT_ON_FAILURE} true)
@@ -92,19 +93,19 @@ endif()
 
 #############################################################
 # enable warnings
-set(BOOST_BFT_WARNING_LEVEL "4" CACHE STRING "Warning level (0-4)")
-mark_as_advanced(BOOST_BFT_WARNING_LEVEL)
+set(Boost_BFT_WARNING_LEVEL "4" CACHE STRING "Warning level (0-4)")
+mark_as_advanced(Boost_BFT_WARNING_LEVEL)
 if(MSVC)
     if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
-        string(REGEX REPLACE "/W[0-4]" "/W${BOOST_BFT_WARNING_LEVEL}" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+        string(REGEX REPLACE "/W[0-4]" "/W${Boost_BFT_WARNING_LEVEL}" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
     else()
-        add_definitions( /W${BOOST_BFT_WARNING_LEVEL} )
+        add_definitions( /W${Boost_BFT_WARNING_LEVEL} )
     endif()
 else(MSVC)
     add_definitions( )
 endif(MSVC)
 
-if(BOOST_BFT_PEDANTIC)
+if(Boost_BFT_PEDANTIC)
     message(STATUS "Pedantic compiler settings enabled")
     if(MSVC)
         if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
@@ -283,7 +284,7 @@ endif(UNIX AND NOT APPLE)
 #add_subdirectory(resources)
 #add_subdirectory(i18n)
 
-if(BOOST_BFT_BUILD_TESTS)
+if(Boost_BFT_BUILD_TESTS)
     #create a variable to specify where our test data is
     #so that unit tests can use TEST_DATA_DIR to locate
     #the test data. See CMakeLists in test dirs for more info
@@ -291,6 +292,9 @@ if(BOOST_BFT_BUILD_TESTS)
     set(INCLUDE_PATH "${CMAKE_SOURCE_DIR}/include")
     set(SRC_PATH "${CMAKE_SOURCE_DIR}/src")
     add_subdirectory(test)
+endif()
+if(Boost_BFT_BUILD_TESTS_HEADERS)
+    add_subdirectory(test_headers)
 endif()
 
 # manual page - makes sense only on unix systems
