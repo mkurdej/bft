@@ -80,10 +80,11 @@ add_test_executable(bft_test1
     ${BFT_PATH}/to_plausibility.hpp
     ${BFT_PATH}/total_conflict_exception.hpp
 
-    ${BFT_PATH}/private/deref.hpp
-    ${BFT_PATH}/private/emptytype.hpp
-    #${BFT_PATH}/private/pow.hpp
-    ${BFT_PATH}/private/to_void.hpp
+    ${BFT_PATH}/detail/deref.hpp
+    ${BFT_PATH}/detail/emptytype.hpp
+    ${BFT_PATH}/detail/is_small.hpp
+    ${BFT_PATH}/detail/pow.hpp
+    ${BFT_PATH}/detail/to_void.hpp
 )
 
 if(OPENCL_FOUND)
