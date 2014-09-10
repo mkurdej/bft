@@ -92,7 +92,6 @@ add_test_executable(bft_test1
     ${BFT_PATH}/detail/deref.hpp
     ${BFT_PATH}/detail/emptytype.hpp
     ${BFT_PATH}/detail/is_small.hpp
-    ${BFT_PATH}/detail/pow.hpp
     ${BFT_PATH}/detail/to_void.hpp
 )
 
