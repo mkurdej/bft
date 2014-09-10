@@ -3,9 +3,12 @@
 #    (See accompanying file LICENSE_1_0.txt or copy at
 #          http://www.boost.org/LICENSE_1_0.txt)
 
-# enable code coverage generation (only with GCC for now)
-if(${BOOST_BFT_ENABLE_COVERAGE} AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-  add_definitions(-fprofile-arcs -ftest-coverage)
+# enable code coverage generation
+if(BOOST_BFT_ENABLE_COVERAGE)
+    # only with GCC for now
+    if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+        add_definitions(-fprofile-arcs -ftest-coverage)
+    endif()
 endif()
 
 ################################################################################
