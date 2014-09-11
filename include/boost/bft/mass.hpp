@@ -59,6 +59,13 @@ public:
     {
     }
 
+#ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST
+    mass(const std::initializer_list<T>& init_values)
+        : bft_function<FOD, T>(init_values)
+    {
+    }
+#endif
+
     // =============================================================================
     static mass<FOD, T>
     create_mass_from_conjunctive_weight(std::size_t set, T w)

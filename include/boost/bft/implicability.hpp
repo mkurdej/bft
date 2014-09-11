@@ -55,6 +55,13 @@ public:
     {
     }
 
+#ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST
+    implicability(const std::initializer_list<T>& init_values)
+        : bft_function<FOD, T>(init_values)
+    {
+    }
+#endif
+
     ~implicability()
     {
     }

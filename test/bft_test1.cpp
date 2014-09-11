@@ -124,6 +124,22 @@ BOOST_AUTO_TEST_CASE(test_to_belief_compiles)
     }
 }
 
+BOOST_AUTO_TEST_CASE(test_bft_initializer_list)
+{
+#ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST
+    mass<fodFO> m_actual{0.0, 0.3, 0.6, 0.1};
+
+    mass<fodFO>::container_type mae = {0.0, 0.3, 0.6, 0.1};
+    mass<fodFO> m_expected(mae);
+
+    for (std::size_t i = 0; i < fodFO::powerset_size; ++i) {
+        BOOST_TEST_CHECKPOINT(
+            "Calling [i] with i=" << i); // FIXME: wanted but doesn't work
+        BOOST_CHECK_CLOSE(m_expected[i], m_actual[i], 1e-10);
+    }
+#endif
+}
+
 BOOST_AUTO_TEST_CASE(test_to_belief_wo_conflict_mass)
 {
     mass<fodFO>::container_type ma = {0.0, 0.3, 0.6, 0.1};

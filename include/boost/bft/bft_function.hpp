@@ -13,7 +13,11 @@
 #include <boost/static_assert.hpp>
 #include <boost/bft/detail/emptytype.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <boost/config.hpp>
 #include <iterator>
+#ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST
+#include <initializer_list>
+#endif
 
 namespace boost
 {
@@ -76,6 +80,15 @@ public:
         std::copy(init_values, init_values + FOD::powerset_size,
                   this->m_values.begin());
     }
+
+#ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST
+    bft_function(const std::initializer_list<T>& init_values)
+    {
+        BOOST_ASSERT((FOD::powerset_size == m_values.size()));
+        std::copy(init_values.begin(), init_values.end(),
+                  this->m_values.begin());
+    }
+#endif
 
     // =============================================================================
     virtual ~bft_function()
