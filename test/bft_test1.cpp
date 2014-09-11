@@ -12,7 +12,7 @@
 
 #pragma warning(push) // disable for this header only
 #pragma warning(disable : 4265)
-#pragma warning(disable : 4347)
+//#pragma warning(disable : 4347)
 #pragma warning(disable : 4365)
 #pragma warning(disable : 4548)
 #pragma warning(disable : 4571)
@@ -439,7 +439,7 @@ BOOST_AUTO_TEST_CASE(test_bft_function_Idx)
 
 #ifdef _MSC_VER
 #pragma warning(push) // disable for this part only
-#pragma warning(disable : 4347)
+//#pragma warning(disable : 4347)
 #endif // _MSC_VER
 
 BOOST_AUTO_TEST_CASE(test_bft_function_idx)

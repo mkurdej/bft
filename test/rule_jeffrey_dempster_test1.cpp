@@ -7,7 +7,7 @@
 
 #ifdef _MSC_VER
 #pragma warning(disable : 4505) // unused function
-#pragma warning(disable : 4347)
+//#pragma warning(disable : 4347)
 
 #pragma warning(push) // disable for this header only
 #pragma warning(disable : 4265)

@@ -34,6 +34,7 @@ list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 # issue is caused by include_directories(${CMAKE_BINARY_DIR}) near the end of this file generating incorrect path
 #set(CMAKE_USE_RELATIVE_PATHS ON)
 
+option(Boost_BFT_BUILD_EXAMPLES         "Build examples" ON)
 option(Boost_BFT_BUILD_TESTS            "Build unit tests" ON)
 option(Boost_BFT_BUILD_TESTS_HEADERS    "Build header tests" OFF)
 option(Boost_BFT_USE_FOLDERS            "Use project folders" ON)
@@ -276,6 +277,9 @@ endif(UNIX AND NOT APPLE)
 #add_subdirectory(resources)
 #add_subdirectory(i18n)
 
+if(Boost_BFT_BUILD_EXAMPLES)
+    add_subdirectory(example)
+endif()
 if(Boost_BFT_BUILD_TESTS)
     #create a variable to specify where our test data is
     #so that unit tests can use TEST_DATA_DIR to locate

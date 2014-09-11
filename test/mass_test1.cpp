@@ -66,7 +66,7 @@ BOOST_AUTO_TEST_SUITE(suite_mass_at)
 
 #ifdef _MSC_VER
 #pragma warning(push) // disable for this header only
-#pragma warning(disable : 4347)
+//#pragma warning(disable : 4347)
 #endif // _MSC_VER
 
 BOOST_AUTO_TEST_CASE(test_mass_at)

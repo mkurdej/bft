@@ -383,47 +383,63 @@ protected:
 // =============================================================================
 // =============================================================================
 
-static std::size_t set_intersection(std::size_t set1, std::size_t set2)
+//typedef std::size_t SetT;
+
+namespace {
+std::size_t set_intersection(std::size_t set1, std::size_t set2);
+std::size_t set_union(std::size_t set1, std::size_t set2);
+std::size_t set_minus(std::size_t set1, std::size_t set2);
+std::size_t set_xor(std::size_t set1, std::size_t set2);
+//std::size_t set_negate(std::size_t set1, std::size_t max_set_mask);
+bool is_emptyset(std::size_t set1);
+bool is_subset_of(std::size_t set1, std::size_t set2);
+bool is_superset_of(std::size_t set1, std::size_t set2);
+std::size_t count_bits(std::size_t n);
+std::size_t count_elements(std::size_t set);
+
+std::size_t set_intersection(std::size_t set1, std::size_t set2)
 {
     return set1 & set2;
 }
 
-static std::size_t set_union(std::size_t set1, std::size_t set2)
+std::size_t set_union(std::size_t set1, std::size_t set2)
 {
     return set1 | set2;
 }
 
-static std::size_t set_minus(std::size_t set1, std::size_t set2)
+std::size_t set_minus(std::size_t set1, std::size_t set2)
 {
     return set1 & (set1 ^ set2);
 }
 
-static std::size_t set_xor(std::size_t set1, std::size_t set2)
+std::size_t set_xor(std::size_t set1, std::size_t set2)
 {
     return set1 ^ set2;
 }
 
-/*static long set_negate(long set1, long max_set_mask)
-    {
-        return set_minus(max_set_mask, set1);
-    }*/
+/*
+std::size_t set_negate(std::size_t set1, std::size_t max_set_mask)
+{
+    return set_minus(max_set_mask, set1);
+}
+*/
 
-static bool is_emptyset(std::size_t set1)
+bool is_emptyset(std::size_t set1)
 {
     return 0 == set1;
 }
 
-static bool is_subset_of(std::size_t set1, std::size_t set2)
+bool is_subset_of(std::size_t set1, std::size_t set2)
 {
     return set_intersection(set1, set2) == set1;
 }
 
-static bool is_superset_of(std::size_t set1, std::size_t set2)
+bool is_superset_of(std::size_t set1, std::size_t set2)
 {
     return is_subset_of(set2, set1);
 }
 
-static std::size_t count_bits(std::size_t n)
+std::size_t count_bits(std::size_t n)
 {
     std::size_t c; // c accumulates the total bits set in n
     for (c = 0; n; ++c) {
@@ -432,10 +448,12 @@ static std::size_t count_bits(std::size_t n)
     return c;
 }
 
-static std::size_t count_elements(std::size_t set)
+std::size_t count_elements(std::size_t set)
 {
     return count_bits(set);
 }
+
+} // anonymous namespace
 
 namespace detail
 {
