@@ -1,7 +1,9 @@
-//          Copyright Marek Kurdej 2014.
+// Copyright (c) 2011-2014
+// Marek Kurdej
+//
 // Distributed under the Boost Software License, Version 1.0.
-//    (See accompanying file LICENSE_1_0.txt or copy at
-//          http://www.boost.org/LICENSE_1_0.txt)
+// See accompanying file LICENSE_1_0.txt or copy at
+// http://www.boost.org/LICENSE_1_0.txt
 
 #ifdef _MSC_VER
 #pragma warning(disable : 4505) // unused function
