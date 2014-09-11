@@ -81,10 +81,10 @@ public:
                   this->m_values.begin());
     }
 
-#ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST
+#if !defined(BOOST_NO_INITIALIZER_LISTS) && !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
     bft_function(const std::initializer_list<T>& init_values)
     {
-        BOOST_ASSERT((FOD::powerset_size == m_values.size()));
+        BOOST_ASSERT((init_values.size() == m_values.size()));
         std::copy(init_values.begin(), init_values.end(),
                   this->m_values.begin());
     }
