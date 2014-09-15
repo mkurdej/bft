@@ -9,15 +9,15 @@ install:
     - git submodule -q update --init
 
 environment:
-    BOOST_ROOT: "c:\Libraries\boost"
+    BOOST_ROOT: "c:\\Libraries\\boost"
+    BOOST_LIBRARYDIR: "c:\\Libraries\\boost\\stage\\lib"
 
 before_build:
     - mkdir bft-build
     - cd bft-build
     - echo "BOOST_ROOT=%BOOST_ROOT%"
-    - dir "c:\Libraries\boost"
-    - dir "c:\Libraries\boost\stage"
-    - cmake -DBOOST_ROOT="c:\Libraries\boost" -DBOOST_LIBRARYDIR="c:\Libraries\boost\stage" -G "Visual Studio 12" -T "v120" --build-dir "." ..
+    - dir "c:\Libraries\boost\stage\lib"
+    - cmake -G "Visual Studio 12" -T "v120" --build-dir "." ..
 
 build:
     project: bft-build\bft.sln
