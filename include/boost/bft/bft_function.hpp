@@ -11,10 +11,16 @@
 #include <boost/array.hpp>
 #include <boost/assert.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/config.hpp>
+#include <boost/version.hpp>
 #include <boost/bft/detail/emptytype.hpp>
 #include <boost/type_traits/is_same.hpp>
-#include <boost/config.hpp>
 #include <iterator>
+
+#if BOOST_VERSION < 105500
+#define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
+#endif
+
 #ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST
 #include <initializer_list>
 #endif
@@ -81,7 +87,7 @@ public:
                   this->m_values.begin());
     }
 
-#if !defined(BOOST_NO_INITIALIZER_LISTS) && !defined(BOOST_NO_CXX11_HDR_INITIALIZER_LIST)
+#ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST
     bft_function(const std::initializer_list<T>& init_values)
     {
         BOOST_ASSERT((init_values.size() == m_values.size()));
