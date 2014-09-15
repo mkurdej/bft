@@ -17,6 +17,13 @@
 #include <boost/type_traits/is_same.hpp>
 #include <iterator>
 
+// older versions of Boost define BOOST_NO_INITIALIZER_LISTS
+#ifdef BOOST_NO_INITIALIZER_LISTS
+#   ifndef BOOST_NO_CXX11_HDR_INITIALIZER_LIST
+#       define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
+#   endif
+#endif
+
 #if BOOST_VERSION < 105500
 #define BOOST_NO_CXX11_HDR_INITIALIZER_LIST
 #endif
