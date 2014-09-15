@@ -14,7 +14,7 @@ environment:
 before_build:
     - mkdir bft-build
     - cd bft-build
-    - cmake -G "Visual Studio 12" -T "v120" --build-dir "." ..
+    - cmake -DBOOST_ROOT="c:\Libraries\boost" -G "Visual Studio 12" -T "v120" --build-dir "." ..
 
 build:
     project: bft-build\bft.sln
