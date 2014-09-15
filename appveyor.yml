@@ -16,6 +16,7 @@ before_build:
     - mkdir bft-build
     - cd bft-build
     - cmake -G "Visual Studio 12" -T "v120" --build-dir "." ..
+    - dir
 
 build:
-    project: bft.sln
+    project: "c:\projects\bft\btf-build\bft.sln"
