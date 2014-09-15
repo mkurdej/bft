@@ -1,0 +1,18 @@
+version: 0.1.{build}
+
+branches:
+    only:
+        - master
+        - develop
+
+install:
+    - git submodule -q update --init
+
+before_build:
+    - mkdir projects\build
+    - cd projects\build
+    - cmake -G "Visual Studio 12" -T "v120" -B "." ..
+    - cd ..\..
+
+build:
+    project: projects\build\bft.sln
