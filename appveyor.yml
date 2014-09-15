@@ -9,9 +9,9 @@ install:
     - git submodule -q update --init
 
 before_build:
-    - mkdir build
-    - cd build
+    - mkdir bft-build
+    - cd bft-build
     - cmake -G "Visual Studio 12" -T "v120" --build-dir "." ..
 
 build:
-    project: build\bft.sln
+    project: bft-build\bft.sln
