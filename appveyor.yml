@@ -19,4 +19,4 @@ before_build:
     - dir
 
 build:
-    project: "c:\projects\bft\btf-build\bft.sln"
+    project: "c:\\projects\\bft\\btf-build\\bft.sln"
