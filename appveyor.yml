@@ -16,9 +16,8 @@ before_build:
     - cd bft-build
     - echo "BOOST_ROOT=%BOOST_ROOT%"
     - dir "c:\Libraries\boost"
-    - dir "c:\Libraries\boost\include"
-    - dir "c:\Libraries\boost\lib"
-    - cmake -DBOOST_ROOT="c:\Libraries\boost" -G "Visual Studio 12" -T "v120" --build-dir "." ..
+    - dir "c:\Libraries\boost\stage"
+    - cmake -DBOOST_ROOT="c:\Libraries\boost" -DBOOST_LIBRARYDIR="c:\Libraries\boost\stage" -G "Visual Studio 12" -T "v120" --build-dir "." ..
 
 build:
     project: bft-build\bft.sln
