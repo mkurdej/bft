@@ -55,6 +55,11 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ${Boost_BFT_USE_FOLDERS})
 
 ########################################
 set(Boost_USE_STATIC_LIBS       ON)
+if(Boost_USE_STATIC_LIBS)
+    add_definitions( -DBOOST_ALL_NO_LIB )
+else()
+    add_definitions( -DBOOST_ALL_DYN_LINK )
+endif()
 set(Boost_USE_MULTITHREADED      ON)
 #set(Boost_USE_STATIC_RUNTIME    OFF)
 find_package(
@@ -66,6 +71,10 @@ find_package(
     REQUIRED
 )
 if(Boost_FOUND)
+    message(STATUS "\${Boost_INCLUDE_DIRS} = ${Boost_INCLUDE_DIRS}")
+    message(STATUS "\${Boost_LIBRARY_DIRS} = ${Boost_LIBRARY_DIRS}")
+    message(STATUS "\${Boost_LIBRARIES} = ${Boost_LIBRARIES}")
+    message(STATUS "\${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} = ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}")
     include_directories(${Boost_INCLUDE_DIRS})
     link_directories(${Boost_LIBRARY_DIRS})
 
