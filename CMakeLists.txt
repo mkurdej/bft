@@ -54,7 +54,7 @@ set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type (None|Debug|Release|RelWithD
 set_property(GLOBAL PROPERTY USE_FOLDERS ${Boost_BFT_USE_FOLDERS})
 
 ########################################
-#set(Boost_USE_STATIC_LIBS       OFF)
+set(Boost_USE_STATIC_LIBS       ON)
 set(Boost_USE_MULTITHREADED      ON)
 #set(Boost_USE_STATIC_RUNTIME    OFF)
 find_package(
