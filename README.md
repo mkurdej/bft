@@ -1,7 +1,7 @@
 Boost.BFT
 ======
 
-[![Maintenance Status](http://stillmaintained.com/mkurdej/bft.png)(http://stillmaintained.com/mkurdej/bft)
+!http://stillmaintained.com/mkurdej/bft.png!:http://stillmaintained.com/mkurdej/bft
 
 Master:
 Windows: [![Windows Status](http://img.shields.io/appveyor/ci/mkurdej/bft.svg?branch=master)](https://ci.appveyor.com/project/mkurdej/bft)
