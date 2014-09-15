@@ -7,10 +7,24 @@
 
 language: cpp
 
+os:
+    - linux
+#    - osx
+
 compiler:
     - gcc
     - clang
 
+env:
+    - BUILD_TYPE=Release
+
+# do not build with gcc on OS X
+matrix:
+    exclude:
+      - compiler: gcc
+        os: osx
+
+# DEPENDENCIES
 before_install:
     - sudo apt-get update -qq
     - sudo apt-get install -qq libboost-serialization1.48-dev libboost-test1.48-dev opencl-headers lcov
@@ -19,26 +33,17 @@ before_install:
     #- sudo apt-get install -qq fglrx=2:8.960-0ubuntu1 opencl-headers libboost-chrono1.48-dev libboost-date-time1.48-dev libboost-test1.48-dev libboost-system1.48-dev libboost-filesystem1.48-dev libboost-timer1.48-dev libboost-program-options1.48-dev python-yaml lcov libopencv-dev
     - gem install coveralls-lcov
 
-#install: make get-deps
-
-#before-script:
-
 # BUILD in ./build
 script:
     - mkdir -p build
     - cd build
-    - cmake -DCMAKE_C_COMPILER=${CC} -DCMAKE_CXX_COMPILER=${CXX} -DBoost_BFT_BUILD_TESTS=ON -DBoost_BFT_BUILD_TESTS_HEADERS=ON -DBoost_BFT_ENABLE_COVERAGE=ON -DCMAKE_CXX_FLAGS="-Wall -pedantic -Wno-variadic-macros -Wno-long-long -Wno-shadow" ..
-#   -Werror
-#    -DBoost_BFT_BUILD_EXAMPLES=ON -DBoost_BFT_BUILD_BENCHMARKS=ON -DBoost_BFT_USE_OFFLINE_CACHE=ON -DBoost_BFT_HAVE_OPENCV=ON 
+    - cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_C_COMPILER=${CC} -DCMAKE_CXX_COMPILER=${CXX} -DBoost_BFT_BUILD_TESTS=ON -DBoost_BFT_BUILD_TESTS_HEADERS=ON -DBoost_BFT_ENABLE_COVERAGE=ON -DCMAKE_CXX_FLAGS="-Wall -pedantic -Wno-variadic-macros -Wno-long-long -Wno-shadow" ..
+#    -DBoost_BFT_BUILD_EXAMPLES=ON
     - make -j8
-#    - ./example/list_devices
     - ctest --output-on-failure
 
+# COVERAGE
 after_success:
     - lcov --directory test --base-directory ../include/boost/bft/ --capture --output-file coverage.info
     - lcov --remove coverage.info '/usr*' -o coverage.info
     - cd .. && coveralls-lcov build/coverage.info
-
-#after-failure:
-
-#after-script:
