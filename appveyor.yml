@@ -14,6 +14,10 @@ environment:
 before_build:
     - mkdir bft-build
     - cd bft-build
+    - echo "BOOST_ROOT=%BOOST_ROOT%"
+    - dir "c:\Libraries\boost"
+    - dir "c:\Libraries\boost\include"
+    - dir "c:\Libraries\boost\lib"
     - cmake -DBOOST_ROOT="c:\Libraries\boost" -G "Visual Studio 12" -T "v120" --build-dir "." ..
 
 build:
