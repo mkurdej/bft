@@ -15,9 +15,7 @@ environment:
 before_build:
     - mkdir bft-build
     - cd bft-build
-    - echo "BOOST_ROOT=%BOOST_ROOT%"
-    - dir "c:\Libraries\boost\stage\lib"
     - cmake -G "Visual Studio 12" -T "v120" --build-dir "." ..
 
 build:
-    project: bft-build\bft.sln
+    project: bft.sln
