@@ -1,21 +1,28 @@
 version: 0.1.{build}
 
+#clone_depth: 5
+shallow_clone: true
+clone_folder: c:\projects\bft
+
 branches:
     only:
         - master
         - develop
 
+configuration: Release
+
 install:
     - git submodule -q update --init
 
 environment:
-    BOOST_ROOT: "c:\\Libraries\\boost"
-    BOOST_LIBRARYDIR: "c:\\Libraries\\boost\\stage\\lib"
+    BOOST_ROOT: c:\Libraries\boost
+    BOOST_LIBRARYDIR: c:\Libraries\boost\stage\lib
+    BUILD_TYPE: Release
 
 before_build:
     - mkdir bft-build
     - cd bft-build
-    - cmake -G "Visual Studio 12" -T "v120" --build-dir "." ..
+    - cmake -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -G "Visual Studio 12" -T "v120" --build-dir "." ..
     - cd ..
 
 build:

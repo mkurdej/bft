@@ -1,6 +1,8 @@
 Boost.BFT
 ======
 
+[![Maintenance Status](http://stillmaintained.com/mkurdej/bft.png)(http://stillmaintained.com/mkurdej/bft)
+
 Master:
 Windows: [![Windows Status](http://img.shields.io/appveyor/ci/mkurdej/bft.svg?branch=master)](https://ci.appveyor.com/project/mkurdej/bft)
 Linux & OS X: [![Linux & OS X Status](https://travis-ci.org/mkurdej/bft.svg?branch=master)](https://travis-ci.org/mkurdej/bft)
