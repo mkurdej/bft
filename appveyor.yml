@@ -27,3 +27,6 @@ before_build:
 
 build:
     project: bft-build\bft.sln
+
+test_script:
+    - ctest --output-on-failure
