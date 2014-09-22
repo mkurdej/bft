@@ -1,2 +1,1 @@
--checks='boost-*'
--dump-config
+Checks: '-*,boost-*,misc-*'
