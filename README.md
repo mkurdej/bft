@@ -1,8 +1,6 @@
 Boost.BFT
 ======
 
-[![Maintenance Status](http://stillmaintained.com/mkurdej/bft.png)](http://stillmaintained.com/mkurdej/bft)
-
 Master:
 Windows: [![Windows Status](http://img.shields.io/appveyor/ci/mkurdej/bft.svg?branch=master)](https://ci.appveyor.com/project/mkurdej/bft)
 Linux & OS X: [![Linux & OS X Status](https://travis-ci.org/mkurdej/bft.svg?branch=master)](https://travis-ci.org/mkurdej/bft)
@@ -12,6 +10,11 @@ Develop:
 Windows: [![Windows Status](http://img.shields.io/appveyor/ci/mkurdej/bft.svg?branch=develop)](https://ci.appveyor.com/project/mkurdej/bft)
 Linux & OS X: [![Linux & OS X Status](https://travis-ci.org/mkurdej/bft.svg?branch=develop)](https://travis-ci.org/mkurdej/bft)
 [![Coverage Status](https://coveralls.io/repos/mkurdej/bft/badge.png?branch=develop)](https://coveralls.io/r/mkurdej/bft?branch=develop)
+
+<a href="https://scan.coverity.com/projects/5692">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/5692/badge.svg"/>
+</a>
 
 Belief functions theory (Dempster-Shafer theory) implementation in C++
 
