@@ -1,5 +1,5 @@
-Boost.BFT
-======
+BFT - Belief Functions Theory library
+=====================================
 
 Master:
 Windows: [![Windows Status](http://img.shields.io/appveyor/ci/mkurdej/bft.svg?branch=master)](https://ci.appveyor.com/project/mkurdej/bft)
@@ -42,6 +42,5 @@ Features:
     * cautious (conjunctive) rule + bold (disjunctive) rule (Denoeux)
     * PCx5, others
 * DECOMPOSITION
-    * 
 * DISCOUNTING
 * CONTEXTUAL DISCOUNTING
